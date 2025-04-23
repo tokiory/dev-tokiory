@@ -4,6 +4,9 @@
 	export { default as h3 } from './ContentH3.svelte';
 	export { default as pre } from './ContentPre.svelte';
 	export { default as p } from './ContentParagraph.svelte';
+	export { default as ul } from './ContentUl.svelte';
+	export { default as ol } from './ContentOl.svelte';
+	export { default as li } from './ContentLi.svelte';
 </script>
 
 <script>

@@ -9,9 +9,22 @@
   max-width: 854px;
 }
 
+pre {
+  background: transparent;
+}
+
 code {
   font-family: 'Martian Mono Variable', monospace;
-  @apply text-sm;
+  @apply text-[13px];
+}
+
+:not(pre)>code {
+  @apply px-1 py-[2px] rounded-[4px] border bg-brand-surface-accent text-brand-foreground-accent;
+  border-color: #37394a;
+}
+
+:not(pre)>code {
+  @apply inline-block bg-driftwood-100 text-driftwood-900 border-0;
 }
 
 body {
