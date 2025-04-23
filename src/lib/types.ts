@@ -4,3 +4,8 @@ export interface Article {
 	description: string;
 	tags: string[];
 }
+
+export interface ArticlesResponse {
+	amount: number;
+	articles: Article[];
+}

@@ -1,8 +1,19 @@
 <script lang="ts">
-	import ArticleHeader from '@/lib/components/Article/ArticleHeader.svelte';
+	import ArticleHeader from '$components/Article/ArticleHeader.svelte';
+	import { fadeRight } from '$lib/animations/fadeRight';
+	import { animate } from 'animejs';
 
 	let { data } = $props();
 	const meta = $derived(data.meta);
+	let contentRef = $state<Element>();
+
+	$effect(() => {
+		animate(contentRef!, {
+			...fadeRight,
+			x: { from: '-1.25em', ease: 'outCirc' },
+			duration: 400
+		});
+	});
 </script>
 
 <svelte:head>
@@ -15,7 +26,7 @@
 	<ArticleHeader title={meta.title} description={meta.description} />
 	<div class="mt-6 border-b-dashed border-b-1 border-driftwood-300"></div>
 
-	<div class="mt-8">
+	<div bind:this={contentRef} class="opacity-0 mt-8">
 		<data.content />
 	</div>
 </article>

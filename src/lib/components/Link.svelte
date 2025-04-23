@@ -5,7 +5,7 @@
     darker?: boolean;
     href: string;
     children?: Snippet;
-    class?: string;
+    class?: string | string[];
   }
 
   let { href, target, darker, children, class: className }: Props = $props();

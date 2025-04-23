@@ -9,7 +9,8 @@
 	import { fadeUp } from '@/lib/animations/fadeUp';
 
 	let { data }: PageProps = $props();
-	const posts = $derived(data.posts);
+	const posts = $derived(data.articles);
+	const amount = $derived(data.amount)
 
 	let articlesRef: HTMLElement;
 	let projectsRef: HTMLElement;
@@ -35,7 +36,7 @@
 </div>
 
 <div bind:this={articlesRef} class="flex opacity-0 flex-col gap-2 mt-12">
-	<ListingHeader href="/articles">Статьи</ListingHeader>
+	<ListingHeader counter={amount} href="/articles">Статьи</ListingHeader>
 	{#each posts as post (post.slug)}
 		<ListingArticle description={post.description} href={post.slug}>{post.title}</ListingArticle>
 	{/each}

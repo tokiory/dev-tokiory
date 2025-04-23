@@ -16,16 +16,20 @@ async function getArticles() {
 		}
 	}
 
-	return articles;
+	return { articles, amount: Object.keys(paths).length };
 }
 
 export const GET: RequestHandler = async ({ url }) => {
 	const limit = url.searchParams.get('limit');
-	let articles = await getArticles();
+	const data = await getArticles();
+	let { articles } = data;
 
 	if (limit) {
 		articles = articles.slice(0, Number(limit));
 	}
 
-	return json(articles);
+	return json({
+		articles,
+		amount: data.amount
+	});
 };

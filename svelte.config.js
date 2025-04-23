@@ -14,7 +14,7 @@ const ContentLayout = join(
 const theme = 'vitesse-light';
 const highlighter = await createHighlighter({
 	themes: [theme],
-	langs: ['javascript', 'typescript', 'go']
+	langs: ['javascript', 'typescript', 'go', 'json', 'tsx', 'jsx', 'bash']
 });
 
 /** @type {import('@sveltejs/kit').Config} */

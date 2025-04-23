@@ -1,9 +1,9 @@
-import type { Article } from '$lib/types';
+import type { ArticlesResponse } from '$lib/types';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	const response = await fetch('/api/articles');
-	const posts: Article[] = await response.json();
+	const data: ArticlesResponse = await response.json();
 
-	return { posts };
+	return { posts: data.articles };
 };
