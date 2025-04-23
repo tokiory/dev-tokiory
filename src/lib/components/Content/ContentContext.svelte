@@ -7,6 +7,7 @@
 	export { default as ul } from './ContentUl.svelte';
 	export { default as ol } from './ContentOl.svelte';
 	export { default as li } from './ContentLi.svelte';
+	export { default as img } from './ContentImg.svelte';
 </script>
 
 <script>
