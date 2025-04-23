@@ -10,7 +10,7 @@
 	const { href, description, children }: Props = $props();
 </script>
 
-<Link {href}>
+<Link darker {href}>
 	<div class="font-bold">{@render children()}</div>
 	<div class="text-driftwood-900">
 		{description}
