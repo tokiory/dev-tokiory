@@ -41,7 +41,10 @@
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.5",
+    "@fontsource-variable/martian-mono": "^5.2.5",
+    "@fontsource/iosevka": "^5.2.5",
     "@iconify-json/tabler": "^1.2.17",
-    "animejs": "^4.0.1"
+    "animejs": "^4.0.1",
+    "shiki": "^3.3.0"
   }
 }

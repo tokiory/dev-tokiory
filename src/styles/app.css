@@ -9,6 +9,11 @@
   max-width: 854px;
 }
 
+code {
+  font-family: 'Martian Mono Variable', monospace;
+  @apply text-sm;
+}
+
 body {
   @apply bg-brand-surface text-brand-foreground;
   margin: 0;
