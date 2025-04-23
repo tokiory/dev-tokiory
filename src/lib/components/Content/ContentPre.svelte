@@ -1,13 +1,25 @@
-<script>
-	const { children } = $props();
+<script lang="ts">
+	import type { Snippet } from 'svelte';
 
-	let codeRef = $state();
+	interface Props {
+		children?: Snippet;
+	}
+	const { children }: Props = $props();
+
+	let codeRef = $state<Element>();
+	let lastCopiedTimerId = $state<NodeJS.Timer | null>(null);
 
 	const copy = async () => {
 		try {
-			const codeElement = codeRef.getElementsByTagName('code')[0];
+			const codeElement = codeRef!.getElementsByTagName('code')[0];
 			const sourceCode = codeElement.textContent;
-			await navigator.clipboard.writeText(sourceCode);
+			await navigator.clipboard.writeText(sourceCode!);
+
+			if (lastCopiedTimerId) clearTimeout(lastCopiedTimerId);
+
+			lastCopiedTimerId = setTimeout(() => {
+				lastCopiedTimerId = null;
+			}, 5000);
 		} catch (err) {
 			console.error('Failed to copy source code:', err);
 		}
@@ -20,9 +32,13 @@
 		aria-label="copy"
 		class="absolute cursor-pointer hover:bg-driftwood-200/30 transition-colors top-0 right-0 p-2 rounded-md"
 	>
-		<div class="i-tabler-copy"></div>
+		{#if lastCopiedTimerId}
+			<div class="i-tabler-check"></div>
+		{:else}
+			<div class="i-tabler-copy"></div>
+		{/if}
 	</button>
-	{@render children()}
+	{@render children?.()}
 </div>
 
 <style>
