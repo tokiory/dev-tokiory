@@ -1,5 +1,4 @@
 <script lang="ts">
-	import ArticleTitle from '$components/Article/ArticleTitle.svelte';
 	import ArticleHeader from '@/lib/components/Article/ArticleHeader.svelte';
 
 	let { data } = $props();
