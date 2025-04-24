@@ -38,7 +38,8 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			'@/*': 'src/*',
-			'$components/*': 'src/lib/components/*'
+			'$components/*': 'src/lib/components/*',
+			'$mod/*': 'src/lib/modules/*'
 			// '$content': 'content/*',
 		}
 	}

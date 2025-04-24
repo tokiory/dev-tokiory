@@ -3,7 +3,14 @@ import { json, type RequestHandler } from '@sveltejs/kit';
 
 async function getArticles() {
 	const articles: Article[] = [];
-	const paths = import.meta.glob('/content/articles/*.mdx', { eager: true });
+	let paths = import.meta.glob('$content/articles/*.mdx', { eager: true });
+
+	if (process.env.NODE_ENV === 'development') {
+		paths = {
+			...paths,
+			...import.meta.glob('$content/articles/drafts/*.mdx', { eager: true })
+		};
+	}
 
 	for (const path in paths) {
 		const file = paths[path];
