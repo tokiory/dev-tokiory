@@ -1,10 +1,8 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-// import { fileURLToPath } from 'bun';
-import { mdsvex, escapeSvelte } from 'mdsvex';
+import { escapeSvelte, mdsvex } from 'mdsvex';
 import { join } from 'node:path';
 import { createHighlighter } from 'shiki';
-
 
 const ContentLayout = join(
 	import.meta.dirname,
@@ -14,7 +12,7 @@ const ContentLayout = join(
 const theme = 'vitesse-light';
 const highlighter = await createHighlighter({
 	themes: [theme],
-	langs: ['javascript', 'typescript', 'go', 'json', 'tsx', 'jsx', 'bash']
+	langs: ['vue', 'yaml', 'javascript', 'typescript', 'go', 'json', 'tsx', 'jsx', 'bash', 'html']
 });
 
 /** @type {import('@sveltejs/kit').Config} */

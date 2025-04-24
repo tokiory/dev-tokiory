@@ -17,10 +17,10 @@
 		<Link
 			darker
 			{href}
-			class={['ml-4 relative text-xl text-driftwood-600 font-semibold']}
+			class={['listing-link', 'ml-4 relative text-xl text-driftwood-600 font-semibold']}
 		>
 			{@render children()}
-			<div class="absolute -top-0.25 -right-4 i-tabler-arrow-up-right text-sm"></div>
+			<div class="outer-icon absolute -top-0.25 -right-4 i-tabler-arrow-up-right text-sm"></div>
 		</Link>
 	{:else}
 		<div class="ml-4 relative text-xl text-driftwood-800 font-semibold">

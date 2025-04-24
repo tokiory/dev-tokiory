@@ -45,3 +45,11 @@ body {
     sans-serif;
     font-weight: 500;
 }
+
+@font-face {
+  font-family: 'Virgil';
+  src: url('/fonts/Virgil.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

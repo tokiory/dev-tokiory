@@ -26,7 +26,7 @@
 	};
 </script>
 
-<div bind:this={codeRef} class="relative codeblock mt-6 mb-4">
+<div bind:this={codeRef} class="relative codeblock mt-4 mb-6">
 	<button
 		onclick={copy}
 		aria-label="copy"

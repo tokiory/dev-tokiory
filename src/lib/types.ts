@@ -3,6 +3,7 @@ export interface Article {
 	slug: string;
 	description: string;
 	tags: string[];
+  date: string;
 }
 
 export interface ArticlesResponse {

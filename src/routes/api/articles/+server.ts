@@ -28,6 +28,8 @@ export const GET: RequestHandler = async ({ url }) => {
 		articles = articles.slice(0, Number(limit));
 	}
 
+	articles.sort(({ date: a }, { date: b }) => b.toLowerCase().localeCompare(a.toLowerCase()));
+
 	return json({
 		articles,
 		amount: data.amount

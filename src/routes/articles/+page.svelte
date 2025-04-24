@@ -19,8 +19,8 @@
 <main class="mt-12">
 	<div class="flex items-center gap-8 flex-wrap">
 		{#each posts as post, index (post.slug + index)}
-			<div class="opacity-0" bind:this={postsRef[index]}>
-				<ListingArticle description={post.description} href={post.slug}>{post.title}</ListingArticle
+			<div class="opacity-0 w-full" bind:this={postsRef[index]}>
+				<ListingArticle date={post.date} description={post.description} href={post.slug}>{post.title}</ListingArticle
 				>
 			</div>
 		{/each}
