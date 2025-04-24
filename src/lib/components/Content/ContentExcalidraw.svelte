@@ -18,8 +18,11 @@
 </div>
 
 <style scoped>
-  :global(.diagram svg) {
+  .diagram {
     @apply w-full h-fit mt-4 mb-10;
+  }
+  :global(.diagram svg) {
+    @apply w-full h-full;
     font-family: 'Virgil';
   }
 </style>
