@@ -44,7 +44,7 @@
 
 <div bind:this={projectsRef} class="flex opacity-0 flex-col gap-1 mt-12">
 	<ListingHeader>Проекты</ListingHeader>
-	<div class="flex items-center gap-8 flex-wrap">
+	<div class="flex items-center gap-x-8 gap-y-2 flex-wrap">
 		{#each PROJECTS as project (project.href)}
 			<ListingProject href={project.href}>{project.name}</ListingProject>
 		{/each}

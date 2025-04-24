@@ -8,13 +8,11 @@
 
 	const { title }: Props = $props();
 
-	const letters: Element[] = $state([])
+	let titleRef: HTMLElement;
 
 	$effect(() => {
-		if (letters.length !== title.length) return;
-
-		console.log(letters)
-		animate(letters, {
+		if (!titleRef) return;
+		animate(titleRef.getElementsByClassName('letter'), {
 			duration: 500,
 			delay: (_, i) => i * 25,
 			opacity: [0, 1],
@@ -25,8 +23,12 @@
 	});
 </script>
 
-<div class="text-2xl">
-	{#each title.split('') as letter, index (letter + index)}
-		<div class="opacity-0 inline-block min-w-[.4ch]" bind:this={letters[index]}>{letter}</div>
+<div bind:this={titleRef} class="text-2xl flex flex-wrap gap-x-[.4ch]">
+	{#each title.split(' ') as word, wIndex (word + wIndex)}
+		<div class="inline-block">
+			{#each word.split('') as letter, index (letter + wIndex + index)}
+				<div class="letter opacity-0 inline-block min-w-[.4ch]">{letter}</div>
+			{/each}
+		</div>
 	{/each}
 </div>
