@@ -20,6 +20,7 @@
 	<title>{meta.title}</title>
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={meta.title} />
+	<link rel="preload" href="/fonts/Virgil.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 </svelte:head>
 
 <article class="mt-16">

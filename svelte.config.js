@@ -17,6 +17,7 @@ const highlighter = await createHighlighter({
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
+  inlineStyleThreshold: 1024,
 	extensions: ['.svelte', '.mdx'],
 	preprocess: [
 		vitePreprocess(),
