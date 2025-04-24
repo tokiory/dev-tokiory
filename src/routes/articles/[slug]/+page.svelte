@@ -24,7 +24,6 @@
 
 <article class="mt-16">
 	<ArticleHeader title={meta.title} description={meta.description} />
-	<div class="mt-6 border-b-dashed border-b-1 border-driftwood-300"></div>
 
 	<div bind:this={contentRef} class="opacity-0 mt-8">
 		<data.content />
