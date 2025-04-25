@@ -8,6 +8,9 @@
 	export { default as ol } from './ContentOl.svelte';
 	export { default as li } from './ContentLi.svelte';
 	export { default as img } from './ContentImg.svelte';
+	export { default as blockquote } from './ContentBlockquote.svelte';
+	export { default as thought } from './ContentThought.svelte';
+	export { default as a } from '$components/Link.svelte';
 </script>
 
 <script>

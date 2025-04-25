@@ -6,6 +6,7 @@
       "dependencies": {
         "@fontsource-variable/manrope": "^5.2.5",
         "@fontsource-variable/martian-mono": "^5.2.5",
+        "@fontsource-variable/podkova": "^5.2.6",
         "@fontsource/iosevka": "^5.2.5",
         "@iconify-json/tabler": "^1.2.17",
         "animejs": "^4.0.1",
@@ -146,6 +147,8 @@
     "@fontsource-variable/manrope": ["@fontsource-variable/manrope@5.2.5", "", {}, "sha512-6Mo3ldtgAhxvSSyy+bLbFRjkiYhVo6RLcasJfj9Du5k2nX16/RwjQdBbZJfvsofVt6GqQ+O6AVkazmS3Xw5R9A=="],
 
     "@fontsource-variable/martian-mono": ["@fontsource-variable/martian-mono@5.2.5", "", {}, "sha512-3Egtgl7njRGZnUFKNyi9gQGBBNPzJdxOVrqbp9NF0cK7SLtzlAu9J18C4lt1OAigfcxvOA1D8SI8QCimpSJTCw=="],
+
+    "@fontsource-variable/podkova": ["@fontsource-variable/podkova@5.2.6", "", {}, "sha512-jLy13aDdPyDlDGC5f7PZiA/d5fNwbKQ5OGPuUZ7IyNKuZCmzmtCX7cUEb5h7C2RllsQhpvRjeGaFqwV+BTyuNA=="],
 
     "@fontsource/iosevka": ["@fontsource/iosevka@5.2.5", "", {}, "sha512-Zv/UHJodDug1LcnWv2u2+GPp3oWP3U6Xp16cJOsqqZQNsCu8sA/ttT331N0NypxBZ+7c8szlSRlYDcy9liZ8pw=="],
 

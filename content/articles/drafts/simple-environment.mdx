@@ -7,6 +7,99 @@ tags: []
 date: 2025-04-25
 ---
 
-Наверное, как и все люди из моего поколения – я не умею удерживать фокус на одной и той же задаче больше, чем 20 минут.
+<script>
+	import Desk from '$mod/desk/components/Desk.svelte'; import DeskIcon from
+	'$mod/desk/components/DeskIcon.svelte'; import DeskGhostTitle from
+	'$mod/desk/components/DeskGhostTitle.svelte'; import Link from '$components/Link.svelte'; import
+	Thought from '$components/Content/ContentThought.svelte'
+</script>
 
-Мне всегда казалось, что чем лучше инструменты, которыми я пользуюсь, тем легче будет выполняться моя работа (и тем больше свободного времени у меня будет).
+> Наверное, как и все люди из моего поколения — я не умею удерживать фокус на одной и той же задаче больше, чем на 20 минут.
+
+Минимализм стал для меня не просто эстетическим предпочтением, а методом организации труда. В этой статье я расскажу небольшую историю о том, как пришёл к минимализму в работе, какие инструменты использую сейчас, и почему отказ от перегруженных решений стал для меня важным шагом к глубокой концентрации.
+
+Чем навороченнее инструменты, которыми я пользуюсь, тем легче будет выполняться моя работа – именно такие мысли преследовали меня половину жизни. Формула была до жути простой: чем быстрее работается, тем больше свободного времени у меня будет (~~которое я, к слову, все так же трачу на программирование~~).
+
+Мои коллеги использовали VSCode с пятью десятками плагинов, держали Zoom всегда включенным, а также имели по 3 монитора, на одном из которых всегда пылилась вкладка с YouTube, ибо "В тишине работать невозможно".
+Сам же я годами пользовался Google Chrome с кучей плагинов, тяжеловесными IDE, по типу WebStorm, навороченными терминалами, а также кучей другого софта,
+пока не понял:
+
+<Thought>
+  Я не могу сосредоточиться, когда интерфейс перегружен
+
+и работает медленно
+
+</Thought>
+
+Мне всегда казались чудаками люди, которые всерьез используют Sublime Text для работы с кодом, пока я сам не понял,
+что именно в простых решениях находится место для потока мыслей. Именно простые редакторы, браузеры, терминалы и другие утилиты
+делают работу проще, а главное приятнее.
+
+Цель статьи – предоставить альтернативную точку зрения к подходу выбора инструментов для разработки.
+
+# Эра терминала
+
+Я верю в то, что терминал – это один из самых полезных инструментов для разработки.
+Некоторое время назад мне казалась хорошей идеей использовать только терминал для всего на свете: файловый менеджер, Git, плеер, чтение новостей, почта, однако эта идея не увенчалась успехом.
+
+<Desk class="mt-4">
+	<div class="absolute text-driftwood-800/80 top-3 left-2 text-xs">
+		<div class="bg-frangipani-50">Вы можете перетаскивать содержимое.</div>{' '}
+		<div class="bg-frangipani-50 inline-block w-fit">Зачем? Просто так. Живите с этим.</div>
+	</div>
+	<DeskGhostTitle>Терминалы и утилиты</DeskGhostTitle>
+	<DeskIcon
+		src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/neovim/neovim-original.svg"
+		alt="zed logo"
+	/>
+	<DeskIcon src="/articles/simple-environment/ghostty-logo.png" alt="ghostty logo" />
+	<DeskIcon
+		src="https://docs.warp.dev/~gitbook/image?url=https%3A%2F%2F2297236823-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252F-MbqIgTw17KQvq_DQuRr%252Fuploads%252FRkG0bJOTBQYvQAyCOGp5%252FCleanShot%25202024-12-05%2520at%252010.03.16.png%3Falt%3Dmedia%26token%3Df24ebeb8-3cba-4ca6-8882-883320f32971&width=300&dpr=4&quality=100&sign=2ab53ddc&sv=2"
+		alt="ghostty logo"
+	/>
+	<DeskIcon src="/articles/simple-environment/alacritty-logo.svg" alt="ghostty logo" />
+	<DeskIcon rectangle src="https://ranger.fm/ranger_logo.png" alt="ranger logo" />
+</Desk>
+<p class="text-xs mt-1 mb-6">
+	Слева направо:
+	<Link href="https://neovim.dev/">Neovim</Link>, <Link href="https://ghostty.org/">Ghostty</Link>,
+	<Link href="https://warp.dev/">Warp</Link>,
+	<Link href="https://github.com/alacritty/alacritty">Alacritty</Link>,
+	<Link href="https://ranger.fm/">Ranger</Link>
+</p>
+
+Терминал сильно бустит скорость взаимодействия с системой, однако, он крайне неудобен когда дело доходит до взаимодействия с UI (в данном случае TUI – Terminal User Interface).
+
+Свое знакомство с программированием я в целом начинал с UNIX-систем и терминалов.
+В то время я сильно не зацикливался на удобстве и не заботился о свободном времени, так как его было полным-полно.
+Со временем я начал замечать что трачу огромное количество времени на настройку системы, терминала, утилит и [Neovim](https://neovim.io/).
+
+> К слову, возведение всех конфигураций с нуля в UNIX-подобных системах называется "райсингом".
+>
+> На Reddit даже есть отдельный канал про райсинг — [r/unixporn](https://www.reddit.com/r/unixporn/).
+
+# Эра минимализма
+
+<!-- В эру ИИ все стало еще хуже, теперь из каждого утюга свистит реклама "попробуйте наш ИИ агент, он будет делать вашу работу за вас", редакторы кода
+буквально понимают то, чего вы хотите, когда вы еще сами этого не осознали, а браузер превратился в клоаку, где вкладка YouTube борется с вкладкой DeepSeek или ChatGPT за первенство и время простоя на мониторе.
+
+> **Дисклеймер**: Нет, я не против ИИ. Я за то чтобы он _помогал_, а не делал работу за вас. В противном случае, вы и сами не заметите,
+> как просто превратитесь в посредника, а не исполнителя, потеряв все навыки. -->
+
+<Desk center class="mt-4">
+	<DeskIcon src="/articles/simple-environment/zed-logo.png" alt="zed logo" />
+	<DeskIcon src="/articles/simple-environment/perplexity-logo.svg" alt="perplexity logo" />
+	<DeskIcon src="/articles/simple-environment/zen-logo.svg" alt="zen logo" />
+	<DeskIcon src="/articles/simple-environment/ollama-logo.png" alt="ollama logo" />
+	<DeskIcon src="/articles/simple-environment/hoppscotch-logo.svg" alt="hoppsotch logo" />
+	<DeskIcon src="/articles/simple-environment/obsidian-logo.svg" alt="obsidian logo" />
+</Desk>
+
+<p class="text-xs mt-1 mb-6">
+	Слева направо:
+	<Link href="https://zed.dev/">Zed</Link>,<Link href="https://www.perplexity.ai/">Perplexity</Link>
+	,<Link href="https://zen-browser.app/">Zen</Link>,<Link href="https://ghostty.org/">Ghostty</Link>
+	,<Link href="https://ollama.ai/">Ollama</Link>,
+	<Link href="https://hoppscotch.io/">Hoppscotch</Link>,
+	<Link href="https://obsidian.md/">Obsidian</Link>
+</p>
