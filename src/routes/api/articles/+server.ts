@@ -31,11 +31,11 @@ export const GET: RequestHandler = async ({ url }) => {
 	const data = await getArticles();
 	let { articles } = data;
 
+	articles.sort(({ date: a }, { date: b }) => b.toLowerCase().localeCompare(a.toLowerCase()));
+
 	if (limit) {
 		articles = articles.slice(0, Number(limit));
 	}
-
-	articles.sort(({ date: a }, { date: b }) => b.toLowerCase().localeCompare(a.toLowerCase()));
 
 	return json({
 		articles,

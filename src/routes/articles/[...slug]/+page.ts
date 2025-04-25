@@ -3,13 +3,24 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async ({ params }) => {
 	try {
-		const post = await import(`$content/articles/${params.slug}.mdx`);
+		let post: {
+			default: unknown;
+			metadata: unknown;
+		};
+
+		if (params.slug.includes('drafts/') && process.env.NODE_ENV === 'development') {
+			const formattedSlug = params.slug.split('drafts/')[1];
+			post = await import(`$content/articles/drafts/${formattedSlug}.mdx`);
+		} else {
+			post = await import(`$content/articles/${params.slug}.mdx`);
+		}
 
 		return {
 			content: post.default,
 			meta: post.metadata
 		};
-	} catch {
+	} catch (err) {
+		console.log(err);
 		error(404, `Could not find ${params.slug}`);
 	}
 };
