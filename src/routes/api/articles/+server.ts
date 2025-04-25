@@ -15,10 +15,16 @@ async function getArticles() {
 	for (const path in paths) {
 		const file = paths[path];
 		const slug = path.split('content/').at(-1)?.replace('.mdx', '');
+		const isDraft = path.includes('drafts/');
 
 		if (file && typeof file === 'object' && 'metadata' in file && slug) {
 			const metadata = file.metadata as Omit<Article, 'slug'>;
-			const article = { ...metadata, slug } satisfies Article;
+			let article = { ...metadata, slug } satisfies Article;
+
+			if (process.env.NODE_ENV === 'development' && isDraft) {
+				article = { ...article, draft: true };
+			}
+
 			articles.push(article);
 		}
 	}

@@ -4,6 +4,8 @@ export interface Article {
 	description: string;
 	tags: string[];
   date: string;
+  draft?: boolean;
+  visualized?: boolean;
 }
 
 export interface ArticlesResponse {

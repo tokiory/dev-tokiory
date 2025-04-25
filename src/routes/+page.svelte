@@ -38,7 +38,7 @@
 <div bind:this={articlesRef} class="flex opacity-0 flex-col gap-2 mt-12">
 	<ListingHeader counter={amount} href="/articles">Статьи</ListingHeader>
 	{#each posts as post (post.slug)}
-		<ListingArticle date={post.date} description={post.description} href={post.slug}>{post.title}</ListingArticle>
+		<ListingArticle {...post}>{post.title}</ListingArticle>
 	{/each}
 </div>
 

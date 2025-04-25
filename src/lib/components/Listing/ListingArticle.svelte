@@ -1,15 +1,14 @@
 <script lang="ts">
 	import Link from '$components/Link.svelte';
+	import type { Article } from '$lib/types';
 	import type { Snippet } from 'svelte';
+	import Badge from '$components/Badge.svelte';
 
-	interface Props {
-		href: string;
-		description: string;
-		date: string;
+	interface Props extends Article {
 		children: Snippet;
 	}
 
-	const { href, description, date: rawDate, children }: Props = $props();
+	const { slug: href, description, date: rawDate, children, draft, visualized }: Props = $props();
 
 	const date = $derived(new Date(rawDate));
 	const formattedDate = $derived(
@@ -33,5 +32,13 @@
 		<div class="text-driftwood-800/40">
 			{formattedDate}
 		</div>
+	</div>
+	<div class="flex mt-1 gap-1">
+		{#if draft}
+			<Badge>Черновик</Badge>
+		{/if}
+		{#if visualized}
+			<Badge>С визуализацией</Badge>
+		{/if}
 	</div>
 </Link>
