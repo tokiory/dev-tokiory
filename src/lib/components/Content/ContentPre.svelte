@@ -27,20 +27,20 @@
 </script>
 
 <div class="relative">
-  <div bind:this={codeRef} class="codeblock mt-4 mb-6">
-	<button
-		onclick={copy}
-		aria-label="copy"
-		class="absolute cursor-pointer bg-frangipani-50 hover:bg-driftwood-200/30 transition-colors top-0 right-0 p-2 rounded-md"
-	>
-		{#if lastCopiedTimerId}
-			<div class="i-tabler-check"></div>
-		{:else}
-			<div class="i-tabler-copy"></div>
-		{/if}
-	</button>
-	{@render children?.()}
-  </div>
+	<div bind:this={codeRef} class="codeblock mt-4 mb-6">
+		<button
+			onclick={copy}
+			aria-label="copy"
+			class="absolute cursor-pointer bg-frangipani-50 hover:bg-driftwood-200/30 transition-colors top-0 right-0 p-2 rounded-md"
+		>
+			{#if lastCopiedTimerId}
+				<div class="i-tabler-check"></div>
+			{:else}
+				<div class="i-tabler-copy"></div>
+			{/if}
+		</button>
+		{@render children?.()}
+	</div>
 </div>
 
 <style>

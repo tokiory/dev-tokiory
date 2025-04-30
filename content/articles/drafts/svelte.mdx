@@ -1,0 +1,20 @@
+---
+title: "Изучение Svelte"
+description: "В данной статье мы изучим Svelte, фреймворк для создания пользовательских интерфейсов на основе компонентов."
+date: 2025-04-27
+tags:
+  - svelte
+  - frontend
+---
+
+<script>
+import Quiz from '$mod/quiz/components/Quiz.svelte';
+import QuizVariant from '$mod/quiz/components/QuizVariant.svelte';
+</script>
+
+<Quiz title="Тест на знание Svelte" variants={[
+  { id: 1, name: 'Ту-ту' },
+  { id: 2, name: 'Пу-пу', correct: true }
+]}>
+Ну, так что вы выберите: ту-ту или пу-пу?
+</Quiz>

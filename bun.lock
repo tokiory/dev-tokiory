@@ -8,6 +8,7 @@
         "@fontsource-variable/martian-mono": "^5.2.5",
         "@fontsource-variable/podkova": "^5.2.6",
         "@fontsource/iosevka": "^5.2.5",
+        "@iconify-json/fluent-emoji": "^1.2.3",
         "@iconify-json/tabler": "^1.2.17",
         "animejs": "^4.0.1",
         "shiki": "^3.3.0",
@@ -15,6 +16,7 @@
       "devDependencies": {
         "@eslint/compat": "^1.2.5",
         "@eslint/js": "^9.18.0",
+        "@shikijs/transformers": "^3.3.0",
         "@sveltejs/adapter-auto": "^6.0.0",
         "@sveltejs/kit": "^2.16.0",
         "@sveltejs/vite-plugin-svelte": "^5.0.3",
@@ -160,6 +162,8 @@
 
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.2", "", {}, "sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ=="],
 
+    "@iconify-json/fluent-emoji": ["@iconify-json/fluent-emoji@1.2.3", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-q9oSqx463rVTQbPbVwvpOkeVii+9BifvJcluv5lqs5ybdab4lnVnpQ/uE2zAseFGOWNygKJsXZl6HbgV9HGhZw=="],
+
     "@iconify-json/tabler": ["@iconify-json/tabler@1.2.17", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-Jfk20IC/n7UOQQSXM600BUhAwEfg8KU1dNUF+kg4eRhbET5w1Ktyax7CDx8Z8y0H6+J/8//AXpJOEgG8YoP8rw=="],
 
     "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],
@@ -241,6 +245,8 @@
     "@shikijs/langs": ["@shikijs/langs@3.3.0", "", { "dependencies": { "@shikijs/types": "3.3.0" } }, "sha512-zt6Kf/7XpBQKSI9eqku+arLkAcDQ3NHJO6zFjiChI8w0Oz6Jjjay7pToottjQGjSDCFk++R85643WbyINcuL+g=="],
 
     "@shikijs/themes": ["@shikijs/themes@3.3.0", "", { "dependencies": { "@shikijs/types": "3.3.0" } }, "sha512-tXeCvLXBnqq34B0YZUEaAD1lD4lmN6TOHAhnHacj4Owh7Ptb/rf5XCDeROZt2rEOk5yuka3OOW2zLqClV7/SOg=="],
+
+    "@shikijs/transformers": ["@shikijs/transformers@3.3.0", "", { "dependencies": { "@shikijs/core": "3.3.0", "@shikijs/types": "3.3.0" } }, "sha512-PIknEyxfkT7i7at/78ynVmuZEv4+7IcS37f6abxMjQ0pVIPEya8n+KNl7XtfbhNL+U9ElR3UzfSzuD5l5Iu+nw=="],
 
     "@shikijs/types": ["@shikijs/types@3.3.0", "", { "dependencies": { "@shikijs/vscode-textmate": "^10.0.2", "@types/hast": "^3.0.4" } }, "sha512-KPCGnHG6k06QG/2pnYGbFtFvpVJmC3uIpXrAiPrawETifujPBv0Se2oUxm5qYgjCvGJS9InKvjytOdN+bGuX+Q=="],
 

@@ -1,0 +1,379 @@
+---
+title: Emacs для людей
+date: 2025-04-26
+tags:
+  - editor
+description: ''
+---
+
+**Emacs** -- отличный редактор, который прошел сквозь огонь и воду через года. К несчастью у данного редактора порог входа еще выше, чем у [Vim](https://neovim.io).
+
+По моему субъективному мнению люди, которые используют редакторы делятся на 4 типа:
+
+- Люди которые просто хотят делать свою работу используют VSCode, WebStorm и/или Sublime Text;
+- Люди которые хотят писать код настолько быстро, насколько это возможно - используют Vim, Neovim, Zed и/или Helix;
+- Люди которые хотят чтобы их редактор был буквально чем угодно (от браузера и обозревателя почты до полнофункциональной IDE) используют Emacs;
+- Люди которые устали от жизни используют Nano и/или Notepad++;
+
+<p class="mt-2">
+	Вы можете пройти туториал, который предлагает сам Emacs, однако, я предлагаю вам ознакомиться с
+	данной статьей, чтобы понять на что способен Emacs. Если вы готовы, то начнем
+	<span class="inline-block i-fluent-emoji-rocket w-4 h-4"></span>
+</p>
+
+<script>
+	import MovingLine from '$mod/moving-line/components/MovingLine.svelte'; import MovingLineCode from
+	'$mod/moving-line/components/MovingLineCode.svelte';
+	import MovingLineHeader from
+	'$mod/moving-line/components/MovingLineHeader.svelte';
+	import PlainEditor from '$mod/editor/components/PlainEditor.svelte';
+	import Diagram from '$components/Content/ContentExcalidraw.svelte';
+	import Information from '$components/Content/ContentInformation.svelte';
+
+const codeExample = `
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}`;
+</script>
+
+<MovingLine class="mb-8 mt-4">
+	<MovingLineCode>C-a</MovingLineCode>
+	<MovingLineCode>C-e</MovingLineCode>
+	<MovingLineCode>C-p</MovingLineCode>
+	<MovingLineCode>C-n</MovingLineCode>
+	<MovingLineCode>C-f</MovingLineCode>
+	<MovingLineCode>C-b</MovingLineCode>
+	<MovingLineCode>C-x C-f</MovingLineCode>
+	<MovingLineCode>C-s</MovingLineCode>
+	<MovingLineCode>C-r</MovingLineCode>
+	<MovingLineCode>M-x</MovingLineCode>
+	<MovingLineCode>C-x C-b</MovingLineCode>
+	<MovingLineCode>C-x C-s</MovingLineCode>
+</MovingLine>
+
+# Emacs буквально везде
+
+Возможно, вы этого не осознавали, но горячие клавиши из Emacs используются повсеместно по сей день. Если вы когда-нибудь использовали горячие клавиши,
+которые начинаются с `Ctrl`, то вы уже знаете часть горячих клавиш, которые используются в Emacs.
+
+Попробуйте сами:
+
+<PlainEditor class="mt-4" code={codeExample} />
+
+<div class="grid grid-cols-2 border border-frangipani-800/30 rounded-md p-2 pt-0 mt-4">
+
+`Ctrl-f`
+
+Перейти на один символ вперед
+
+`Ctrl-b`
+
+Перейти на один символ назад
+
+`Ctrl-n`
+
+Перейти на одну строку вниз
+
+`Ctrl-p`
+
+Перейти на одну строку вверх
+
+`Ctrl-d`
+
+Удалить символ после курсора
+
+`Ctrl-k`
+
+Удалить все символы после курсора
+
+`Ctrl-a`
+
+Перейти в начало строки
+
+`Ctrl-e`
+
+Перейти в конец строки
+
+</div>
+
+<p class="mt-6">
+	Вы можете использовать данные горячие клавиши в любом приложении, где есть работа с текстом.
+	Зачастую они пригождаются во всяких мессенджерах (напр. Telegram), при работе с большим текстом.
+</p>
+
+Также, данные горячие клавиши доступны в терминале, поэтому если у вас когда-нибудь была мысль как перейти в самое начало команды в терминале (не удаляя саму команду), то теперь вы знаете, что можете сделать это с помощью `Ctrl-a`.
+
+Пока я не изучил документацию [Emacs](https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html), я и не замечал, насколько может быть
+удобно редактировать текст горячими клавишами не выходя из режима редактирования (в том же Vim есть несколько режимов для работы с текстом).
+
+# Зачем нужен Emacs?
+
+TODO
+
+# Основные встроенные возможности
+
+TODO
+
+# Конфигурация
+
+Начать конфигурацию Emacs, пожалуй, нужно с создания файла конфигурации. По умолчанию Emacs будет искать файл конфигурации в следующих директориях:
+
+- `~/.emacs`
+- `~/.emacs.d/init.el`
+- `~/.config/emacs/init.el`
+
+Вся конфигурация Emacs пишется с помощью специального языка [`ELisp`](https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html).
+
+Давайте начнем писать конфигурацию с чего-то простого:
+
+```elisp
+;; Подключаем специальный пакет, через который будем устанавливать другие пакеты
+(require 'package)
+
+;; Отключаем начальный экран
+(setq inhibit-startup-message t)
+
+;; Стираем все из "чернового" буфера
+(setq initial-scratch-message "")
+
+;; Устанавливаем нужный нам шрифт и размер
+(set-face-attribute 'default nil :font "ZedMono Nerd Font" :height 150)
+
+;; Включаем подсветку синтаксиса
+(global-font-lock-mode 1)
+```
+
+Каждое выражение в ELisp оборачивается в круглые скобки, они являются областью видимости для всех выражений внутри них (_скоупом_).
+
+Например, выражение `(setq inhibit-startup-message t)` устанавливает значение переменной `inhibit-startup-message` в `t` (оно же `true`), а выражение `(setq initial-scratch-message "")` устанавливает значение переменной `initial-scratch-message` в пустую строку.
+
+`set-face-attribute` является функцией, которая позволяет изменять атрибуты шрифта. `global-font-lock-mode` является функцией, которая включает или отключает подсветку синтаксиса (в данном случае мы передаем `1`, которая преобразуется в `t`).
+
+## Разделение конфигурации на файлы
+
+Хранить всю конфигурацию в одном файле – не лучшая идея. Лучше разделить конфигурацию на несколько файлов и подключать их в зависимости от нужды.
+
+Для того чтобы подключать файлы, нам нужно объявить функцию, которая будет загружать файлы. Давайте назовем ее `load-config`, вот как она будет выглядеть:
+
+```elisp
+;; Функция для загрузки конфигураций
+(defun load-config (file)
+  (load (expand-file-name file "~/.emacs.d/config/")))
+```
+
+После того как мы объявили данную функцию – самое время поговорить о структуре конфигурации.
+
+<Diagram src="/articles/emacs-for-people/emacs-config.svg" />
+
+Наша конфигурация будет разделена на несколько частей для удобства поддержки.
+
+**Файлы**:
+
+- Файл `packages.el` содержит конфигурацию для установки пакетов.
+- Файл `appearance.el` содержит настройки окружения, здесь располагаются настройки UX;
+- Файл `keybindings.el` содержит конфигурацию для настройки хоткеев.
+
+**Директории**:
+
+- Директория `ui` содержит настройки пользовательского интерфейса (цветовые схемы и настройки интерфейса окна);
+- Директория `utils` содержит пакеты, которые улучшают пользовательский опыт, а также вспомогательные функции;
+- Директория `langs` содержит настройки для поддержки различных языков.
+
+Мы можем дополнить конфигурацию следующим кодом:
+
+```elisp
+;; Функция для загрузки конфигураций
+(defun load-config (file)
+  (load (expand-file-name file "~/.emacs.d/config/")))
+
+(load-config "packages.el")
+(load-config "appearance.el")
+(load-config "keybindings.el")
+
+(load-config "ui/theme.el")
+(load-config "ui/window.el")
+
+;; Утилитки
+(load-config "utils/backup.el")
+(load-config "utils/fuzzy.el")
+(load-config "utils/treesitter.el")
+(load-config "utils/lsp.el")
+(load-config "utils/shell.el")
+
+
+;; ЯПы
+(load-config "langs/web.el")
+(load-config "langs/go.el")
+(load-config "langs/typescript.el")
+(load-config "langs/markdown.el")
+(load-config "langs/vue.el")
+(load-config "langs/svelte.el")
+```
+
+<MovingLine speed="slow" class="mb-8 mt-12">
+	<MovingLineHeader>Подробнее</MovingLineHeader>
+	<MovingLineHeader>Подробнее</MovingLineHeader>
+	<MovingLineHeader>Подробнее</MovingLineHeader>
+	<MovingLineHeader>Подробнее</MovingLineHeader>
+	<MovingLineHeader>Подробнее</MovingLineHeader>
+	<MovingLineHeader>Подробнее</MovingLineHeader>
+</MovingLine>
+
+## packages.el
+
+Для начала нам нужно настроить установку пакетов. Мы будем делать это в `packages.el`.
+
+Для того чтобы перейти в другой файл мы можем использовать команду `find-file`, она доступна по комбинации клавиш `C-x C-f`, или мы можем
+использовать `M-x` (он же `Option`+`x`), чтобы вызвать меню с доступными командами, а затем ввести `find-file`.
+
+Сам файл `packages.el` будет выглядеть следующим образом:
+
+```elisp
+;; Добавляем репозитории
+(setq package-archives
+      '(("gnu" . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")))
+
+;; Установка use-package, если его нет
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; Устанавливаем use-package для удобной установки других пакетов
+(require 'use-package)
+(setq use-package-always-ensure t)
+```
+
+Первая часть кода указывает Emacs, откуда скачивать пакеты. Мы добавляем два основных источника:
+
+- GNU ELPA — официальный репозиторий пакетов Emacs.
+- MELPA — крупнейший неофициальный репозиторий, содержащий множество современных и активно поддерживаемых пакетов.
+
+Во второй части кода проверяется, установлен ли пакет `use-package`. Если данный пакет не установлен, то выполняется `package-refresh-contents`, чтобы обновить список доступных пакетов с указанных репозиториев, а затем устанавливается сам use-package.
+
+<Information title="use-package">
+
+`use-package` — это пакет, который позволяет устанавливать другие пакеты и настраивать их ~~не отходя от кассы~~ прямо в теле функции `use-package`.
+
+</Information>
+
+Ну, и наконец, c помощью `require` мы подключаем установленный пакет `use-package`. Переменная `use-package-always-ensure` устанавливается в `t`, что означает, что все последующие объявления `use-package` будут автоматически устанавливать нужные пакеты, если они ещё не установлены. Это удобно для автоматической и декларативной настройки окружения.
+
+## appearance.el
+
+В данный файл мы добавим мелкие улучшения по UX/DX. Обычно я пишу туда следующее:
+
+```elisp
+;; Закрыть текущий буфер Dired, если открывается еще один (дочерний) буфер
+(setq dired-kill-when-opening-new-dired-buffer t)
+
+;; Фокусироваться на новых окнах помощи
+(setq help-window-select t)
+```
+
+## keybindings.el
+
+В данном файле мы добавим настройки для комбинаций клавиш, а также пакеты, которые упростят работу с горячими клавишами:
+
+```elisp
+(use-package which-key
+  :ensure nil
+  :config
+  (which-key-mode))
+
+;; Менеджмент окон
+(global-set-key (kbd "C-S-m") 'toggle-frame-maximized)
+(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+```
+
+Для начала мы используем `use-package`, который мы установили в [`package.el`](#packages.el), с помощью него мы устанавливаем новый пакет – `which-key`.
+
+<Information title="which-key">
+
+`which-key` — это пакет, который позволяет отображать подсказки для горячих клавиш в Emacs. Он позволяет быстро и удобно находить нужные комбинации клавиш по мере их нажатия.
+
+</Information>
+
+После установки данного пакета, мы также задаем две глобальные комбинации клавиш для управления окнами:
+
+- `(global-set-key (kbd "C-S-m") 'toggle-frame-maximized)`<br>
+  При нажатии клавиш `C-S-m` окно будет переключено между максимизированным и обычным режимом.
+- `(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)`<br>
+  При нажатии клавиш `C-s-f` окно будет переключено между полноэкранным и обычным режимом.
+
+## utils/fuzzy.el (ivy+counsel)
+
+Пришло время настраивать утилитарные пакеты. Первым и (наверное) одним из самых важных пакетов является `ivy`.
+
+<Information title="ivy">
+
+`ivy` — это пакет, который предоставляет систему автодополнения и фильтрации для Emacs. Он позволяет быстро и удобно находить нужные файлы, буферы, команды и другие элементы в Emacs.
+
+</Information>
+
+<Information title="counsel">
+
+`counsel` — это пакет, который обычно устанавливают на пару с `ivy`, он нужен для того чтобы предоставить нам удобные интерфейсы для взаимодействия с `ivy` и заменить часть стандартных интерфейсов Emacs, где не используется (но, может использоваться) `ivy`.
+
+</Information>
+
+С помощью `ivy` и `counsel` мы улучшим команды, по типу `find-file`, `M-x`, `bookmark-jump` и [другие](https://github.com/abo-abo/swiper/tree/master?tab=readme-ov-file#small-config-example). Вот как будет выглядеть конфигурация:
+
+```elisp
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1))
+
+(use-package ivy-rich
+  :ensure t
+  :init (ivy-rich-mode 1))
+
+(use-package recentf
+  :config
+  (setq recentf-max-menu-items 15          ;; Number of items in the menu
+        recentf-max-saved-items 100)       ;; Number of saved recent files
+  (recentf-mode 1))
+
+(use-package counsel
+  :ensure t
+  :bind ("C-c f r" . counsel-recentf))
+
+(counsel-mode)
+```
+
+В данном файле мы скачали пакет `ivy` и сразу же включили его с помощью `ivy-mode`, затем мы объявили конфигурацию для `recentf` (встроенный пакет для просмотра недавних файлов) и также как и с `ivy` включили специальный режим `recentf-mode`.
+
+В конце файла мы также включили `counsel` и забиндили новый хоткей, для того чтобы с помощью `counsel` открывать список недавних файлов.
+
+В середине конфигурации также располагается `ivy-rich`, который позволяет упростить взаимодействие c `ivy`,
+с помощью него мы сможем создавать новые интерфейсы c `ivy`.
+
+## utils/treesitter.el
+
+**Treesitter** - это библиотека для синтаксического анализа кода, которая позволяет анализировать код на основе синтаксических деревьев. Нам она
+нужна для того чтобы мы могли предоставить улучшенную подсветку кода для различных языков.
+
+В Emacs начиная с версии 29 есть встроенная поддержка Treesitter, пакет который отвечает за данную поддержку называется `treesit`.
+
+```elisp
+(use-package treesit
+  :ensure nil
+  :when (and (fboundp 'treesit-available-p)
+             (treesit-available-p))
+  :config
+  (setq treesit-extra-load-path '("~/.emacs.d/tree-sitter/")))
+
+(setq treesit-auto-langs '(python svelte go typescript
+				  tsx css html))
+
+(use-package treesit-auto
+  :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+```

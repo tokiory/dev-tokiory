@@ -12,6 +12,7 @@
   "devDependencies": {
     "@eslint/compat": "^1.2.5",
     "@eslint/js": "^9.18.0",
+    "@shikijs/transformers": "^3.3.0",
     "@sveltejs/adapter-auto": "^6.0.0",
     "@sveltejs/kit": "^2.16.0",
     "@sveltejs/vite-plugin-svelte": "^5.0.3",
@@ -45,6 +46,7 @@
     "@fontsource-variable/martian-mono": "^5.2.5",
     "@fontsource-variable/podkova": "^5.2.6",
     "@fontsource/iosevka": "^5.2.5",
+    "@iconify-json/fluent-emoji": "^1.2.3",
     "@iconify-json/tabler": "^1.2.17",
     "animejs": "^4.0.1",
     "shiki": "^3.3.0"
