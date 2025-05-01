@@ -14,13 +14,44 @@
 			duration: 400
 		});
 	});
+
+
+	const ogImage = $derived({
+		opengraph: encodeURI(`${data.baseURL}/api/ogimg/?title=${meta.title}&tags=${meta.tags.join('&tags=')}`),
+		twitter: encodeURI(
+			`${data.baseURL}/api/ogimg/?title=${meta.title}&tags=${meta.tags.join('&tags=')}&type=twitter`
+		)
+	});
 </script>
 
 <svelte:head>
 	<title>{meta.title}</title>
+
+	<!-- OG -->
 	<meta property="og:type" content="article" />
 	<meta property="og:title" content={meta.title} />
-	<link rel="preload" href="/fonts/Virgil.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+	<meta property="og:description" content={meta.description} />
+	<meta property="og:image" content={ogImage.opengraph} />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:width" content="1200" />
+
+	<!-- Twitter -->
+	<meta property="twitter:title" content={meta.title} />
+	<meta property="twitter:description" content={meta.description} />
+	<meta
+		property="twitter:image"
+		content={ogImage.twitter}
+	/>
+	<meta property="twitter:image:height" content="512" />
+	<meta property="twitter:image:width" content="1024" />
+	<meta property="twitter:card" content="summary_large_image" />
+	<link
+		rel="preload"
+		href="/fonts/Virgil.woff2"
+		as="font"
+		type="font/woff2"
+		crossorigin="anonymous"
+	/>
 </svelte:head>
 
 <article class="mt-16">

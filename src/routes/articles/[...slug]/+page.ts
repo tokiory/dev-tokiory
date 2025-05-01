@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 
-export const load: PageLoad = async ({ params }) => {
+export const load: PageLoad = async ({ params, url }) => {
 	try {
 		let post: {
 			default: unknown;
@@ -17,7 +17,8 @@ export const load: PageLoad = async ({ params }) => {
 
 		return {
 			content: post.default,
-			meta: post.metadata
+			meta: post.metadata,
+			baseURL: url.origin,
 		};
 	} catch (err) {
 		console.log(err);

@@ -1,4 +1,5 @@
-import adapter from '@sveltejs/adapter-auto';
+// import adapter from '@sveltejs/adapter-auto';
+import adapterVercel from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import { escapeSvelte, mdsvex } from 'mdsvex';
 import { join } from 'node:path';
@@ -37,11 +38,12 @@ const config = {
 		})
 	],
 	kit: {
-		adapter: adapter(),
+		adapter: adapterVercel(),
 		alias: {
 			'@/*': 'src/*',
 			'$components/*': 'src/lib/components/*',
-			'$mod/*': 'src/lib/modules/*'
+			'$mod/*': 'src/lib/modules/*',
+      '$unoconfig': './uno.config.ts'
 			// '$content': 'content/*',
 		}
 	}
