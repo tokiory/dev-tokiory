@@ -2,8 +2,9 @@
 	import ArticleHeader from '$components/Article/ArticleHeader.svelte';
 	import { fadeRight } from '$lib/animations/fadeRight';
 	import { animate } from 'animejs';
+  import type { PageProps } from './$types'
 
-	let { data } = $props();
+	let { data }: PageProps = $props();
 	const meta = $derived(data.meta);
 	let contentRef = $state<Element>();
 
