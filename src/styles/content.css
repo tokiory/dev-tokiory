@@ -1,0 +1,6 @@
+.content {
+  ol + p,
+  ul + p {
+    @apply mt-4;
+  }
+}

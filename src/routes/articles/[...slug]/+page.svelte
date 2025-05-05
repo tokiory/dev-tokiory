@@ -1,4 +1,5 @@
 <script lang="ts">
+  import "@/styles/content.css"
 	import ArticleHeader from '$components/Article/ArticleHeader.svelte';
 	import { fadeRight } from '$lib/animations/fadeRight';
 	import { animate } from 'animejs';
@@ -15,7 +16,6 @@
 			duration: 400
 		});
 	});
-
 
 	const ogImage = $derived({
 		opengraph: encodeURI(`${data.baseURL}/api/ogimg/?title=${meta.title}&tags=${meta.tags.join('&tags=')}`),

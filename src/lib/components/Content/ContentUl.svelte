@@ -8,7 +8,7 @@
 
 <style scoped>
 	.list {
-		@apply mt-2 ml-4 flex flex-col gap-0.5;
+		@apply mt-2 ml-4 flex flex-col gap-1;
 	}
 
 	:global(.list ul, .list ol) {
