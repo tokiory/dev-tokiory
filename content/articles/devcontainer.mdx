@@ -1,0 +1,296 @@
+---
+title: Контейнеризация среды разработки
+description: Кратко и по делу о том, зачем нужна технология Dev Container, где используется и как её использовать
+date: 2025-05-06
+tags:
+  - vscode
+  - docker
+  - os
+---
+
+<script>
+	import DockerContainer from '$mod/animation-entity/DockerContainer.svelte'; import Information
+	from '$components/Content/ContentInformation.svelte'; import Excalidraw from
+	'$components/Content/ContentExcalidraw.svelte'; import TwoCol from
+	'$components/Content/ContentDoubleCol.svelte';
+</script>
+
+Я стараюсь продвигать идею контейнеров для разработки, когда дело касается фуллстек разработки.
+
+Я работал на разных проектах, где использовался Go, Javascript, Typescript, Rust и Zig, а также эксперементировал с Python и C.
+
+Со временем ПК превращается в хранилище для инструментов разработки, а когда появляются проблемы с управлением версий SDK, то разработка потихоньку превращается в ад.
+
+<div class="overflow-hidden justify-between flex my-6">
+	<DockerContainer />
+	<DockerContainer />
+	<DockerContainer />
+	<DockerContainer />
+	<DockerContainer />
+	<DockerContainer />
+	<DockerContainer />
+	<DockerContainer />
+</div>
+
+# Dev Container
+
+**Dev Container** —  специальная платформа для создания контейнеров из образов, в которые уже упакованы все необходимые инструменты для определенного стека. Суть данной технологии состоит в том, чтобы упаковать все необходимые инструменты и зависимости в контейнер, который можно запускать на любой машине с установленным Docker.
+
+
+Для начала работы с Dev Container нам необходимо создать файл конфигурации. Мы можем расположить `.devcontainer.json` прямо в корне проекта или же создать директорию `.devcontainer`, где будет распологаться `devcontainer.json`.
+Второй метод расположения файла является более предпочтительным, так как в этом случае мы можем хранить в этой директории дополнительные файлы, которые могут понадобиться для настройки контейнера, а также документацию по его использованию.
+
+Кроме того, данный способ помогает отделить файлы для Dev Container от файлов проекта, что делает структуру проекта более понятной и удобной для работы.
+
+Давайте рассмотрим легкий пример контейнера, который будет использоваться для разработки на Node.js и Typescript:
+
+```jsonc filename=.devcontainer.json
+{
+	// Указываем образ, в который уже упакованы нужные нам технологии
+	"image": "mcr.microsoft.com/devcontainers/typescript-node",
+
+	// Указываем какие порты мы хотим прокинуть в систему
+	"forwardPorts": [3000],
+
+	// Указываем кастомные настройки для среды разработки из которой мы будем вести работу
+	"customizations": {
+		"vscode": {
+			"extensions": ["streetsidesoftware.code-spell-checker"]
+		}
+	}
+}
+```
+
+
+
+## Образы
+Образов, в которые вшиты тулзы необходимые для написания ПО огромное множество, вы можете выбрать нужный образ исходя из стека:
+
+- [C# (.Net)](https://github.com/devcontainers/templates/tree/main/src/dotnet)
+- [F# (.Net)](https://github.com/devcontainers/templates/tree/main/src/dotnet-fsharp)
+- [Go](https://github.com/devcontainers/templates/tree/main/src/go)
+- [Java](https://github.com/devcontainers/templates/tree/main/src/java)
+- [Node.js](https://github.com/devcontainers/templates/tree/main/src/javascript-node)
+- [Python 3](https://github.com/devcontainers/templates/tree/main/src/python)
+- [Rust](https://github.com/devcontainers/templates/tree/main/src/rust)
+- ...
+
+Или же, вы можете собрать собственный контейнер на базе [Alpine](https://github.com/devcontainers/templates/tree/main/src/alpine). Подробнее о всех доступных образах можно глянуть [на вот этой странице](https://containers.dev/templates)
+
+## Запуск контейнера
+
+Для того чтобы запустить контейнер для разработки нам необходимо установить утилиту `devcontainer-cli`:
+
+```bash
+npm install -g @devcontainers/cli
+```
+
+Мы можем запустить контейнер для разработки с помощью следующей команды:
+
+```bash
+devcontainer up --workspace-folder .
+```
+
+После сборки контейнера, он будет запущен и мы сможем подключиться к нему с помощью VSCode или любого другого редактора, который поддерживает работу с Dev Container. Директория, в которой мы запускаем команду `devcontainer up`, будет смонтирована в контейнер, и мы сможем работать с файлами проекта прямо внутри контейнера.
+
+<Excalidraw src="/articles/devcontainer/principle.svg" />
+
+## Подробнее о конфигурации
+
+В конфигурационном файле `.devcontainer.json` можно указать множество параметров, которые помогут настроить контейнер под ваши нужды.
+
+| Свойство               | Тип(ы)                        | Описание                                                                                  |
+| ---------------------- | ----------------------------- | ----------------------------------------------------------------------------------------- |
+| `name`                 | Строка                        | Отображаемое имя контейнера разработки.                                                   |
+| `build`                | Объект, Строка                | Контекст сборки или ссылка на Dockerfile.                                                 |
+| `image`                | Строка                        | Docker-образ, используемый для контейнера.                                                |
+| `features`             | Объект                        | Набор функций (features), устанавливаемых в контейнер.                                    |
+| `runArgs`              | Массив                        | Дополнительные аргументы для Docker при запуске контейнера.                               |
+| `containerEnv`         | Объект                        | Переменные окружения внутри контейнера.                                                   |
+| `remoteEnv`            | Объект                        | Переменные окружения для удалённого подключения.                                          |
+| `mounts`               | Массив                        | Дополнительные точки монтирования для контейнера.                                         |
+| `workspaceMount`       | Строка                        | Кастомная точка монтирования рабочей папки (требует `workspaceFolder`).                   |
+| `workspaceFolder`      | Строка                        | Путь к рабочей папке, открываемой в контейнере (требует `workspaceMount`, если задано).   |
+| `shutdownAction`       | Перечисление (`stop`, `none`) | Действие при завершении работы контейнера (по умолчанию: `stop`).                         |
+| `forwardPorts`         | Массив, Число, Строка         | Порты, пробрасываемые из контейнера наружу.                                               |
+| `appPort`              | Массив, Число, Строка         | Порты, публикуемые локально при запуске контейнера.                                       |
+| `portsAttributes`      | Объект                        | Карта портов с дополнительными атрибутами (метка, протокол и т.д.).                       |
+| `otherPortsAttributes` | Объект                        | Атрибуты по умолчанию для портов, не указанных явно.                                      |
+| `postCreateCommand`    | Строка, Массив, Объект        | Команда(ы), выполняемые после создания контейнера.                                        |
+| `postStartCommand`     | Строка, Массив, Объект        | Команда(ы), выполняемые после запуска контейнера.                                         |
+| `postAttachCommand`    | Строка, Массив, Объект        | Команда(ы), выполняемые после подключения к контейнеру.                                   |
+| `initializeCommand`    | Строка, Массив, Объект        | Команда(ы), выполняемые на хосте при инициализации.                                       |
+| `onCreateCommand`      | Строка, Массив, Объект        | Команда(ы), выполняемые в контейнере после первого запуска.                               |
+| `updateContentCommand` | Строка, Массив, Объект        | Команда(ы), выполняемые после появления нового содержимого.                               |
+| `waitFor`              | Перечисление                  | Какую команду ждать перед подключением (`onCreateCommand`, `updateContentCommand` и др.). |
+| `hostRequirements`     | Объект                        | Минимальные требования к хосту (CPU, память, диск, GPU).                                  |
+| `remoteUser`           | Строка                        | Пользователь для удалённого подключения.                                                  |
+| `containerUser`        | Строка                        | Пользователь внутри контейнера.                                                           |
+| `overrideCommand`      | Булево                        | Перезаписать ли команду по умолчанию для контейнера.                                      |
+| `customizations`       | Объект                        | Кастомизации для инструментов (например, настройки VS Code).                              |
+| `dockerComposeFile`    | Строка, Массив                | Docker Compose файл(ы) для сборки контейнера.                                             |
+
+Одним из главных преимуществ Dev Container является возможность гибко настраивать уже существующие образы, с помощью фич, которые позволяют установить дополнительный софт внутрь контейнера и настроить его под себя:
+
+```jsonc filename=.devcontainer.json
+{
+	"image": "mcr.microsoft.com/devcontainers/typescript-node",
+	"forwardPorts": [3000],
+
+	"features": {
+		// Добавляем нужную версию Python в уже готовый образ для Node + Typescript
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.11"
+		},
+
+		// Добавляем Github CLI
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+
+		// Прокидываем прослушивание сокета Docker в контейнер
+		// для возможности управлять Docker прямо внутри контейнера
+		"ghcr.io/devcontainers/features/docker-in-docker:1": {
+			"version": "latest",
+			"moby": true
+		}
+	}
+}
+```
+
+Данная возможность работает следующим образом:
+
+1. Dev Container скачивает необходимый образ из Docker Hub или другого реестра.
+2. Dev Container запускает контейнер на основе этого образа.
+3. Dev Container устанавливает все необходимые зависимости и инструменты, которые указаны в поле `features` внутри `.devcontainer.json`.
+
+Также, мы можем указать кастомный скрипт для установки программного обеспечения и настройки окружения, в случае если мы не нашли нужной нам фичи:
+
+<TwoCol>
+
+```jsonc filename=.devcontainer.json
+{
+	"image": "mcr.microsoft.com/devcontainers/typescript-node",
+	"forwardPorts": [3000],
+
+	// Указываем кастомный скрипт для установки нужного ПО
+	"postCreateCommand": "./scripts/install.sh"
+}
+```
+
+```bash filename=scripts/install.sh
+#!/bin/bash
+# Устанавливаем нужные зависимости
+apt-get update
+apt-get install -y \
+  python3 \
+  python3-pip \
+  python3-venv
+
+# Устанавливаем нужные библиотеки
+pip3 install \
+  requests \
+  beautifulsoup4
+```
+
+</TwoCol>
+
+## Монтирование
+
+При запуске контейнера, Dev Container автоматически монтирует директорию, в которой мы запускаем команду `devcontainer up`, в контейнер. Мы также можем прямо указать какие дополнительные директории или хранилища нужно смонтировать:
+
+```jsonc
+{
+	"image": "mcr.microsoft.com/devcontainers/typescript-node",
+	"forwardPorts": [3000],
+
+	"mounts": [
+		// Монтируем локальную директорию с конфигами SSH
+		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly",
+
+		// Монтируем сокеты Docker в контейнер
+		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+
+		// Монтируем хранилище для Go пакетов в контейнер
+		"source=gopkgs,target=/go,type=volume"
+	]
+}
+```
+
+## Docker Compose
+
+Часто для разработки приложения нам нужно поднимать не только само приложение, но и инфраструктуру для него. В таком случае, мы можем использовать Docker Compose для запуска нескольких контейнеров одновременно (включая Dev Container):
+
+```jsonc
+{
+	// Указываем Docker Compose файл, сервисы из которого будут запускаться вместе с контейнером для разработки
+	"dockerComposeFile": [
+		"./docker-compose.yml"
+	],
+
+	// При остановке контейнера, Dev Container будет останавливать сервисы из Docker Compose
+	"shutdownAction": "stopCompose",
+
+	// Указываем сервис, который будет использоваться для разработки
+	"service": "devcontainer",
+
+	// Указываем рабочую директорию внутри контейнера
+	"workspaceFolder": "/workspace",
+	"forwardPorts": [4322]
+}
+```
+
+Сам Docker Compose файл может выглядеть следующим образом:
+
+```yaml filename=docker-compose.yml
+services:
+  devcontainer:
+    command: /bin/sh -c "while sleep 1000; do :; done"
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+    build:
+      context: ../
+      dockerfile: .docker/images/devcontainer.Dockerfile
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+    env_file:
+      - ../.env
+    volumes:
+      - ../:/workspace
+```
+
+Мы также можем указать кастомный образ, для того чтобы кастомизировать поведение Dev Container еще во время сборки контейнера:
+
+```dockerfile
+# Наследуемся от образа Dev Container
+FROM mcr.microsoft.com/devcontainers/go:1.24-bookworm
+
+# Устанавливаем необходимые зависимости
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends \
+    git unzip ca-certificates ssh curl jq bat ripgrep protobuf-compiler fzf nnn
+
+# Install act
+RUN curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
+
+USER vscode
+
+# Add custom bashrc
+RUN echo 'source /home/vscode/.bashrc_custom' >> /home/vscode/.bashrc
+
+# ...
+```
+
+# DevPod: Пару слов о GUI
+В случае, когда нам нужно работать с множеством Dev Container, их менеджмент может оказаться задачей не из легких, ибо каждый Dev Container создается с уникальным случайным тегом. Если мы будем создавать их заранее известными тегами, то они все равно будут перемешиваться с обычными контейнерами. Для решения этой задачи был разработан [DevPod](https://devpod.sh/):
+
+![](/articles/devcontainer/devpod.png)
+
+Devpod позволяет гибко настроить контейнеры без файла конфигурации с помощью GUI. Мы можем создать новый проект, выбрать используемую нами IDE, выбрать стек и где будет располагаться новый файл конфигурации и просто запустить контейнер одной кнопкой:
+
+![](/articles/devcontainer/devpod-config.png)
+
+## SSH-агент
+По умолчанию Dev Container'ы поддерживаются только в тех редакторах, где есть явная поддержка данной технологии. DevPod позволяет прикрутить контейнер практически на любом редакторе, где есть поддержка редактирования с помощью SSH благодаря `devpod-agent`.
+
+По сути DevPod просто добавляет демона, который работает поверх `sshd` и позволяет подключиться к контейнеру с помощью SSH.

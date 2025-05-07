@@ -1,12 +1,12 @@
 <script>
-	const { children, class: className, speed = 'normal' } = $props();
+	const { children, class: className, flex = false, speed = 'normal' } = $props();
 </script>
 
-<div class={["w-full flex relative overflow-hidden", className]}>
-	<div class={["moving-line shrink-0", speed]}>
+<div class={['w-full flex relative overflow-hidden', className]}>
+	<div class={['moving-line shrink-0', flex && 'flex', speed]}>
 		{@render children()}
 	</div>
-	<div class={["moving-line shrink-0", speed]}>
+	<div class={['moving-line shrink-0', flex && 'flex', speed]}>
 		{@render children()}
 	</div>
 </div>
@@ -16,7 +16,7 @@
 		animation: moving-line 7.5s linear infinite;
 
 		&.slow {
-			animation-duration: 15s;
+			animation-duration: 25s;
 		}
 
 		&.fast {

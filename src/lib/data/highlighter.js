@@ -7,14 +7,16 @@ const SUPPORTED_LANGS = [
 	'yaml',
 	'javascript',
 	'typescript',
+	'dockerfile',
 	'go',
 	'json',
+	'jsonc',
 	'tsx',
 	'jsx',
 	'bash',
 	'html',
 	'zig',
-	'protobuf'
+	'protobuf',
 ];
 
 const highlighter = await createHighlighter({
