@@ -24,5 +24,7 @@
 		<Link href="mailto:tokiory.work@gmail.com">Написать мне</Link>
 		•
 		<Link target="_blank" href="https://github.com/tokiory/_dev_tokiory">Исходный код</Link>
+		•
+		<Link target="_blank" href="/privacy">Политика конфиденциальности</Link>
 	</div>
 </footer>
