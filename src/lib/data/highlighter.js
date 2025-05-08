@@ -10,6 +10,7 @@ const SUPPORTED_LANGS = [
 	'dockerfile',
 	'go',
 	'json',
+  'lua',
 	'jsonc',
 	'tsx',
 	'jsx',

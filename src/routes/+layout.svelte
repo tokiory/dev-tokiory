@@ -16,7 +16,19 @@
 	}
 
 	const { children }: Props = $props();
+
+	const isDevelopment = import.meta.env.MODE === 'development';
 </script>
+
+<svelte:head>
+	{#if !isDevelopment}
+		<script
+			defer
+			src="https://cloud.umami.is/script.js"
+			data-website-id="bf824cc6-dd5e-4d41-b05f-7e072ee7d071"
+		></script>
+	{/if}
+</svelte:head>
 
 <main class="main mx-auto flex flex-col min-h-screen">
 	<Header />
