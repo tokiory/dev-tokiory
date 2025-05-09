@@ -14,6 +14,7 @@
 	export { default as td } from '$components/Content/ContentTableCell.svelte';
 	export { default as th } from '$components/Content/ContentTableHeading.svelte';
 	export { default as table } from '$components/Content/ContentTable.svelte';
+	export { default as hr } from '$components/Content/ContentHr.svelte';
 </script>
 
 <script>
