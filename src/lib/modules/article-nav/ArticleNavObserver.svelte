@@ -37,6 +37,7 @@
 	});
 </script>
 
-<div class="w-fit text-sm mt-1">
+<div class="w-fit flex items-center gap-1 text-sm mt-1">
+  <div class="i-tabler-list"></div>
 	{headings?.[currentHeadingId]?.text}
 </div>
