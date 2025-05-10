@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import type { Heading } from './types/heading';
 
 	interface Props {
@@ -7,16 +6,16 @@
 		headings: Heading[];
 		onupdateheading: (id: number) => void;
 	}
-	const { currentHeadingId, headings, onupdateheading: onUpdateHeading }: Props = $props();
+	const { currentHeadingId, headings, onupdateheading }: Props = $props();
 
-	onMount(() => {
+	$effect(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
 						const idx = headings.findIndex((h) => h.element === entry.target);
 						if (idx !== -1) {
-  						onUpdateHeading(idx)
+							onupdateheading(idx);
 						}
 					}
 				});
