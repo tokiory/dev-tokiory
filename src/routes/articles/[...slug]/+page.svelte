@@ -4,6 +4,8 @@
 	import { fadeRight } from '$lib/animations/fadeRight';
 	import { animate } from 'animejs';
   import type { PageProps } from './$types'
+	import OpengraphMeta from "$mod/seo/OpengraphMeta.svelte";
+	import TwitterMeta from "$mod/seo/TwitterMeta.svelte";
 
 	let { data }: PageProps = $props();
 	const meta = $derived(data.meta);
@@ -26,26 +28,13 @@
 </script>
 
 <svelte:head>
-	<title>{meta.title}</title>
+	<title>/dev/tokiory: {meta.title}</title>
 
 	<!-- OG -->
-	<meta property="og:type" content="article" />
-	<meta property="og:title" content={meta.title} />
-	<meta property="og:description" content={meta.description} />
-	<meta property="og:image" content={ogImage.opengraph} />
-	<meta property="og:image:height" content="630" />
-	<meta property="og:image:width" content="1200" />
+	<OpengraphMeta {...meta} image={ogImage.opengraph} />
+	<TwitterMeta {...meta} image={ogImage.twitter} />
 
 	<!-- Twitter -->
-	<meta property="twitter:title" content={meta.title} />
-	<meta property="twitter:description" content={meta.description} />
-	<meta
-		property="twitter:image"
-		content={ogImage.twitter}
-	/>
-	<meta property="twitter:image:height" content="512" />
-	<meta property="twitter:image:width" content="1024" />
-	<meta property="twitter:card" content="summary_large_image" />
 	<link
 		rel="preload"
 		href="/fonts/Virgil.woff2"
