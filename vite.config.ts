@@ -10,7 +10,7 @@ const resolve = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 export default defineConfig({
 	server: {
 		fs: {
-			allow: [resolve('./content')]
+			allow: [resolve('./content'), resolve('./uno.config.ts')]
 		}
 	},
 	resolve: {

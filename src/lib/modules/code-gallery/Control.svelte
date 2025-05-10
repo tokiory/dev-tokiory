@@ -42,7 +42,7 @@
 </script>
 
 <div class="py-2 px-4">
-	<div class="flex gap-2">
+	<div class="flex w-full gap-2">
 		{#if !expanded}
 			<button
 				onclick={onleft}

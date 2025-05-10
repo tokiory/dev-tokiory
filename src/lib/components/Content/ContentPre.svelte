@@ -6,17 +6,24 @@
 		meta?: string;
 		language: string;
 	}
-	const { children, meta, language }: Props = $props();
+	const { children, meta = '', language }: Props = $props();
 
 	const metaFields = $derived(
-		meta?.match(/\w+=([\w\d.]+|".+"|'.+')/g)?.reduce(
-			(s, i) => {
-				const [key, value] = i.split('=');
-				s[key] = value;
-				return s;
-			},
-			{} as Record<string, string>
-		) || {}
+		decodeURI(meta)
+			?.match(/\w+=([\w\d.]+|".+"|'.+')/g)
+			?.reduce(
+				(s, i) => {
+					let [key, value] = i.split('=');
+
+					if (value) {
+						value = value.replace(/(^["'])|(["']$)/g, '');
+					}
+
+					s[key] = value;
+					return s;
+				},
+				{} as Record<string, string>
+			) || {}
 	);
 
 	let codeRef = $state<Element>();
@@ -39,7 +46,7 @@
 	};
 </script>
 
-<div class="mt-4 mb-6">
+<div class="codesnippet w-full mt-4 mb-6">
 	{#if metaFields['filename']}
 		<div
 			class="border-b pb-1 flex justify-between text-xs font-semibold border-dashed w-full mb-2 border-frangipani-800/80"
@@ -68,11 +75,24 @@
 					<div class="i-tabler-copy"></div>
 				{/if}
 			</button>
+
+			<!-- Play button -->
+			{#if metaFields['play']}
+				<a aria-label="Run code in REPL" href={metaFields['play']} target="_blank" rel="noopener">
+					<button
+						aria-label="Run code in REPL"
+						class="absolute z-10 cursor-pointer bg-frangipani-50 hover:bg-driftwood-200/30 transition-colors top-0 right-10 p-2 rounded-md"
+					>
+						<div class="i-tabler-play"></div>
+					</button>
+				</a>
+			{/if}
 		</div>
 	</div>
 </div>
 
 <style>
+
 	.codeblock {
 		@apply max-w-full overflow-x-auto;
 		:global(pre) {
@@ -122,4 +142,5 @@
 			}
 		}
 	}
+
 </style>

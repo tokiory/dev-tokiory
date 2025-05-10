@@ -8,8 +8,6 @@
 	const posts = $derived(data.posts);
 	let postsRef: HTMLElement[] = $state([]);
 
-  console.log(data.posts.length)
-
 	$effect(() => {
 		animate(postsRef, {
 			...fadeUp,

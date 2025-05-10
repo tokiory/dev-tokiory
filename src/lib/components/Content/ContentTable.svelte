@@ -2,9 +2,11 @@
 	const { children } = $props();
 </script>
 
-<table class="table w-full text-sm my-6">
+<div class="max-w-full overflow-x-auto">
+  <table class="table w-full text-sm my-6">
 	{@render children?.()}
-</table>
+  </table>
+</div>
 
 <style>
   :global(.table code) {

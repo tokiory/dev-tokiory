@@ -39,8 +39,9 @@ const config = {
 							]
 						})
 					);
+
 					return `<Components.pre
-					  meta=${JSON.stringify(meta)}
+					  meta=${JSON.stringify(encodeURI(meta))}
 						language=${lang}
 					>{@html \`${html}\`}</Components.pre>`;
 				}

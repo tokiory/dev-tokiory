@@ -19,10 +19,6 @@
 		const zoneX = iconPartWidth - (2 * icon.offsetWidth);
 		const randomX = Math.floor(offsetX + icon.offsetWidth + Math.random() * zoneX),
 			randomY = Math.floor(Math.random() * containerHeight);
-
-		if (index === 0) {
-		  console.log(zoneX, randomX, offsetX);
-		}
 		return {
 			x: `${index + 1 === icons.length ? randomX - icon.offsetWidth : randomX}px`,
 			y: `${randomY + icon.offsetHeight > containerHeight ? randomY - icon.offsetHeight : randomY}px`

@@ -20,6 +20,7 @@
     "@tsconfig/svelte": "^5.0.4",
     "@types/bun": "^1.2.10",
     "@types/node": "^22.14.1",
+    "@types/throttle-debounce": "^5.0.2",
     "@unocss/extractor-svelte": "^66.1.0-beta.12",
     "@unocss/preset-icons": "^66.1.0-beta.12",
     "@unocss/reset": "^66.1.0-beta.12",
@@ -54,6 +55,7 @@
     "protobufjs": "^7.5.0",
     "satori": "^0.12.2",
     "sharp": "^0.34.1",
-    "shiki": "^3.3.0"
+    "shiki": "^3.3.0",
+    "throttle-debounce": "^5.0.2"
   }
 }

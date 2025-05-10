@@ -9,6 +9,10 @@
   max-width: 854px;
 }
 
+h1, h2, h3 {
+  scroll-margin-top: 4rem;
+}
+
 pre {
   background: transparent;
 }
