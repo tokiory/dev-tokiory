@@ -47,13 +47,13 @@
 			</button>
 		{/each}
 	</div>
-	<div class="content flex">
+	<div class="tabulator__content flex">
 		{@render children?.()}
 	</div>
 </div>
 
 <style>
-	:global(.content table) {
+	:global(.tabulator__content table) {
 		margin: 0 !important;
 	}
 </style>
