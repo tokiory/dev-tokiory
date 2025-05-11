@@ -1,9 +1,11 @@
 <script lang="ts">
-	import { setContext, type Snippet } from 'svelte';
+	import { onMount, setContext, type Snippet } from 'svelte';
 	import ArticleNavScroller from './ArticleNavScroller.svelte';
 	import type { Heading } from './types/heading';
 	import ArticleNavMenu from './ArticleNavMenu.svelte';
 	import ArticleNavObserver from './ArticleNavObserver.svelte';
+	import { animate } from 'animejs';
+	import { fadeRight } from '@/lib/animations/fadeRight';
 
 	interface Props {
 		children?: Snippet;
@@ -36,13 +38,22 @@
 			headings.push(h);
 		}
 	});
+
+	let scrollerRef = $state<HTMLButtonElement>();
+
+	onMount(() => {
+		animate(scrollerRef!, {
+			...fadeRight
+		});
+	});
 </script>
 
 <div>
 	<button
+		bind:this={scrollerRef}
 		aria-label="открыть меню навигации"
 		onclick={toggleMenu}
-		class={['scroller', 'fixed z-24 top-0 left-0 right-0 pt-1 pb-3 px-2']}
+		class={['scroller', 'opacity-0 fixed z-24 top-0 left-0 right-0 pt-1 pb-3 px-2']}
 	>
 		<ArticleNavScroller />
 		<ArticleNavObserver {currentHeadingId} {headings} onupdateheading={updateHeadingId} />

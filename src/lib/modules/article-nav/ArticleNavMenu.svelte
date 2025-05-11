@@ -43,6 +43,7 @@
 				{#each links as link (link)}
 					<a
 						href={link.uri}
+						onclick={onclose}
 						class="border-b-2 hover:border-driftwood-800/50 active:border-driftwood-800/70 border-dashed border-driftwood-800/30 flex gap-1 items-center"
 					>
 						<div class={link.icon}></div>
