@@ -3,8 +3,6 @@
 	import 'virtual:uno.css';
 	import '@/styles/app.css';
 	import type { Snippet } from 'svelte';
-	import Header from '$components/Header.svelte';
-	import Footer from '$components/Footer.svelte';
 	import 'virtual:uno.css';
 	import '@fontsource-variable/manrope';
 	import '@fontsource-variable/martian-mono';
@@ -33,7 +31,7 @@
 </script>
 
 <svelte:head>
-  <title>Блог {meta.title}</title>
+	<title>Блог {meta.title}</title>
 	<OpengraphMeta {...meta} image={meta.image.opengraph} />
 	<TwitterMeta {...meta} image={meta.image.twitter} />
 	{#if !isDevelopment}
@@ -45,8 +43,4 @@
 	{/if}
 </svelte:head>
 
-<main class="main mx-auto flex flex-col min-h-screen">
-	<Header />
-	{@render children()}
-	<Footer class="mt-auto" />
-</main>
+{@render children()}

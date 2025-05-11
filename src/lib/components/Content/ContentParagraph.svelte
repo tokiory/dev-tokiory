@@ -1,5 +1,5 @@
 <script>
-	const { children } = $props();
+	const { children, class: className = '' } = $props();
 </script>
 
-<p class="mt-2">{@render children()}</p>
+<p class={["mt-2", className]}>{@render children()}</p>

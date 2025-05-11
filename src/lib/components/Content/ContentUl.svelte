@@ -1,8 +1,8 @@
 <script>
-	const { children } = $props();
+	const { children, class: className = '' } = $props();
 </script>
 
-<ul class="list">
+<ul class={["list", className]}>
 	{@render children()}
 </ul>
 

@@ -1,10 +1,10 @@
 <script>
 	import { getContext, onMount } from 'svelte';
 
-	const { children, nospy = false } = $props();
+	const { children, class: className = '', custommark = false, nospy = false } = $props();
 
 	let titleRef = $state();
-	const { registerHeading } = getContext('scroller');
+	const { registerHeading } = getContext('scroller') || {};
 
 	onMount(() => {
 		if (!titleRef) return;
@@ -21,4 +21,4 @@
 	});
 </script>
 
-<h1 bind:this={titleRef} class="text-2xl mt-8">{@render children()}</h1>
+<h1 bind:this={titleRef} class={["text-2xl", !custommark && 'mt-8', className]}>{@render children()}</h1>
