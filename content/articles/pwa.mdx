@@ -313,9 +313,9 @@ self.addEventListener('activate', (event) => {
 ```js
 const CACHE_VERSION = 'v1';
 
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', async (event) => {
 	const cacheStore = caches.open(CACHE_VERSION);
-	const cacheResponse = cacheStore.get(event.request);
+	const cacheResponse = await cacheStore.match(event.request);
 
 	if (cacheResponse) {
 		return cacheResponse;
@@ -340,7 +340,7 @@ self.addEventListener('fetch', async (event) => {
 		}
 
 		const cacheStore = caches.open(CACHE_VERSION);
-		const cachedResponse = await cacheStore.get(event.request);
+		const cachedResponse = await cacheStore.match(event.request);
 
 		if (cachedResponse) {
 			return cachedResponse;
@@ -368,7 +368,7 @@ self.addEventListener('fetch', async (event) => {
 
 		// Пытаемся достать уже существующий кэш
 		const cacheStore = caches.open(CACHE_VERSION);
-		const cachedResponse = await cacheStore.get(event.request);
+		const cachedResponse = await cacheStore.match(event.request);
 
 		if (cachedResponse) {
 			return cachedResponse;
@@ -388,9 +388,9 @@ self.addEventListener('fetch', async (event) => {
 Для реализации стратегии **Network-Only** не нужно делать дополнительных действий, мы просто не будем проксировать запросы к серверу, а вот в случае стратегии **Cache-Only** мы не будем отправлять запросы к серверу, только используем кэш:
 
 ```js
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', async (event) => {
 	const cacheStore = caches.open(CACHE_VERSION);
-	const cacheResponse = cacheStore.get(event.request);
+	const cacheResponse = await cacheStore.match(event.request);
 
 	if (cacheResponse) {
 		return cacheResponse;
