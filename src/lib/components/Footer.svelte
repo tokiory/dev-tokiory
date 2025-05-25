@@ -5,10 +5,10 @@
 		class?: string;
 	}
 
-	const {class: className}: Props = $props()
+	const { class: className }: Props = $props();
 </script>
 
-<footer class={["flex pt-4 flex-col items-center", className]}>
+<footer class={['flex pt-4 flex-col items-center', className]}>
 	<div class="flex justify-center items-center">
 		Сделано с&nbsp;<span class="h-4 i-tabler-heart-filled text-red-500"></span>&nbsp;и&nbsp;
 		<a href="https://svelte.dev" target="_blank">
@@ -20,11 +20,15 @@
 		</a>
 	</div>
 	<div class="text-sm mt-1">© Даниил Шило, 2025</div>
-	<div class="flex gap-2 mt-3">
+	<div
+		class="flex flex-col border-t border-driftwood-800/20 justify-center w-full border-dashed md:border-0 pt-2 md:pt-0 md:flex-row items-center gap-1 mt-3 md:gap-2 md:mt-2"
+	>
 		<Link href="mailto:tokiory.work@gmail.com">Написать мне</Link>
-		•
+		<span class="md:block hidden"> • </span>
+		<Link href="/setup">Сетап</Link>
+		<span class="md:block hidden"> • </span>
 		<Link target="_blank" href="https://github.com/tokiory/_dev_tokiory">Исходный код</Link>
-		•
+		<span class="md:block hidden"> • </span>
 		<Link target="_blank" href="/privacy">Политика конфиденциальности</Link>
 	</div>
 </footer>
