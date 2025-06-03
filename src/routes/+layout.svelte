@@ -21,6 +21,8 @@
 
 	const meta = {
 		title: '/dev/tokiory',
+		keywords:
+			'blog, блог, tokiory, dev, разработка, tech, технологии, программирование, programming, it',
 		description:
 			'/dev/tokiory — место где обсуждаются технологии, обмениваются знаниями и просто смотрят на всякие интересности',
 		image: {
@@ -32,6 +34,7 @@
 
 <svelte:head>
 	<title>Блог {meta.title}</title>
+	<meta name="keywords" content={meta.keywords} />
 	<OpengraphMeta {...meta} image={meta.image.opengraph} />
 	<TwitterMeta {...meta} image={meta.image.twitter} />
 	{#if !isDevelopment}
