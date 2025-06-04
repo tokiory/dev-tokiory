@@ -9,6 +9,7 @@
         "@fontsource-variable/podkova": "^5.2.6",
         "@fontsource/iosevka": "^5.2.5",
         "@iconify-json/fluent-emoji": "^1.2.3",
+        "@iconify-json/simple-icons": "^1.2.37",
         "@iconify-json/tabler": "^1.2.17",
         "@iconify-json/vscode-icons": "^1.2.20",
         "animejs": "^4.0.1",
@@ -173,6 +174,8 @@
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.2", "", {}, "sha512-xeO57FpIu4p1Ri3Jq/EXq4ClRm86dVF2z/+kvFnyqVYRavTZmaFaUBbWCOuuTh0o/g7DSsk6kc2vrS4Vl5oPOQ=="],
 
     "@iconify-json/fluent-emoji": ["@iconify-json/fluent-emoji@1.2.3", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-q9oSqx463rVTQbPbVwvpOkeVii+9BifvJcluv5lqs5ybdab4lnVnpQ/uE2zAseFGOWNygKJsXZl6HbgV9HGhZw=="],
+
+    "@iconify-json/simple-icons": ["@iconify-json/simple-icons@1.2.37", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-jZwTBznpYVDYKWyAuRpepPpCiHScVrX6f8WRX8ReX6pdii99LYVHwJywKcH2excWQrWmBomC9nkxGlEKzXZ/wQ=="],
 
     "@iconify-json/tabler": ["@iconify-json/tabler@1.2.17", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-Jfk20IC/n7UOQQSXM600BUhAwEfg8KU1dNUF+kg4eRhbET5w1Ktyax7CDx8Z8y0H6+J/8//AXpJOEgG8YoP8rw=="],
 
