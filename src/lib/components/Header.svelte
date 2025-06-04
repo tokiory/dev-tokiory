@@ -5,18 +5,21 @@
 
 	interface Props {
 		class?: string;
+		onmenu: () => void;
 	}
-	const { class: className = '' }: Props = $props();
+	const { class: className = '', onmenu }: Props = $props();
 </script>
 
-<header class={['flex items-center justify-between', className]}>
+<header class={['pr-2 xl:pr-0 flex items-center justify-between', className]}>
 	<Logo />
-	<div class="flex flex-col gap-1">
+	<div class="hidden sm:flex flex-col gap-1">
 		<ul class="flex gap-3 justify-end items-center">
 			<li>
 				<Link class="relative" darker target="_blank" href="/articles">
 					Статьи
-					<div class="outer-icon absolute -top-0.75 -right-3.5 i-tabler-arrow-up-right text-xs"></div>
+					<div
+						class="outer-icon absolute -top-0.75 -right-3.5 i-tabler-arrow-up-right text-xs"
+					></div>
 				</Link>
 			</li>
 		</ul>
@@ -27,4 +30,7 @@
 			<li><Link darker target="_blank" href={HABR_LINK}>Хабр</Link></li>
 		</ul>
 	</div>
+	<button aria-label="Menu" onclick={onmenu} class="py-1 pl-3 sm:hidden text-xl cursor-pointer">
+		<div class="i-tabler-menu-2"></div>
+	</button>
 </header>
