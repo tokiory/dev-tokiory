@@ -1,47 +1,177 @@
-# Svelte + TS + Vite
+<p align="center">
+  <img src="./docs/assets/logo.png" alt="Logo" width="100">
+</p>
 
-This template should help get you started developing with Svelte and TypeScript in Vite.
+<h2 align="center">/dev/tokiory</h2>
 
-## Recommended IDE Setup
+<p align="center">
+  Personal blog and portfolio website built with SvelteKit and MDX
+</p>
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+<p align="center">
+  <a href="https://vercel.com"><img src="https://img.shields.io/badge/deployed%20on-Vercel-000000.svg" alt="Deployed on Vercel"></a>
+  <a href="https://svelte.dev"><img src="https://img.shields.io/badge/built%20with-SvelteKit-FF3E00.svg" alt="Built with SvelteKit"></a>
+</p>
 
-## Need an official Svelte framework?
+---
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+## 🚀 Features
 
-## Technical considerations
+- **⚙️ Modern Tech Stack**: Built with SvelteKit, TypeScript, and UnoCSS
+- **📝 MDX Support**: Write articles in Markdown with embedded Svelte components
+- **🎨 Syntax Highlighting**: Code blocks with Shiki highlighter and custom transformers
+- **🔍 SEO Optimized**: Automatic sitemap generation and meta tags
+- **📱 Responsive Design**: Mobile-first design with UnoCSS
+- **⚡ Fast Performance**: Optimized builds and Vercel deployment
+- **🛡️ Type Safety**: Full TypeScript support throughout the codebase
 
-**Why use this over SvelteKit?**
+## 🛠️ Tech Stack
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+- **Framework**: [SvelteKit](https://kit.svelte.dev/)
+- **Styling**: [UnoCSS](https://unocss.dev/) with custom presets
+- **Content**: [MDsveX](https://mdsvex.pngwn.io/) for MDX support
+- **Syntax Highlighting**: [Shiki](https://shiki.style/)
+- **Icons**: [Iconify](https://iconify.design/)
+- **Fonts**: Variable fonts from Fontsource
+- **Deployment**: [Vercel](https://vercel.com/)
+- **Package Manager**: [Bun](https://bun.sh/)
 
-This template contains as little as possible to get started with Vite + TypeScript + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+## 📁 Project Structure
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `allowJs` in the TS template?**
-
-While `allowJs: false` would indeed prevent the use of `.js` files in the project, it does not prevent the use of JavaScript syntax in `.svelte` files. In addition, it would force `checkJs: false`, bringing the worst of both worlds: not being able to guarantee the entire codebase is TypeScript, and also having worse typechecking for the existing JavaScript. In addition, there are valid use cases in which a mixed codebase may be relevant.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```ts
-// store.ts
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
 ```
+_dev_tokiory/
+├── content/
+│   └── articles/           # Blog articles in MDX format
+│       ├── drafts/         # Draft articles
+│       └── *.mdx           # Published articles
+├── src/
+│   ├── lib/
+│   │   ├── components/     # Reusable Svelte components
+│   │   └── modules/        # Feature modules
+│   ├── routes/
+│   │   ├── (standard)/     # Main site routes
+│   │   ├── (cv)/           # CV/Resume routes
+│   │   └── api/            # API endpoints
+│   └── styles/             # Global styles
+├── static/                 # Static assets
+└── docs/                   # Documentation and assets
+```
+
+## 🚦 Getting Started
+
+### Prerequisites
+
+- [Bun](https://bun.sh/) (recommended) or Node.js 18+
+- Git
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/tokiory/dev-tokiory.git
+cd dev-tokiory
+```
+
+2. Install dependencies:
+```bash
+bun install
+```
+
+3. Start the development server:
+```bash
+bun run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+### Available Scripts
+
+- `bun run dev` - Start development server
+- `bun run build` - Build for production
+- `bun run preview` - Preview production build locally
+- `bun run check` - Run type checking and linting
+
+## 📝 Writing Articles
+
+Articles are written in MDX format and stored in the `content/articles/` directory. Each article should include frontmatter with metadata:
+
+```mdx
+---
+title: Your Article Title
+description: Brief description of the article
+date: 2024-01-15
+tags:
+  - tag1
+  - tag2
+---
+
+Your article content here with support for:
+- Markdown syntax
+- Embedded Svelte components
+- Code blocks with syntax highlighting
+```
+
+### Code Highlighting
+
+The project uses Shiki for syntax highlighting with custom transformers:
+- Focus notation: `// [!code focus]`
+- Diff notation: `// [!code ++]` and `// [!code --]`
+- Highlight notation: `// [!code highlight]`
+
+## 🎨 Styling
+
+The project uses UnoCSS with:
+- Custom presets for icons and styling
+- CSS variables for theming
+- Responsive design utilities
+- Variable fonts (Manrope, Martian Mono, Podkova, Iosevka)
+
+## 🔧 Configuration
+
+Key configuration files:
+- `svelte.config.js` - SvelteKit and MDsveX configuration
+- `uno.config.ts` - UnoCSS configuration
+- `vite.config.ts` - Vite build configuration
+- `tsconfig.json` - TypeScript configuration
+
+## 📦 Deployment
+
+The site is automatically deployed to Vercel on push to the main branch. The deployment configuration is handled by the Vercel adapter in `svelte.config.js`.
+
+### Manual Deployment
+
+To deploy manually:
+
+1. Build the project:
+```bash
+bun run build
+```
+
+2. Deploy to Vercel:
+```bash
+vercel --prod
+```
+
+## 🤝 Contributing
+
+While this is a personal blog, suggestions and bug reports are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 🔗 Links
+
+- **Website**: [https://tokiory.vercel.app](https://tokiory.vercel.app)
+- **GitHub**: [https://github.com/tokiory](https://github.com/tokiory)
+
+---
+
+<p align="center">
+  Built with ❤️ by <a href="https://github.com/tokiory">tokiory</a>
+</p>
