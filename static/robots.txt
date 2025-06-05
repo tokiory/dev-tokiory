@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tokiory.vercel.app/sitemap.xml
