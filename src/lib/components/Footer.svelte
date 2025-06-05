@@ -30,7 +30,7 @@
 		<Link
 			data-umami-event="source-code-click"
 			target="_blank"
-			href="https://github.com/tokiory/_dev_tokiory">Исходный код</Link
+			href="https://github.com/tokiory/dev-tokiory">Исходный код</Link
 		>
 		<span class="md:block hidden"> • </span>
 		<Link target="_blank" href="/privacy">Политика конфиденциальности</Link>
