@@ -1,17 +1,18 @@
 <script lang="ts">
 	import Link from '$components/Link.svelte';
 	import { type Snippet } from 'svelte';
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	interface Props {
+	interface Props extends HTMLAttributes<HTMLDivElement> {
 		children: Snippet;
 		href?: string;
 		counter?: number;
 	}
 
-	const { children, href, counter }: Props = $props();
+	const { children, href, counter, ...props }: Props = $props();
 </script>
 
-<div class="flex items-center">
+<div {...props} class="flex items-center">
 	<div class="border-b-1 border-driftwood-600 border-b-dashed h-0 w-[50px]"></div>
 	{#if href}
 		<Link

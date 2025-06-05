@@ -16,7 +16,13 @@
 		<nav>
 			<ul class="flex gap-3 justify-end items-center">
 				<li>
-					<Link class="relative" darker href="/articles">
+					<Link
+						data-umami-event="articles-link-click"
+						data-umami-event-place="header"
+						class="relative"
+						darker
+						href="/articles"
+					>
 						Статьи
 						<div
 							class="outer-icon absolute -top-0.75 -right-3.5 i-tabler-arrow-up-right text-xs"
@@ -28,9 +34,36 @@
 		<div class="border-b-1 border-dashed border-driftwood-800/70"></div>
 		<aside>
 			<ul class="flex text-sm gap-3 justify-end items-center">
-				<li><Link darker target="_blank" href={TELEGRAM_LINK}>Телеграм</Link></li>
-				<li><Link darker target="_blank" href={GITHUB_LINK}>Гитхаб</Link></li>
-				<li><Link darker target="_blank" href={HABR_LINK}>Хабр</Link></li>
+				<li>
+					<Link
+						data-umami-event="social-link-click"
+						data-umami-event-place="header"
+						data-umami-event-type="telegram"
+						darker
+						target="_blank"
+						href={TELEGRAM_LINK}>Телеграм</Link
+					>
+				</li>
+				<li>
+					<Link
+						data-umami-event="social-link-click"
+						data-umami-event-place="header"
+						data-umami-event-type="github"
+						darker
+						target="_blank"
+						href={GITHUB_LINK}>Гитхаб</Link
+					>
+				</li>
+				<li>
+					<Link
+						data-umami-event="social-link-click"
+						data-umami-event-place="header"
+						data-umami-event-type="habr"
+						darker
+						target="_blank"
+						href={HABR_LINK}>Хабр</Link
+					>
+				</li>
 			</ul>
 		</aside>
 	</div>

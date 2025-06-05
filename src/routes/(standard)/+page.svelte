@@ -10,7 +10,7 @@
 
 	let { data }: PageProps = $props();
 	const posts = $derived(data.articles);
-	const amount = $derived(data.amount)
+	const amount = $derived(data.amount);
 
 	let articlesRef: HTMLElement;
 	let projectsRef: HTMLElement;
@@ -36,7 +36,12 @@
 </div>
 
 <div bind:this={articlesRef} class="flex opacity-0 flex-col gap-2 mt-12">
-	<ListingHeader counter={amount} href="/articles">Статьи</ListingHeader>
+	<ListingHeader
+		data-umami-event="articles-link-click"
+		data-umami-event-place="main-page"
+		counter={amount}
+		href="/articles">Статьи</ListingHeader
+	>
 	{#each posts as post (post.slug)}
 		<ListingArticle {...post}>{post.title}</ListingArticle>
 	{/each}

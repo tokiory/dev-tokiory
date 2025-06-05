@@ -10,7 +10,7 @@
 
 	const LINKS = [
 		{ href: '/', text: 'Главная' },
-		{ href: '/articles', text: 'Статьи' }
+		{ href: '/articles', text: 'Статьи', event: 'articles-link-click', 'event-place': 'mobile-nav' }
 	];
 	const CLOSE_DY = 300;
 	const MENU_SPRING = createSpring({ damping: 14 });
@@ -26,7 +26,7 @@
 	let currentAnimation = $state<JSAnimation | null>(null);
 
 	const handlePointerMove = (event: PointerEvent) => {
-	  currentAnimation?.cancel();
+		currentAnimation?.cancel();
 		pointerDY = startPointerY - event.y;
 
 		if (!mobileNavRef) return;
@@ -83,25 +83,53 @@
 			<ul class="flex flex-col gap-2">
 				{#each LINKS as link (link.href)}
 					<li>
-						<Link darker href={link.href}
-							><ContentH2 class="color-inherit" custommark nospy>{link.text}</ContentH2></Link
-						>
+						{#if link.event}
+							<Link
+								darker
+								href={link.href}
+								data-umami-event={link.event}
+								data-umami-event-place={link['event-place']}
+								><ContentH2 class="color-inherit" custommark nospy>{link.text}</ContentH2></Link
+							>
+						{:else}
+							<Link darker href={link.href}
+								><ContentH2 class="color-inherit" custommark nospy>{link.text}</ContentH2></Link
+							>
+						{/if}
 					</li>
 				{/each}
 			</ul>
 			<ul class="flex gap-2 mt-4">
 				<li>
-					<Link darker target="_blank" href={TELEGRAM_LINK}
+					<Link
+						data-umami-event="social-link-click"
+						data-umami-event-place="mobile-nav"
+						data-umami-event-type="telegram"
+						darker
+						target="_blank"
+						href={TELEGRAM_LINK}
 						><ContentH3 class="color-inherit" custommark nospy>Телеграм</ContentH3></Link
 					>
 				</li>
 				<li>
-					<Link darker target="_blank" href={GITHUB_LINK}
+					<Link
+						data-umami-event="social-link-click"
+						data-umami-event-place="mobile-nav"
+						data-umami-event-type="github"
+						darker
+						target="_blank"
+						href={GITHUB_LINK}
 						><ContentH3 class="color-inherit" custommark nospy>Гитхаб</ContentH3></Link
 					>
 				</li>
 				<li>
-					<Link darker target="_blank" href={HABR_LINK}
+					<Link
+						data-umami-event="social-link-click"
+						data-umami-event-place="mobile-nav"
+						data-umami-event-type="habr"
+						darker
+						target="_blank"
+						href={HABR_LINK}
 						><ContentH3 class="color-inherit" custommark nospy>Хабр</ContentH3></Link
 					>
 				</li>
