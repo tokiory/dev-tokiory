@@ -1,14 +1,19 @@
 <script lang="ts">
-  import "@/styles/content.css"
+	import '@/styles/content.css';
 	import ArticleHeader from '$components/Article/ArticleHeader.svelte';
 	import { fadeRight } from '$lib/animations/fadeRight';
 	import { animate } from 'animejs';
-  import type { PageProps } from './$types'
-	import OpengraphMeta from "$mod/seo/OpengraphMeta.svelte";
-	import TwitterMeta from "$mod/seo/TwitterMeta.svelte";
+	import type { PageProps } from './$types';
+	import OpengraphMeta from '$mod/seo/OpengraphMeta.svelte';
+	import TwitterMeta from '$mod/seo/TwitterMeta.svelte';
+	import ArticlePagination from '@/lib/modules/article-pagination/ArticlePagination.svelte';
+	import PreviousLink from '@/lib/modules/article-pagination/PreviousLink.svelte';
+	import NextLink from '@/lib/modules/article-pagination/NextLink.svelte';
 
 	let { data }: PageProps = $props();
 	const meta = $derived(data.meta);
+	const pagination = $derived(data.pagination);
+
 	let contentRef = $state<Element>();
 
 	$effect(() => {
@@ -19,8 +24,12 @@
 		});
 	});
 
+	console.log(pagination);
+
 	const ogImage = $derived({
-		opengraph: encodeURI(`${data.baseURL}/api/ogimg/?title=${meta.title}&tags=${meta.tags.join('&tags=')}`),
+		opengraph: encodeURI(
+			`${data.baseURL}/api/ogimg/?title=${meta.title}&tags=${meta.tags.join('&tags=')}`
+		),
 		twitter: encodeURI(
 			`${data.baseURL}/api/ogimg/?title=${meta.title}&tags=${meta.tags.join('&tags=')}&type=twitter`
 		)
@@ -50,4 +59,13 @@
 	<div bind:this={contentRef} class="opacity-0 mt-8">
 		<data.content />
 	</div>
+
+	<ArticlePagination class="mt-4">
+		{#if pagination.previous}
+			<PreviousLink {...pagination.previous} />
+		{/if}
+		{#if pagination.next}
+			<NextLink {...pagination.next} />
+		{/if}
+	</ArticlePagination>
 </article>
