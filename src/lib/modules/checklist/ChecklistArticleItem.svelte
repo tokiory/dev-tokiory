@@ -11,11 +11,24 @@
 	}
 
 	const { title, description, done, link, tags, rating }: Props = $props();
+
+	const ratingTextClass = $derived.by(() => {
+		if (!rating) return '';
+
+		switch (true) {
+			case rating <= 2:
+				return '!text-rose-800 opacity-50';
+			case rating >= 8:
+				return '!text-amber-800';
+			default:
+				return '';
+		}
+	});
 </script>
 
-<a target="_blank" class="block" href={link}>
+<a target="_blank" class={['block', ratingTextClass]} href={link}>
 	<ChecklistGenericItem {title} {done} {tags}>
-		<div class="flex gap-1 items-center">
+		<div class={['flex gap-1 items-center']}>
 			<div
 				class="max-w-xl text-xs whitespace-nowrap text-ellipsis overflow-hidden border-b border-driftwood-700/40 inline-block"
 			>
