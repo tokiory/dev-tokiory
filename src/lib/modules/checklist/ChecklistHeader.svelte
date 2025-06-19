@@ -9,6 +9,6 @@
 	const { children, class: className = '' }: Props = $props();
 </script>
 
-<div class={['flex', className]}>
+<div class={['flex flex-wrap gap-y-1', className]}>
 	{@render children?.()}
 </div>
