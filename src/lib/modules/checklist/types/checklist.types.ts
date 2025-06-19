@@ -11,6 +11,7 @@ export interface ChecklistBook extends GeneralChecklistItem {
 
 export interface ChecklistArticle extends GeneralChecklistItem {
 	link: string;
+  rating?: number;
 	description?: string;
 }
 

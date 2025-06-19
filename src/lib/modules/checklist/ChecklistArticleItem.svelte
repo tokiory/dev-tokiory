@@ -7,9 +7,10 @@
 		done?: boolean;
 		description?: string;
 		tags?: string[];
+		rating?: number;
 	}
 
-	const { title, description, done, link, tags }: Props = $props();
+	const { title, description, done, link, tags, rating }: Props = $props();
 </script>
 
 <a target="_blank" class="block" href={link}>
@@ -21,6 +22,14 @@
 				{link}
 			</div>
 		</div>
+		{#if done && rating}
+			<div class="flex mt-1 text-xs gap-1 items-center text-driftwood-700/60">
+				<div class="i-tabler-star"></div>
+				<div>
+					{rating} / 10
+				</div>
+			</div>
+		{/if}
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="text-sm mt-1">{@html description}</div>
 	</ChecklistGenericItem>
