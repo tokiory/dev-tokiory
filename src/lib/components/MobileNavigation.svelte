@@ -10,7 +10,8 @@
 
 	const LINKS = [
 		{ href: '/', text: 'Главная' },
-		{ href: '/articles', text: 'Статьи', event: 'articles-link-click', 'event-place': 'mobile-nav' }
+		{ href: '/articles', text: 'Статьи', event: 'articles-link-click', 'event-place': 'mobile-nav' },
+		{ href: '/checklist', text: 'Чеклисты', event: 'checklist-link-click', 'event-place': 'mobile-nav' }
 	];
 	const CLOSE_DY = 300;
 	const MENU_SPRING = createSpring({ damping: 14 });
