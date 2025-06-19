@@ -20,6 +20,7 @@
 			<li class="flex items-center flex-nowrap gap-2">
 				<span>—</span>
 				<a
+					target="_blank"
 					class="text-driftwood-900/70 whitespace-nowrap text-ellipsis overflow-hidden hover:text-driftwood-900/90"
 					href={link}>{link}</a
 				>
