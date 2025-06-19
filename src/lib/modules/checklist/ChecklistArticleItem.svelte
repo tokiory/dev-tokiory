@@ -17,11 +17,13 @@
 	<ChecklistGenericItem {title} {done} {tags}>
 		<div class="flex gap-1 items-center">
 			<div
-				class="text-xs whitespace-nowrap text-ellipsis overflow-hidden border-b border-driftwood-700/40 inline-block"
+				class="max-w-xl text-xs whitespace-nowrap text-ellipsis overflow-hidden border-b border-driftwood-700/40 inline-block"
 			>
 				{link}
 			</div>
 		</div>
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+		<div class="text-sm mt-1">{@html description}</div>
 		{#if done && rating}
 			<div class="flex mt-1 text-xs gap-1 items-center text-driftwood-700/60">
 				<div class="i-tabler-star"></div>
@@ -30,7 +32,5 @@
 				</div>
 			</div>
 		{/if}
-		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
-		<div class="text-sm mt-1">{@html description}</div>
 	</ChecklistGenericItem>
 </a>

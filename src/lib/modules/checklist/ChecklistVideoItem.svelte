@@ -17,7 +17,7 @@
 	<ChecklistGenericItem {title} {done} {tags}>
 		<div class="flex gap-1 items-center">
 			<div
-				class="whitespace-nowrap text-ellipsis overflow-hidden text-xs border-b border-driftwood-700/40 inline-block"
+				class="max-w-xl whitespace-nowrap text-ellipsis overflow-hidden text-xs border-b border-driftwood-700/40 inline-block"
 			>
 				{link}
 			</div>
