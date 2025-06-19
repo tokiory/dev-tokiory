@@ -7,35 +7,40 @@
 		title: string;
 		done?: boolean;
 		tags?: string[];
+		favorite?: boolean;
 		children?: Snippet;
-		postTitle?: Snippet;
 	}
 
-	const { title, done, tags, children, postTitle }: Props = $props();
+	const { title, done, tags, favorite, children }: Props = $props();
 </script>
 
-<div class="flex flex-col">
-	<div class="sm:flex items-center gap-2">
-		<div class="flex items-center gap-2">
-			<ChecklistCheckmark {done} />
-			<div class="font-semibold">{title}</div>
-			{#if postTitle}
-			  {@render postTitle?.()}
-			{/if}
-		</div>
+<!-- {#if favorite}
+					<div class="absolute top-7 i-tabler-heart"></div>
+				{/if} -->
 
-		{#if tags}
-			<div class="hidden sm:block ml-auto">
-				<ChecklistTags {tags} />
-			</div>
+<div class="flex gap-2.25">
+	<div class="flex items-center pb-.25 flex-col gap-2 shrink-0">
+		<ChecklistCheckmark {done} />
+		{#if favorite}
+			<div class="text-sm i-tabler-heart"></div>
 		{/if}
 	</div>
-	<div class="ml-7">
-		{@render children?.()}
-		{#if tags}
-			<div class="sm:hidden mt-1 ml-auto">
-				<ChecklistTags {tags} />
-			</div>
-		{/if}
+	<div class="grow-1 mt-.33">
+		<div class="sm:flex justify-between items-start gap-2">
+			<div class="font-semibold line-height-none">{title}</div>
+			{#if tags}
+				<div class="hidden sm:block ml-auto">
+					<ChecklistTags {tags} />
+				</div>
+			{/if}
+		</div>
+		<div>
+			{@render children?.()}
+			{#if tags}
+				<div class="sm:hidden mt-1 ml-auto">
+					<ChecklistTags {tags} />
+				</div>
+			{/if}
+		</div>
 	</div>
 </div>

@@ -27,8 +27,8 @@
 </script>
 
 <a target="_blank" class={['block', ratingTextClass]} href={link}>
-	<ChecklistGenericItem {title} {done} {tags}>
-		<div class={['flex gap-1 items-center']}>
+	<ChecklistGenericItem {title} {done} favorite={Boolean(rating && rating >= 8)} {tags}>
+		<div class={['flex gap-1 items-center mt-.25']}>
 			<div
 				class="max-w-xl text-xs whitespace-nowrap text-ellipsis overflow-hidden border-b border-driftwood-700/40 inline-block"
 			>

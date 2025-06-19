@@ -1,7 +1,9 @@
 [[data]]
 title = "Виды контекста в JavaScript"
 link = "https://habr.com/ru/companies/otus/articles/467631/"
-done = false
+done = true
+description = "Есть чувство, будто статья была написана на коленке, так как она не несёт никакой полезной информации"
+rating = 2
 tags = ["javascript"]
 
 [[data]]
@@ -15,3 +17,36 @@ title = "JavaScript. The Core."
 link = "http://dmitrysoshnikov.com/ecmascript/javascript-the-core/#execution-context-stack"
 done = false
 tags = ["javascript"]
+
+[[data]]
+title = "Архитектура сетей Zigbee"
+link = "https://habr.com/ru/companies/otus/articles/919250/"
+done = false
+tags = ["low-level", "networks"]
+
+[[data]]
+title = "JavaScript Execution Context: A Deep Dive"
+link = "https://dev.to/jahid6597/javascript-execution-context-a-deep-dive-4kno"
+done = true
+rating = 5
+tags = ["javascript"]
+
+[[data]]
+title = "Understanding JavaScript Execution Context: Scope, Context, and Lexical Scoping"
+link = "https://medium.com/@adityakashyap_36551/understanding-javascript-execution-context-scope-context-and-building-blocks-1616904ae20d"
+done = true
+tags = ["javascript"]
+description = "Одна из редких хорошо написанных статей о контексте выполнения в JavaScript"
+rating = 8
+
+[[data]]
+title = "The Go Programming Language Specification"
+link = "https://go.dev/ref/spec"
+done = false
+tags = ["go"]
+
+[[data]]
+title = "Unleashing the Power of JavaScript Proxy in Vue.js"
+link = "https://medium.com/@talmogendorff/unleashing-the-power-of-javascript-proxy-in-vue-js-06bd37997da3"
+done = false
+tags = ["javascript", "vue"]
