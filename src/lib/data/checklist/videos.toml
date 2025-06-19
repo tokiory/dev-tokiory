@@ -1,0 +1,41 @@
+[[data]]
+title = "99% of Developers Don't Get JIT Compilers"
+link = "https://www.youtube.com/watch?v=KVvGVPc7QM8&list=WL&index=4&pp=gAQBiAQB0gcJCb4JAYcqIYzv"
+channel = "The Coding Gopher"
+done = false
+tags = ["low-level"]
+
+[[data]]
+done = false
+tags = ["devops"]
+link = "https://www.youtube.com/watch?v=eifQI5uD6VQ&list=WL&index=16&t=127s&pp=gAQBiAQB"
+channel = "Bread on Penguins"
+title = "a brief guide to rsync"
+
+[[data]]
+done = false
+title = "Why does JavaScript's fetch make me wait TWICE?"
+link = "https://www.youtube.com/watch?v=Ki64Cnyf_cA&list=WL&index=188&pp=gAQBiAQB"
+channel = "Tom on the Internet"
+tags = ["javascript"]
+
+[[data]]
+title = "How To Handle Permissions Like A Senior Dev"
+channel = "Web Dev Simplified"
+tags = ["devops"]
+link = "https://www.youtube.com/watch?v=5GG-VUvruzE&list=WL&index=219&t=11s&pp=gAQBiAQB"
+done = false
+
+[[data]]
+channel = "Live Overflow"
+title = "What is a Protocol? (Deepdive)"
+link = "https://www.youtube.com/watch?v=d-zn-wv4Di8&t=395s"
+done = false
+tags = ["low-level"]
+
+[[data]]
+title = "Zig on a microcontroller"
+channel = "sphaerophoria"
+link = "https://www.youtube.com/watch?v=UbPqRhbMGpw"
+done = false
+tags = ["low-level", "embedded"]

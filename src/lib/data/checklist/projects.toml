@@ -1,0 +1,28 @@
+[[data]]
+title = "Реализовать бегающего динозаврика из Chrome на Pi Pico W"
+description = """
+Я хочу реализовать анимацию бегающего динозаврика из Chrome на Pi Pico W с помощью Zig.
+Идея пришла ко мне во время изучения Си и Zig. Первый из перечисленных языков я не хочу использовать из-за того, что по нему
+и так достаточно туториалов в интернете, поэтому наверняка кто-то уже реализовывал эту идею до меня, а вот реализации на Zig я еще не видел.
+"""
+done = false
+links = [
+  "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html",
+  "https://github.com/debrisapron/zig-arduino-pico-example",
+  "https://github.com/ZigEmbeddedGroup/microzig",
+  "https://www.kuon.ch/post/2022-06-22-zig-embed/",
+]
+
+[[data]]
+title = "Разработать веб-сервер на Си"
+description = """
+Чисто в учебных целях, хотелось бы посмотреть на то, как можно реализовать сервер на чистом Си без использования сторонних библиотек.
+"""
+done = false
+links = [
+  "https://ianyepan.github.io/posts/c-web-server/",
+  "https://dev.to/jeffreythecoder/how-i-built-a-simple-http-server-from-scratch-using-c-739",
+  "https://medium.com/@nipunweerasiri/a-simple-web-server-written-in-c-cf7445002e6",
+  "https://www.beej.us/guide/bgnet/",
+  "https://github.com/bloominstituteoftechnology/C-Web-Server",
+]

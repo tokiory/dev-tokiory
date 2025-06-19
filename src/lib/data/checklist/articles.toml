@@ -1,0 +1,17 @@
+[[data]]
+title = "Виды контекста в JavaScript"
+link = "https://habr.com/ru/companies/otus/articles/467631/"
+done = false
+tags = ["javascript"]
+
+[[data]]
+title = "Варим C с компилятором Zig и его build.zig"
+link = "https://habr.com/ru/articles/753306/"
+done = false
+tags = ["low-level", "c", "zig"]
+
+[[data]]
+title = "JavaScript. The Core."
+link = "http://dmitrysoshnikov.com/ecmascript/javascript-the-core/#execution-context-stack"
+done = false
+tags = ["javascript"]
