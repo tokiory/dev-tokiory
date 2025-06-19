@@ -34,6 +34,10 @@ code {
 body {
   @apply bg-brand-surface text-brand-foreground;
   margin: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smooth: always;
   font-family:
     "Manrope Variable",
     system-ui,

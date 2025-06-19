@@ -56,7 +56,7 @@ export default defineConfig({
 			}
 		})
 	],
-	transformers: [transformerDirectives()]
+	transformers: [transformerDirectives()],
 }) as UserConfig<{
 	colors: {
 		frangipani: Record<`${number}`, string>;

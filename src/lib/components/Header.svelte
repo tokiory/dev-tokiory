@@ -14,7 +14,7 @@
 	<Logo />
 	<div class="hidden sm:flex flex-col gap-1">
 		<nav>
-			<ul class="flex gap-3 justify-end items-center">
+			<ul class="flex gap-5 justify-end items-center">
 				<li>
 					<Link
 						data-umami-event="articles-link-click"
@@ -25,7 +25,21 @@
 					>
 						Статьи
 						<div
-							class="outer-icon absolute -top-0.75 -right-3.5 i-tabler-arrow-up-right text-xs"
+							class="outer-icon absolute -top-0.55 -right-3 i-tabler-arrow-up-right text-xs"
+						></div>
+					</Link>
+				</li>
+				<li>
+					<Link
+						data-umami-event="checklist-link-click"
+						data-umami-event-place="header"
+						class="relative"
+						darker
+						href="/checklist"
+					>
+						Чеклист
+						<div
+							class="outer-icon absolute -top-0.55 -right-3 i-tabler-arrow-up-right text-xs"
 						></div>
 					</Link>
 				</li>

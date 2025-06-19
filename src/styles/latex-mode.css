@@ -1,0 +1,54 @@
+@font-face {
+  font-family: 'Libertinus';
+  src: url('/fonts/libertinus/LibertinusSerif-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  src: url('/fonts/libertinus/LibertinusSerif-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  src: url('/fonts/libertinus/LibertinusSerif-BoldItalic.woff2') format('woff2');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  src: url('/fonts/libertinus/LibertinusSerif-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  src: url('/fonts/libertinus/LibertinusSerif-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Libertinus';
+  src: url('/fonts/libertinus/LibertinusSerif-SemiboldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+.latex-mode .content {
+  font-size: 19px;
+  line-height: 1.35;
+  font-family: "Libertinus", 'Times New Roman', Times, serif;
+  font-weight: 400;
+}

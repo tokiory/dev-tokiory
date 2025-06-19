@@ -24,8 +24,6 @@
 		});
 	});
 
-	console.log(pagination);
-
 	const ogImage = $derived({
 		opengraph: encodeURI(
 			`${data.baseURL}/api/ogimg/?title=${meta.title}&tags=${meta.tags.join('&tags=')}`
@@ -54,7 +52,7 @@
 </svelte:head>
 
 <article class="mt-16">
-	<ArticleHeader title={meta.title} description={meta.description} />
+	<ArticleHeader meta={meta} />
 
 	<div bind:this={contentRef} class="opacity-0 mt-8">
 		<data.content />

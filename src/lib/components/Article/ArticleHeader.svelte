@@ -2,13 +2,17 @@
 	import { untrack } from 'svelte';
 	import ArticleTitle from './ArticleTitle.svelte';
 	import { animate } from 'animejs';
+	import ArticleControl from './ArticleControl.svelte';
+	import type { Article } from '@/lib/types';
 
 	interface Props {
-		title: string;
-		description: string;
+		meta: Article;
 	}
 
-	const { title, description }: Props = $props();
+	const { meta }: Props = $props();
+	const title = $derived(meta.title);
+	const description = $derived(meta.description);
+
 	let descriptionRef: HTMLElement;
 
 	$effect(() => {
@@ -18,10 +22,10 @@
 	});
 </script>
 
-<hgroup>
+<hgroup class="pb-6 border-b border-b-dashed border-driftwood-300">
 	<ArticleTitle {title} />
 	<div bind:this={descriptionRef} class="opacity-0">
 		<div class="whitespace-pre-line text-driftwood-700">{description}</div>
-		<div class="mt-6 border-b-dashed border-b-1 border-driftwood-300"></div>
 	</div>
+	<ArticleControl class="mt-2" meta={meta} />
 </hgroup>

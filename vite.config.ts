@@ -3,6 +3,8 @@ import extractorSvelte from '@unocss/extractor-svelte';
 import { fileURLToPath } from 'node:url';
 import unocss from 'unocss/vite';
 import { defineConfig } from 'vite';
+import { ViteToml as toml } from 'vite-plugin-toml'
+
 
 const resolve = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
@@ -26,6 +28,7 @@ export default defineConfig({
 			// mode: 'global',
 			extractors: [extractorSvelte()]
 		}),
+		toml(),
 		sveltekit()
 	]
 });
