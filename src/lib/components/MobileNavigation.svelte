@@ -41,7 +41,6 @@
 	const handlePointerUp = async () => {
 		if (!mobileNavRef) return;
 
-		console.log(`${-pointerDY}px`);
 		if (pointerDY > CLOSE_DY) {
 			currentAnimation = animate(mobileNavRef, {
 				duration: 300,

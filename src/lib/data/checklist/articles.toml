@@ -22,7 +22,7 @@ tags = ["javascript"]
 title = "Архитектура сетей Zigbee"
 link = "https://habr.com/ru/companies/otus/articles/919250/"
 done = false
-tags = ["low-level", "networks"]
+tags = ["low-level", "network"]
 
 [[data]]
 title = "JavaScript Execution Context: A Deep Dive"
@@ -50,3 +50,51 @@ title = "Unleashing the Power of JavaScript Proxy in Vue.js"
 link = "https://medium.com/@talmogendorff/unleashing-the-power-of-javascript-proxy-in-vue-js-06bd37997da3"
 done = false
 tags = ["javascript", "vue"]
+
+[[data]]
+link = "https://samwho.dev/memory-allocation/"
+title = "Memory Allocation"
+done = false
+tags = ["low-level", "c"]
+
+[[data]]
+link = "https://redixhumayun.github.io/performance/2025/01/27/cache-conscious-hash-maps.html"
+title = "Cache Conscious Hash Maps"
+done = false
+tags = ["low-level", "c"]
+
+[[data]]
+title = "Faster Go maps with Swiss Tables"
+link = "https://go.dev/blog/swisstable"
+done = false
+tags = ["go"]
+
+[[data]]
+title = "A Beginners Guide to WebGL"
+link = "https://chriscourses.com/blog/a-beginners-guide-to-webgl"
+done = false
+tags = ["javascript", "webgl"]
+
+[[data]]
+title = "A flowing WebGL gradient, deconstructed"
+linkk = "https://alexharri.com/blog/webgl-gradients"
+done = false
+tags = ["javascript", "webgl"]
+
+[[data]]
+title = "Building a Nodejs Blog API With JWT Authentication."
+link = "https://maduemelie.hashnode.dev/building-a-nodejs-blog-api-with-jwt-authentication"
+done = false
+tags = ["network", "javascript"]
+
+[[data]]
+title = "Authentication Series #EP2.1: Deep Dive — How JWT Works Behind the Scene"
+link = "https://blog.stackademic.com/authentication-series-ep2-1-deep-dive-how-jwt-works-behind-the-scene-5fcc52bf80ea"
+done = false
+tags = ["network", "javascript"]
+
+[[data]]
+title = "Подробно про JWT"
+link = "https://habr.com/ru/articles/842056/"
+done = false
+tags = ["javascript", "network"]
