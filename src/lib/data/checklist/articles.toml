@@ -77,7 +77,7 @@ tags = ["javascript", "webgl"]
 
 [[data]]
 title = "A flowing WebGL gradient, deconstructed"
-linkk = "https://alexharri.com/blog/webgl-gradients"
+link = "https://alexharri.com/blog/webgl-gradients"
 done = false
 tags = ["javascript", "webgl"]
 
@@ -98,3 +98,10 @@ title = "Подробно про JWT"
 link = "https://habr.com/ru/articles/842056/"
 done = false
 tags = ["javascript", "network"]
+
+[[data]]
+title = "A Guide to Debugging Code in Neovim"
+link = "https://tamerlan.dev/a-guide-to-debugging-applications-in-neovim/"
+done = true
+tags = ["cli", "neovim"]
+rating = 7
