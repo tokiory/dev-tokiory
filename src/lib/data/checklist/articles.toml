@@ -105,3 +105,15 @@ link = "https://tamerlan.dev/a-guide-to-debugging-applications-in-neovim/"
 done = true
 tags = ["cli", "neovim"]
 rating = 7
+
+[[data]]
+title = "Structures in C: From Basics to Memory Alignment"
+link = "https://abstractexpr.com/2023/06/29/structures-in-c-from-basics-to-memory-alignment/"
+done = false
+tags = ["low-level", "c"]
+
+[[data]]
+title = "Optimize Your Struct with Alignment Trick"
+link = "https://blog.devtrovert.com/p/struct-optimization-a-small-change"
+done = false
+tags = ["low-level", "go"]
