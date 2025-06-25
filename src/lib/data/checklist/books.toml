@@ -1,4 +1,12 @@
 [[data]]
+title = "Eloquent Javascript"
+author = "Marijn Haverbeke"
+description = "Одна из первых книг по Javascript, что я прочитал и советую прочитать каждому, кто так или иначе работает с JS"
+done = true
+tags = ["javascript"]
+
+
+[[data]]
 title = "Язык программирования C"
 author = "Брайан В. Керниган, Деннис М. Ритчи"
 description = """

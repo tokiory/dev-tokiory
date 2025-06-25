@@ -12,9 +12,11 @@
 	import ARTICLES from '@/lib/data/checklist/articles.toml';
 	import VIDEOS from '@/lib/data/checklist/videos.toml';
 	import PROJECTS from '@/lib/data/checklist/projects.toml';
+  import RESOURCES from '@/lib/data/checklist/resources.toml'
 	import { type ComponentProps } from 'svelte';
 	import ChecklistProgress from '@/lib/modules/checklist/ChecklistProgress.svelte';
 	import ChecklistSearch from '@/lib/modules/checklist/ChecklistSearch.svelte';
+	import ChecklistResourceItem from '@/lib/modules/checklist/ChecklistResourceItem.svelte';
 
 	const CHECKLIST_TABS = [
 		{
@@ -32,6 +34,10 @@
 		{
 			id: 'projects',
 			title: 'Проекты'
+		},
+		{
+			id: 'resources',
+			title: 'Другое'
 		}
 	] as const;
 
@@ -47,6 +53,8 @@
 				return VIDEOS;
 			case 'projects':
 				return PROJECTS;
+			case 'resources':
+				return RESOURCES;
 		}
 	});
 
@@ -60,6 +68,8 @@
 				return ChecklistVideoItem;
 			case 'projects':
 				return ChecklistProjectItem;
+			case 'resources':
+				return ChecklistResourceItem;
 		}
 	});
 

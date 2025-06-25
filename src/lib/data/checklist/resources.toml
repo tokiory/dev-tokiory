@@ -1,0 +1,15 @@
+[[data]]
+title = "Learn Go with Tests"
+description = "Один из первых ресурсов, что я открыл во время изучения Go"
+done = false
+link = "https://quii.gitbook.io/learn-go-with-tests"
+tags = ["go"]
+type = "walkthrough"
+
+[[data]]
+title = "Ziglings"
+description = "Аналог Rustlings для Zig"
+done = false
+tags = ["low-level", "zig"]
+link = "https://codeberg.org/ziglings/exercises/#ziglings"
+type = "repo"

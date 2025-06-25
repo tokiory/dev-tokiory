@@ -20,3 +20,9 @@ export interface ChecklistVideo extends GeneralChecklistItem {
 	description?: string;
 	channel?: string;
 }
+
+export interface ChecklistResource extends GeneralChecklistItem {
+  link: string;
+	description?: string;
+  type: 'walkthrough' | 'course' | 'repo';
+}

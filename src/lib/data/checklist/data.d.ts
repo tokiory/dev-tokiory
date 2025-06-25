@@ -1,3 +1,5 @@
+type ChecklistData<T> = {data: T[]}
+
 declare module '@/lib/data/checklist/books.toml' {
 	import { ChecklistBook } from '$mod/checklist/types/checklist.types';
 
@@ -28,5 +30,11 @@ declare module '@/lib/data/checklist/videos.toml' {
 	};
 
   const data: Data;
+	export default data;
+}
+
+declare module '@/lib/data/checklist/resources.toml' {
+	import { ChecklistResources } from '$mod/checklist/types/checklist.types';
+  const data: ChecklistData<ChecklistResources>;
 	export default data;
 }
