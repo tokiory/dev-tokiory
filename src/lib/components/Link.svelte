@@ -5,15 +5,17 @@
 		target?: string;
 		darker?: boolean;
 		href: string;
+		rel?: string;
 		children?: Snippet;
 		class?: string | string[];
 	}
 
-	let { href, target, darker, children, class: className, ...attributes }: Props = $props();
+	let { href, target, darker, children, rel, class: className, ...attributes }: Props = $props();
 </script>
 
 <a
 	{...attributes}
+	{rel}
 	class={[
 		'cursor-pointer transition-colors',
 		darker
