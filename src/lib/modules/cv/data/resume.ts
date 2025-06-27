@@ -1,6 +1,6 @@
 import type { Experience, Project } from '$mod/cv/types';
 
-export const isWorking = true;
+export const isWorking = false;
 
 export const experiences: Experience[] = [
 	{
@@ -44,7 +44,7 @@ export const experiences: Experience[] = [
 	{
 		position: 'Фронтенд-разработчик',
 		company: 'Гранд Сервис Экспресс',
-		period: '06.2021 -- 12.2021 / Проектная занятость / Solo',
+		period: '06.2021 -- 12.2021 / Full Time / Solo',
 		description: [
 			'Разработал PWA-приложение',
 			'Разработал систему отказоустойчивости при потере интернет-соединения (пул ивентов)',
@@ -58,7 +58,7 @@ export const experiences: Experience[] = [
 	{
 		position: 'Фронтенд-разработчик',
 		company: 'Черная жемчужина',
-		period: '01.2021 -- 05.2021 / Проектная занятость / Core Team',
+		period: '01.2021 -- 05.2021 / Full Time / Core Team',
 		description: [
 			'Занимался разработкой лендинга для компании с нуля',
 			'Работал с Three.js для создания интерактивного элемента в блоке-герое',
@@ -70,11 +70,12 @@ export const experiences: Experience[] = [
 	{
 		position: 'Фронтенд-разработчик',
 		company: 'Blogman',
-		period: '2020-2021 / Частичная занятость / Frontend Team',
+		period: '2020-2021 / Full Time / Frontend Team',
 		description: [
 			'Разработал фичу "Спуститься к последнему сообщению"',
 			'Написал плагин для Electron, который выполнял автообновление на UNIX-подобных системах',
 			'Писал документацию к кодовой базе',
+			'Активно работал с WebSocket и реализовывал функционал чатов, модифицировал функционал личных сообщений и групп',
 			'Активно учавствовал в ретроспективах',
 			'Написал часть функционала для меню списка чатов',
 			'Сверстал новую версию карточки пользователя',
