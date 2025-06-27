@@ -34,10 +34,22 @@ async function getArticles() {
 
 export const GET: RequestHandler = async ({ url }) => {
 	const limit = url.searchParams.get('limit');
+	const query = url.searchParams.get('q');
 	const data = await getArticles();
 	let { articles } = data;
 
 	articles.sort(({ date: a }, { date: b }) => b.toLowerCase().localeCompare(a.toLowerCase()));
+
+	if (query) {
+		articles = articles.filter((item) => {
+			const search = query.toLowerCase().trim();
+			return (
+				item.title.toLowerCase().includes(search) ||
+				item.description.toLowerCase().includes(search) ||
+				item.tags.some((tag) => tag.toLowerCase().includes(search))
+			);
+		});
+	}
 
 	if (limit) {
 		articles = articles.slice(0, Number(limit));

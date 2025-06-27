@@ -42,13 +42,4 @@
 		<Resume />
 		<Sidebar />
 	</div>
-
-	<!-- <div class={['flex flex-col-reverse lg:flex-row gap-8', isWorking && 'mt-6']}>
-		<div class="opacity-0" bind:this={resumeRef}>
-			<Resume />
-		</div>
-		<div class="opacity-0" bind:this={sidebarRef}>
-			<Sidebar />
-		</div>
-	</div> -->
 </main>

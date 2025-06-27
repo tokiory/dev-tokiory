@@ -5,7 +5,14 @@
 		class?: string | string[];
 		value: string;
 	}
-	const { class: className, ...attrs }: Props = $props();
+	let { class: className, value = $bindable(''), ...attrs }: Props = $props();
 </script>
 
-<input {...attrs} class={['px-2 py-1 bg-inherit border border-driftwood-600 rounded-md placeholder:text-driftwood-800/50', className]} />
+<input
+	{...attrs}
+	bind:value
+	class={[
+		'px-2 py-1 bg-inherit border border-driftwood-600 rounded-md placeholder:text-driftwood-800/50',
+		className
+	]}
+/>
