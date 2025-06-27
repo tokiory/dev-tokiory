@@ -5,6 +5,8 @@
 	import { animate } from 'animejs';
 	import { fadeUp } from '$lib/animations/fadeUp';
 	import { isWorking } from '@/lib/modules/cv/data/resume';
+	import PersonalBlock from '@/lib/modules/cv/PersonalBlock.svelte';
+	import DescriptionBlock from '@/lib/modules/cv/DescriptionBlock.svelte';
 
 	let resumeRef = $state<HTMLElement>();
 	let sidebarRef = $state<HTMLElement>();
@@ -28,12 +30,25 @@
 			<EmployBanner />
 		</div>
 	{/if}
-	<div class={['flex flex-col-reverse lg:flex-row gap-8', isWorking && 'mt-6']}>
+	<div
+		bind:this={resumeRef}
+		class={['opacity-0 flex flex-col-reverse lg:flex-row gap-8', isWorking && 'mt-6']}
+	>
+		<DescriptionBlock />
+		<PersonalBlock />
+	</div>
+
+	<div class="mt-8 flex flex-col-reverse lg:flex-row gap-8">
+		<Resume />
+		<Sidebar />
+	</div>
+
+	<!-- <div class={['flex flex-col-reverse lg:flex-row gap-8', isWorking && 'mt-6']}>
 		<div class="opacity-0" bind:this={resumeRef}>
 			<Resume />
 		</div>
 		<div class="opacity-0" bind:this={sidebarRef}>
 			<Sidebar />
 		</div>
-	</div>
+	</div> -->
 </main>

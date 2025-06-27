@@ -1,41 +1,15 @@
 <script lang="ts">
 	import EducationEntry from './EducationEntry.svelte';
 	import SkillGroup from './SkillGroup.svelte';
-	import ContentH1 from '$components/Content/ContentH1.svelte';
-	import Link from '$components/Link.svelte';
 	import ContentH2 from '$components/Content/ContentH2.svelte';
 	import ResumeGroupList from './ResumeGroupList.svelte';
-	import { education, extendedSkills, personalInfo, skills } from './data/sidebar';
+	import { education, extendedSkills, skills } from './data/sidebar';
 	import Button from '@/lib/components/Button.svelte';
 
 	let isExtendedSkills = $state(false);
 </script>
 
-<aside class="flex flex-col gap-8 lg:w-[320px]">
-	<div class="text-right flex flex-col">
-		<ContentH1 custommark>{personalInfo.name}</ContentH1>
-		<Link class="flex gap-1 items-center justify-end" href="mailto:{personalInfo.email}"
-			><div>{personalInfo.email}</div>
-			<div class="i-tabler-mail" /></Link
-		>
-		<Link
-			class="flex gap-1 items-center justify-end"
-			href="https://{personalInfo.github}"
-			target="_blank"
-			rel="noopener noreferrer"
-			><div>{personalInfo.github}</div>
-			<div class="line-height-none i-tabler-brand-github" /></Link
-		>
-		<Link
-			class="flex gap-1 items-center justify-end"
-			href="https://t.me/{personalInfo.telegram}"
-			target="_blank"
-			rel="noopener noreferrer"
-			><div>t.me/@{personalInfo.telegram}</div>
-			<div class="line-height-none i-tabler-brand-telegram" /></Link
-		>
-	</div>
-
+<aside class="flex flex-col gap-8 shrink-0 lg:w-[320px]">
 	<section>
 		<ContentH2 custommark>Образование</ContentH2>
 		<ResumeGroupList gap="small">
