@@ -24,11 +24,15 @@ export interface Education {
 
 export interface SkillGroup {
   category: string;
-  skills: string[];
+  skills: Array<{
+    name: string;
+    link: string;
+  }>;
 }
 
 export interface PersonalInfo {
   name: string;
+  telegram: string;
   email: string;
   github: string;
   desiredSalary: string;

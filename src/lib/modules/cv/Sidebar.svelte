@@ -12,11 +12,27 @@
 </script>
 
 <aside class="flex flex-col gap-8 lg:w-[320px]">
-	<div class="text-right">
+	<div class="text-right flex flex-col">
 		<ContentH1 custommark>{personalInfo.name}</ContentH1>
-		<Link href="mailto:{personalInfo.email}">{personalInfo.email}</Link>
-		<Link href="https://{personalInfo.github}" target="_blank" rel="noopener noreferrer"
-			>{personalInfo.github}</Link
+		<Link class="flex gap-1 items-center justify-end" href="mailto:{personalInfo.email}"
+			><div>{personalInfo.email}</div>
+			<div class="i-tabler-mail" /></Link
+		>
+		<Link
+			class="flex gap-1 items-center justify-end"
+			href="https://{personalInfo.github}"
+			target="_blank"
+			rel="noopener noreferrer"
+			><div>{personalInfo.github}</div>
+			<div class="line-height-none i-tabler-brand-github" /></Link
+		>
+		<Link
+			class="flex gap-1 items-center justify-end"
+			href="https://t.me/{personalInfo.telegram}"
+			target="_blank"
+			rel="noopener noreferrer"
+			><div>t.me/@{personalInfo.telegram}</div>
+			<div class="line-height-none i-tabler-brand-telegram" /></Link
 		>
 	</div>
 
