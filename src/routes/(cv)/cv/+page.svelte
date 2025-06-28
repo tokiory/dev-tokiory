@@ -8,12 +8,12 @@
 	import PersonalBlock from '@/lib/modules/cv/PersonalBlock.svelte';
 	import DescriptionBlock from '@/lib/modules/cv/DescriptionBlock.svelte';
 
-	let resumeRef = $state<HTMLElement>();
-	let sidebarRef = $state<HTMLElement>();
+	let headingRef = $state<HTMLElement>();
+	let contentRef = $state<HTMLElement>();
 	let bannerRef = $state<HTMLElement>();
 
 	$effect(() => {
-		animate([resumeRef, sidebarRef, bannerRef], {
+		animate([headingRef, contentRef, bannerRef], {
 			...fadeUp
 		});
 	});
@@ -31,14 +31,14 @@
 		</div>
 	{/if}
 	<div
-		bind:this={resumeRef}
+		bind:this={headingRef}
 		class={['opacity-0 flex flex-col-reverse lg:flex-row gap-8', isWorking && 'mt-6']}
 	>
 		<DescriptionBlock />
 		<PersonalBlock />
 	</div>
 
-	<div class="mt-8 flex flex-col-reverse lg:flex-row gap-8">
+	<div bind:this={contentRef} class="opacity-0 mt-8 flex flex-col-reverse lg:flex-row gap-8">
 		<Resume />
 		<Sidebar />
 	</div>
