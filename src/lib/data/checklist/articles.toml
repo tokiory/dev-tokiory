@@ -117,3 +117,17 @@ title = "Optimize Your Struct with Alignment Trick"
 link = "https://blog.devtrovert.com/p/struct-optimization-a-small-change"
 done = false
 tags = ["low-level", "go"]
+
+[[data]]
+title = "WebRTC 102: Demystifying ICE"
+link = "https://dyte.io/blog/webrtc-102-demystifying-ice/"
+done = true
+rating = 4
+tags = ["network", "javascript", "webrtc"]
+
+[[data]]
+title = "На пальцах про WebRTC на примере своего мессенджера"
+link = "https://habr.com/ru/articles/902084/"
+done = true
+rating = 7
+tags = ["network", "javascript", "webrtc"]

@@ -26,4 +26,13 @@
 		><div>t.me/@{personalInfo.telegram}</div>
 		<div class="line-height-none i-tabler-brand-telegram" /></Link
 	>
+	<Link
+		class="flex gap-1 items-center justify-end"
+		download="Шило Даниил, Fullstack Engineer.pdf"
+		href="/cv.pdf"
+		target="_blank"
+		rel="noopener noreferrer"
+		><div>Скачать резюме</div>
+		<div class="line-height-none i-tabler-download" /></Link
+	>
 </section>

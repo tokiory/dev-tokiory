@@ -4,18 +4,20 @@
 	interface Props extends HTMLAttributes<HTMLAnchorElement> {
 		target?: string;
 		darker?: boolean;
+		download?: string | boolean;
 		href: string;
 		rel?: string;
 		children?: Snippet;
 		class?: string | string[];
 	}
 
-	let { href, target, darker, children, rel, class: className, ...attributes }: Props = $props();
+	let { href, target, darker, children, rel, download, class: className, ...attributes }: Props = $props();
 </script>
 
 <a
 	{...attributes}
 	{rel}
+	{download}
 	class={[
 		'cursor-pointer transition-colors',
 		darker
