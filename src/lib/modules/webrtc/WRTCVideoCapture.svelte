@@ -6,10 +6,10 @@
 	const { class: className = '' } = $props();
 
 	let videoRef: HTMLVideoElement | null = $state(null);
-	let isDisclamerVisible = $state(true);
+	let isDisclaimerVisible = $state(true);
 
 	const startTranslation = async () => {
-		isDisclamerVisible = false;
+		isDisclaimerVisible = false;
 		await playVideoFromCamera();
 	};
 
@@ -29,18 +29,18 @@
 			stream.getTracks().forEach((track) => track.stop());
 			videoRef.srcObject = null;
 		}
-		isDisclamerVisible = true;
+		isDisclaimerVisible = true;
 	};
 </script>
 
 <div
 	class={[
 		'relative flex flex-col gap-2 border rounded-md overflow-hidden border-driftwood-700/40 justify-center items-center w-full h-[200px] lg:h-[400px]',
-		isDisclamerVisible && 'p-4',
+		isDisclaimerVisible && 'p-4',
 		className
 	]}
 >
-	{#if isDisclamerVisible}
+	{#if isDisclaimerVisible}
 		<ContentH3 nospy custommark>Дисклеймер</ContentH3>
 		<ContentParagraph class="text-sm text-center" custommark>
 			Данный туториал будет запрашивать доступ к вашим медиа-устройствам (камере и микрофону).

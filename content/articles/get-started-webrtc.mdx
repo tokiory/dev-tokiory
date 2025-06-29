@@ -6,7 +6,7 @@ tags:
 description: >
   WebRTC это, пожалуй, одна из самых интересных технологий, с которой мне довелось работать.
 
-  В данном туториале мы рассмотрим основы работы с WebRTC, а также создадим простое приложение для обмена видео и аудио между двумя браузерами.
+  В данном туториале мы рассмотрим основы работы с WebRTC.
 visualized: true
 ---
 
@@ -15,7 +15,9 @@ visualized: true
 	'$lib/components/Content/ContentInformation.svelte'; import CodeOutput from
 	'$components/Content/ContentCodeOutput.svelte'; import WRTCScreen from
 	'$mod/webrtc/WRTCScreenCapture.svelte'; import Dial from '$mod/animation-entity/Dial.svelte';
-	import Excalidraw from '$components/Content/ContentExcalidraw.svelte';
+	import Excalidraw from '$components/Content/ContentExcalidraw.svelte'; import WRTCOneTabCall from
+	'$mod/webrtc/WRTCOneTabCall.svelte'; import ContentTex from
+	'$components/Content/ContentTex.svelte';
 </script>
 
 > **Дисклеймер**:
@@ -304,6 +306,7 @@ stream.getTracks().forEach((track) => track.stop());
 # Соединение
 
 Каждое соединение в WebRTC состоит из трех основных частей:
+
 1. **Сигналинг** нужен для того, чтобы установить первоначальное соединение между клиентами;
 2. Создание **Peer Connection** нужно для создания объекта соединения, который будет использоваться для обмена данными;
 3. **Обмен офферами** нужен для обмена информацией о медиа-потоках и установления соединения;
@@ -311,9 +314,10 @@ stream.getTracks().forEach((track) => track.stop());
 Внизу мы рассмотрим каждый из этих этапов более подробно.
 
 ## Сигналинг
+
 **Сигналинг** - это процесс обмена сообщениями между клиентами для установления соединения, обмена информацией о медиа-потоках, а также для передачи других данных, необходимых для работы WebRTC.
 
-Для начала стоит сказать, что до того как два клиента смогут обмениваться аудио и видео данными, им нужно установить соединение друг с другом, для того чтобы они могли обмениваться сообщениями о предстовящем соединении (качество видео, адреса клиентов, и прочее).
+Для начала стоит сказать, что до того как два клиента смогут обмениваться аудио и видео данными, им нужно установить соединение друг с другом, для того чтобы они могли обмениваться сообщениями о предстоящем соединении (качество видео, адреса клиентов, и прочее).
 
 WebRTC не диктует нам, какую именно технологию мы должны использовать для обмена этими сообщениями, но чаще всего используется соединение через WebSocket.
 Сам процесс установления первичного соединения между двумя клиентами называется **сигналинг**.
@@ -324,7 +328,7 @@ WebRTC не диктует нам, какую именно технологию 
 
 **Peer Сonnections** — это часть технологии WebRTC, которая позволяет двум приложениям (например, браузерам на разных компьютерах) напрямую обмениваться видео, аудио или бинарными данными.
 
-Такое соедиенение работает по принципу “peer-to-peer” (от клиента к клиенту), без центрального сервера для передачи данных.
+Такое соединение работает по принципу “peer-to-peer” (от клиента к клиенту), без центрального сервера для передачи данных.
 
 Для того чтобы создать объект соединения, с помощью которого (в будущем) мы сможем передавать сообщения между клиентами, нам нужно создать объект, который будет удовлетворять интерфейсу `RTCPeerConnection`. Этот объект будет содержать необходимые ICE-сервера, которые будут использоваться для соединения.
 
@@ -359,6 +363,8 @@ const peerConnection = new RTCPeerConnection(configuration);
 
 По сути данные сервера просто отдают информацию о том, какие IP-адреса и порты доступны для соединения у клиента, а также помогают клиентам обмениваться этой информацией друг с другом.
 
+Список доступных IP-адресов и портов, которые могут быть использованы для соединения, называют **ICE-кандидатами**.
+
 <Excalidraw src="/articles/webrtc-get-started/ice-gathering.svg" />
 
 В сниппете кода с созданием `RTCPeerConnection` из раздела выше мы указали только один STUN-сервер, который будет использоваться для установления соединения.
@@ -374,4 +380,308 @@ const peerConnection = new RTCPeerConnection(configuration);
 - `stun.imesh.com:3478`
 - `stun.infra.net:3478`
 
-## Офферы
+Ну, и не забудем про пример, как именно использовать STUN и TURN серверы в `RTCPeerConnection`:
+
+```javascript
+const configuration = {
+	iceServers: [
+		// STUN серверы
+		{
+			urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302']
+		},
+		// TURN сервер
+		{
+			urls: 'turn:turn.example.com:3478',
+			username: 'username',
+			credential: 'password'
+		}
+	]
+};
+
+const peerConnection = new RTCPeerConnection(configuration);
+```
+
+<Information title="А где брать TURN сервер?">
+
+Зачастую такие сервера селф-хостят, с помощью таких решений как [Coturn](https://github.com/coturn/coturn).
+
+</Information>
+
+### Обмен ICE-кандидатами
+
+После того как мы создали объект `RTCPeerConnection`, нам нужно обменяться ICE-кандидатами между клиентами, чтобы они могли установить соединение.
+
+По умолчанию ICE-кандидаты не отправляются автоматически между клиентами. Вместо этого, после создания `RTCPeerConnection`, нам нужно подписаться на событие `icecandidate`, которое будет вызываться каждый раз, когда новый ICE-кандидат будет найден:
+
+```javascript
+// Конфигурация ICE-серверов
+const configuration = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+// Инициализация объекта RTCPeerConnection
+const peerConnection = new RTCPeerConnection(configuration);
+
+// [!code highlight:3]
+// Подписываемся на событие icecandidate, которое будет вызываться каждый раз,
+// когда новый ICE-кандидат будет найден
+peerConnection.addEventListener('icecandidate', (event) => {
+	if (event.candidate) {
+		// [!code highlight:2]
+		// Отправляем ICE-кандидата другому клиенту через сигналинг
+		ws.send(clientId, 'new-ice-candidate', event.candidate);
+	}
+});
+```
+
+Другой клиент, в это же время должен подписаться на событие `new-ice-candidate`, чтобы получить ICE-кандидаты от первого клиента и установить их в своем `RTCPeerConnection`:
+
+```javascript
+// Конфигурация ICE-серверов
+const configuration = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+// Инициализация объекта RTCPeerConnection
+const peerConnection = new RTCPeerConnection(configuration);
+
+ws.on('new-ice-candidate', async (message) => {
+	if (message.iceCandidate) {
+		try {
+			// [!code highlight:2]
+			// Устанавливаем полученный ICE-кандидат в RTCPeerConnection
+			await peerConnection.addIceCandidate(message.iceCandidate);
+		} catch (e) {
+			console.error('Error adding received ice candidate', e);
+		}
+	}
+});
+```
+
+## Офферы (SDP)
+
+**SDP (Session Description Protocol)** - это формат, который используется для описания медиа-сессии, включая информацию о кодеках, разрешении видео, частоте кадров и других параметрах.
+
+SDP используется для обмена информацией между клиентами, чтобы они могли согласовать параметры медиа-потоков перед установлением соединения. Учитывая что SDP по сути являются предложениями общаться _на определенных условиях_, то сами сообщения содержащие SDP часто называют **офферами** и **ответами**.
+
+После инициализации `RTCPeerConnection`, нам нужно обменяться офферами и ответами, которые будут содержать SDP информацию. Этот процесс называется **обмен офферами**, вот как его можно реализовать:
+
+```javascript
+const peerConnection = new RTCPeerConnection(configuration);
+
+// Создаем оффер
+peerConnection
+	.createOffer()
+	.then((offer) => {
+		// Устанавливаем оффер в качестве локального описания
+		return peerConnection.setLocalDescription(offer);
+	})
+	.then(() => {
+		// Отправляем оффер другому клиенту через сигналинг
+		ws.send(clientId, 'sending-offer', peerConnection.localDescription);
+	})
+	.catch((error) => {
+		console.error('Ошибка при создании оффера:', error);
+	});
+```
+
+Как мы можем видеть, нам не нужно самостоятельно формировать SDP, так как WebRTC занимается этим за нас и автоматически генерирует список доступных потоков и кодеков, которые могут быть использованы для соединения.
+
+На принимающей оффер стороне мы должны установить полученный оффер в качестве удаленного описания, а затем создать ответ:
+
+```javascript
+const peerConnection = new RTCPeerConnection(configuration);
+
+ws.on('send-offer', (offer) => {
+	peerConnection
+		.setRemoteDescription(offer)
+		.then(() => {
+			// Создаем ответ на оффер
+			return peerConnection.createAnswer();
+		})
+		.then((answer) => {
+			// Устанавливаем ответ в качестве локального описания
+			return peerConnection.setLocalDescription(answer);
+		})
+		.then(() => {
+			// Отправляем ответ обратно отправителю оффера
+			ws.send(clientId, 'sending-answer', peerConnection.localDescription);
+		})
+		.catch((error) => {
+			console.error('Ошибка при обработке оффера:', error);
+		});
+});
+```
+
+Сам процесс обмена офферами можно описать визуально следующим образом:
+
+<Excalidraw src="/articles/webrtc-get-started/webrtc-offer-exchange.svg" />
+
+<Information title="Спецификация">
+
+Объект, который будет описывать сессию (SDP) называется `RTCSessionDescription`.
+
+Он описан в [спецификации WebRTC](https://www.w3.org/TR/webrtc/#rtcsessiondescription-class).
+
+</Information>
+
+# Управление потоками и треками
+
+На текущий момент мы научились создавать `RTCPeerConnection`, находить ICE-кандидатов и добавлять их в соединение, а также обмениваться офферами и ответами. Теперь мы можем перейти к управлению потоками и треками.
+
+В целом флоу (_без потоков_) выглядит следующим образом:
+
+<Excalidraw src="/articles/webrtc-get-started/wrtc-flow.svg" />
+
+По сути, когда два и более клиента обмениваются офферами и ответами, они могут начать обмениваться медиа-потоками. Для этого нам нужно добавить треки в `RTCPeerConnection`, которые будут представлять собой аудио и видео данные:
+
+```javascript
+const peerConnection = new RTCPeerConnection(configuration);
+
+// Получаем поток с камеры
+navigator.mediaDevices
+	.getUserMedia({ audio: true, video: true })
+	.then((stream) => {
+		// [!code highlight:4]
+		// Добавляем аудио и видео треки в RTCPeerConnection
+		stream.getTracks().forEach((track) => {
+			peerConnection.addTrack(track, stream);
+		});
+	})
+	.catch((error) => {
+		console.error('Ошибка при получении медиа-потока:', error);
+	});
+
+// Подписываемся на событие track, чтобы получать удаленные треки
+peerConnection.addEventListener('track', (event) => {
+	// [!code highlight:3]
+	const remoteStream = event.streams[0];
+	// Здесь мы можем использовать удаленный поток, например, воспроизвести его в видео элементе
+	const videoEl = document.getElementById('remote-video');
+	videoEl.srcObject = remoteStream;
+});
+```
+
+Для того чтобы получать удаленные треки (треки других клиентов), нам необходимо подписаться на событие `track`, которое будет вызываться каждый раз, когда новый трек будет добавлен в `RTCPeerConnection`. В этом случае мы можем получить удаленный поток и воспроизвести его в видео элементе.
+
+Добавлять потоки можно как до обмена офферами, так и после.
+
+После поиска ICE-кандидатов, их передачи друг другу, добавления треков в `RTCPeerConnection`, и обмена офферами, мы можем начать обмениваться аудио и видео данными:
+
+<WRTCOneTabCall class="mt-4" />
+
+## Динамическое отключение треков
+
+Во многих юзкейсах нам нужно динамически обновлять состояние треков в процессе работы приложения. Например, пользователь может захотеть включить или выключить камеру, микрофон, или демонстрацию экрана.
+
+Для того чтобы динамически изменять состояния треков, мы можем использовать метод `getSenders` у `RTCPeerConnection`, который возвращает массив `RTCRtpSender` объектов, представляющих треки, которые были добавлены в `RTCPeerConnection`. Мы можем использовать этот метод для получения отправителей и управления их состоянием:
+
+```javascript
+const peerConnection = new RTCPeerConnection(configuration);
+
+const turnOffMicrophone = () => {
+	// Получаем треки из потока
+	const tracks = peerConnection.getSenders().find((sender) => sender.track.kind === 'audio');
+	if (tracks) {
+		// Отключаем микрофон
+		tracks.track.enabled = false;
+	}
+};
+
+const turnOnMicrophone = () => {
+	// Получаем треки из потока
+	const tracks = peerConnection.getSenders().find((sender) => sender.track.kind === 'audio');
+	if (tracks) {
+		// Включаем микрофон
+		tracks.track.enabled = true;
+	}
+};
+```
+
+## Динамическое добавление новых треков
+
+Если у нас есть необходимость добавить новый трек в `RTCPeerConnection` после обмена офферами, мы можем сделать это следующим образом:
+
+```javascript
+const peerConnection = new RTCPeerConnection(configuration);
+
+navigator.mediaDevices
+	.getUserMedia({ audio: true, video: true })
+	.then((stream) => {
+		// Получаем новый трек из потока
+		const newTrack = stream.getTracks()[0];
+		// Добавляем новый трек в RTCPeerConnection
+		const sender = peerConnection.addTrack(newTrack, stream);
+		console.log('Новый трек добавлен:', sender);
+	})
+	.catch((error) => {
+		console.error('Ошибка при получении медиа-потока:', error);
+	});
+```
+
+## Остановка соединения
+
+Для того чтобы остановить соединение и освободить ресурсы, нам нужно остановить все треки в `RTCPeerConnection` и закрыть его:
+
+```javascript
+const peerConnection = new RTCPeerConnection(configuration);
+
+// Останавливаем все треки
+peerConnection.getSenders().forEach((sender) => {
+	sender.track.stop();
+});
+// Закрываем RTCPeerConnection
+peerConnection.close();
+```
+
+# Групповые звонки и их топология
+
+Для начала, напомню, что каждый клиент в WebRTC соединен с друг-другом с помощью Peer-to-Peer соединения (его ещё называют P2P).
+
+В частном случае, когда у нас есть всего два клиента, топология соединения выглядит следующим образом:
+
+<Excalidraw src="/articles/webrtc-get-started/peer2.svg" />
+
+Однако, когда речь заходит про групповые звонки, то топология соединений радикально изменяется, причем не в самую лучшую сторону, так как каждый из клиентов должен поддерживать соединение с каждым из других клиентов, что приводит к экспоненциальному росту количества соединений:
+
+<Excalidraw src="/articles/webrtc-get-started/peer5.svg" />
+
+Такая топология называется **mesh-соединением**.
+При такой топологии ваше устройство должно кодировать исходящие потоки для <ContentTex expression="n - 1" /> потоков, это создает большую нагрузку на процессор и видеокарту, а также увеличивает потребление трафика.
+
+Да, и если говорить про входящие потоки, то каждый клиент должен будет декодировать <ContentTex expression="n - 1" /> входящих потоков, что также создает большую нагрузку на устройство.
+
+## SFU и MCU
+
+**SFU (Selective Forwarding Unit)** представляет собой сервер-маршрутизатор, который получает медиапотоки от всех участников и перенаправляет их другим участникам. При этом:
+
+- Сервер не обрабатывает медиаданные, а только перенаправляет их
+- Каждый клиент отправляет только один поток на сервер
+- Сервер может выборочно решать, какие потоки отправлять каждому участнику
+- Возможна адаптация качества потока под возможности получателя
+
+Главное преимущество SFU — низкая задержка, так как отсутствует обработка медиа на сервере. Кроме того, нагрузка на клиентские устройства значительно ниже, чем при mesh-топологии, хотя всё ещё требуется декодировать несколько входящих потоков.
+
+<Excalidraw src="/articles/webrtc-get-started/sfu.svg" />
+
+Среди популярных решений можно выделить следующие:
+- [LiveKit](https://github.com/livekit/livekit)
+- [Mediasoup](https://mediasoup.org/)
+- [Mirotalk](https://github.com/miroslavpejic85/mirotalksfu)
+
+**MCU (Multipoint Control Unit)** — это более сложное серверное решение, которое не просто перенаправляет потоки, а обрабатывает их. MCU обеспечивает следующие возможности:
+
+- Принимает все входящие потоки и декодирует их
+- Комбинирует потоки (например, микширует аудио)
+- Создает единый выходной поток для каждого участника
+- Клиенты получают только один поток, независимо от количества участников
+- Минимальная нагрузка на клиентские устройства
+- Работает даже на слабых устройствах
+- Меньше требований к пропускной способности клиента
+
+Однако у этого подхода есть и недостатки:
+
+- Более высокая задержка из-за обработки медиа
+- Высокие требования к серверным ресурсам
+- Более дорогое решение в плане инфраструктуры
+
+Топология MCU выглядит так же, как и топология SFU:
+<Excalidraw src="/articles/webrtc-get-started/mcu.svg" />
+
+На практике часто используются гибридные решения. Например, можно использовать SFU для видео и MCU для аудио, или динамически переключаться между режимами в зависимости от ситуации.
