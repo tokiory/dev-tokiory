@@ -1,0 +1,259 @@
+% Основной документ резюме
+\documentclass[a4paper,12pt]{article}
+% Пакеты для оформления страницы и отступов
+\usepackage[a4paper,margin=0.8in]{geometry}
+\usepackage{parskip}              % Отступы между абзацами
+\usepackage{titlesec}        % Настройка заголовков секций
+\usepackage{enumitem}        % Гибкая настройка списков
+\usepackage[hidelinks]{hyperref}  % Гиперссылки без рамки
+\usepackage{xcolor}          % Цветовые определения
+\usepackage{fontspec}        % Работа со шрифтами в XeLaTeX
+\usepackage{polyglossia}     % Многоязычная поддержка
+\usepackage{ragged2e}        % Выравнивание текста
+\usepackage{environ}         % Создание собственных окружений
+\usepackage{emoji}
+
+% Языковые настройки
+\setmainlanguage{russian}
+
+% Шрифты
+\setmainfont{Libertinus Serif}      % Основной текст
+\newfontfamily\currency{Noto Serif} % Шрифт для валюты и специальных символов
+
+% Макрос для символа рубля
+\newcommand{\ruble}{{\currency\symbol{"20BD}}}
+
+% Окружение для блока опыта работы (с оригинальными vspace)
+\NewEnviron{ExperienceBlock}[3]{%
+  % #1 — Должность, #2 — Компания, #3 — Период
+  \textbf{#1 | #2}
+
+  \vspace{0.075em}
+
+  \begin{raggedright}
+    {\color{darkgray}\fontsize{10pt}{10pt}\selectfont #3}
+  \end{raggedright}
+  \vspace{0.45em}
+  \RaggedRight
+  \BODY
+  \vspace{0.8em}
+}
+
+% Макрос для записи образования
+\newcommand{\educationEntry}[4]{%
+  \begin{raggedright}
+    \textbf{#1}\\
+    \textbf{#2}\\
+    #3\\
+    % #4\\
+  \end{raggedright}
+  \vspace*{0.75em}
+}
+
+% Макрос для записи проектов
+\newcommand{\ProjectEntry}[3]{%
+  % #1 — Название, #2 — Технологии, #3 — Описание
+  \textbf{#1} -- \emph{#2}\\
+  #3\\
+}
+
+% Макрос для групп навыков
+\newcommand{\SkillGroup}[2]{%
+  % #1 — Группа, #2 — Список навыков
+  \RaggedRight
+  \textbf{#1:}\\ #2\\
+  \vspace*{0.4em}
+}
+
+% Окружение для отключения переносов
+\newenvironment{nohyphens}{%
+  \begingroup\hyphenpenalty=10000\exhyphenpenalty=10000\sloppy
+}{%
+  \endgroup
+}
+
+% Формат заголовков
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+\titleformat{\subsection}[runin]{\bfseries}{}{0em}{}[---]
+
+% Расстояние между колонками
+\setlength{\columnsep}{1cm}
+
+% Отключаем колонтитулы
+\pagestyle{empty}
+
+% Макрос для правой колонки
+\newcommand{\rc}[0]{
+\begin{minipage}[t]{0.33\textwidth}
+  \begin{flushright}
+    {\LARGE \textbf{Даниил Шило}}\\
+    \vspace*{0.5em}
+    \href{mailto:tokiory.work@gmail.com}{tokiory.work@gmail.com}\\
+    \href{https://github.com/tokiory}{github.com/tokiory}\\
+    \href{https://t.me/tokiory}{t.me/tokiory}\\
+    \vspace*{1em}
+  \end{flushright}
+
+  \section*{Скиллы}
+  \begin{nohyphens}
+    \SkillGroup{Языки}{\mbox{Javascript, Typescript, Go}}
+    \SkillGroup{Фронтенд}{React, Vue, Nuxt, Next.js, Svelte, SvelteKit}
+    \SkillGroup{Бэкенд}{Bun, Express.js, Gin}
+    \SkillGroup{Базы данных}{PostgreSQL, Supabase, Firebase}
+    \SkillGroup{DevOps}{Docker, Github Actions, Swarm, GitlabCI, Devpod}
+    \SkillGroup{Cloud}{AWS}
+  \end{nohyphens}
+  *Все библиотеки и фремворки с которыми я работал можно увидеть в конце документа
+
+
+  \section*{Образование}
+  \educationEntry{Магистр}{Программная инженерия}{Луганский Государственный Университет им. В. Даля}{2023 -- 2025}
+  \educationEntry{Бакалавр}{Программная инженерия}{Луганский Государственный Университет им. В. Даля}{2019 -- 2023}
+
+\end{minipage}
+}
+
+\begin{document}
+
+\vspace*{-2em}
+
+\begin{minipage}[t]{0.62\textwidth}
+  %%%% ЛЕВАЯ КОЛОНКА
+  \vspace*{-0.22em}
+  \section*{О себе}
+ Фулл-стек разработчик с 5-летним опытом в создании высоконагруженных веб-платформ и приложений.
+
+  \vspace{0.8em}
+
+ Специализируюсь на архитектуре, рефакторинге, менторстве и разработке корпоративных решений на базе современных JavaScript/TypeScript-стеков.
+
+  \vspace{0.8em}
+  Участвовал в разработке и оптимизации мессенджеров, платформ для онлайн-совещаний, e-commerce решений, обучающих систем, таск-трекеров и внутренних инструментов.
+
+  \vspace*{0.8em}
+
+  \section*{Опыт работы}
+
+  \begin{ExperienceBlock}{Фуллстек-разработчик}{HoffTech}{2023-2025 / Full Time / Core Team}
+    \begin{itemize}[leftmargin=*]
+      \item Занимался переходом основного проекта с Vue 3 на Nuxt 3;
+      \item Создал парсер для переменных из Figma\\ и интегрировал его в UI Kit;
+      \item Составил план для перехода и совместно с командой реализовал плавный переход на Typescript в огромной кодовой базе (\textgreater1000 компонентов);
+      \item Учавствовал в разработке системы кэширования и интеграции Nuxt 3 с Redis;
+      \item Помогал с написанием сторей и интеграцией Storybook в UI Kit, а также написанием тестов на Vitest;
+      \item Разработал стандарт по стайлингу Typescript-кода;
+      \item Оптимизировал платформозависимый код (кроссбраузерность/кроссплатформенность);
+      \item Оптимизировал показатели Core Web Vitals;
+      \item Учавствовал в митах об архитектурных решениях,\\а также лобировал решения и практики;
+      \item Переписывал большие легаси-модули, а также выполнял переход от Options API к Composition API;
+      \item Разработал кастомный механизм фетчинга данных (мультиклиент) на основе ofetch;
+      \item Внедрял логирование ошибок с помощью Sentry в SSR-версию приложения, а также написал \\кастомные плагины для обработки ошибок в Nuxt и Nitro;
+      \item Мигрировал сторы с Vuex на Pinia;
+          \item Фиксил множество багов и занимался ревью команд фронтендеров;
+    \end{itemize}
+  \end{ExperienceBlock}
+\end{minipage}
+\hfill
+%%%% ПРАВАЯ КОЛОНКА
+\rc
+
+\begin{minipage}[t]{1\textwidth}
+    \begin{itemize}[leftmargin=*]
+      \item Реализовал документацию на базе Redocly для Swagger-файлов;
+      \item Консультировал других разработчиков в вопросах относительно SSR, Nuxt и Typescript;
+        \end{itemize}
+
+\vspace*{0.8em}
+
+\begin{ExperienceBlock}{Фронтенд-разработчик}{MTS}{2022-2023 / Full Time / Web-Mobile Team}
+    \begin{itemize}[leftmargin=*]
+      \item Разрабатывал мультиплатформенное приложение на базе WebView, Ionic и Capacitor;
+     \item Учавствовал в Performance Debugging на различных платформах (iOS/Android);
+    \item Переписывал легаси Javascript-код на Typescript;
+    \item Рефакторил множество модулей;
+    \item Предлагал и согласовывал архитектурные решения с командой;
+    \item Дебажил баги в среде XCode (эмулятор);
+    \item Консультировал других разработчиков;
+    \item Проводил код-ревью;
+    \end{itemize}
+\end{ExperienceBlock}
+
+
+
+
+\begin{ExperienceBlock}{Фронтенд-разработчик}{Гранд Сервис Экспресс}{06.2021 -- 12.2021 / Full Time / Solo}
+  \begin{itemize}[leftmargin=*]
+    \item Разработал PWA-приложение для проводников;
+    \item Разработал систему отказоустойчивости при потере интернет-соединения (пул ивентов);
+    \item Написал документацию к кодовой базе;
+    \item Работал с API на базе GraphQL;
+    \item Написал E2E-тесты на возможные пользовательские сценарии (Playwright);
+    \item Реализовал мост между веб-приложением (PWA) и хостом (Android-приложением);
+    \item Активно взаимодействовал с техническим писателем, системным архитектором \\ и аналитиком;
+  \end{itemize}
+\end{ExperienceBlock}
+
+\begin{ExperienceBlock}{Фронтенд-разработчик}{Черная жемчужина}{01.2021 -- 05.2021 / Full Time / Core Team}
+  \begin{itemize}[leftmargin=*]
+    \item Занимался разработкой лендинга для компании с нуля;
+    \item Работал с Three.js для создания интерактивного элемента в блоке-герое;
+    \item Тимлидил команду, помогал PM в декомпозиции работы, а также распределял задачи;
+    \item Менторил разработчиков;
+    \item Настраивал ESLint, Prettier и другие утилиты для улучшения DX;
+  \end{itemize}
+\end{ExperienceBlock}
+
+\begin{ExperienceBlock}{Фронтенд-разработчик}{Blogman}{2020-2021 / Full Time / Frontend Team}
+  \begin{itemize}[leftmargin=*]
+    \item Разработал фичу "Спуститься к последнему сообщению";
+    \item Написал плагин для Electron, который выполнял автообновление на UNIX-подобных системах;
+    \item Писал документацию к кодовой базе;
+    \item Активно учавствовал в ретроспективах;
+    \item Написал часть функционала для меню списка чатов;
+    \item Сверстал новую версию карточки пользователя;
+    \item Менторил других разработчиков;
+    \item Проводил код-ревью;
+  \end{itemize}
+\end{ExperienceBlock}
+\end{minipage}
+\begin{minipage}[t]{1\textwidth}
+\section*{Пет-проекты}
+
+ \ProjectEntry{Developer Log}{Nuxt 3, Typescript}{\href{https://developer-log.vercel.app/}{Личный блог} с открытым исходным кодом (\href{https://github.com/tokiory/developer-log}{GitHub}).}
+
+  \ProjectEntry{Intquest}{React, Typescript, TailwindCSS, Nanostores}{Сервис подбора вопросов на собеседованиях (\href{https://github.com/tokiory/intquest}{GitHub}).}
+
+  \ProjectEntry{Termfolio}{Vue 3, Vite, Typescript}{Эмулятор терминала в браузере: \href{https://tokiory.vercel.app/}{демо} и \href{https://github.com/tokiory/termfolio}{код}.}
+
+  \ProjectEntry{Neovim Boilerplate}{Lua}{Базовый конфиг Neovim с \textasciitilde100+ звёздами на \href{https://github.com/tokiory/neovim-boilerplate}{GitHub}.}
+
+\end{minipage}
+
+\section*{Дополнительные технологии}
+\begin{nohyphens}
+  \SkillGroup{Сборщики}{Vite, Webpack, Parcel, ESBuild, Rollup, Gulp}
+
+  \SkillGroup{API}{REST API, GraphQL, WebSocket, WebRTC, gRPC}
+
+  \SkillGroup{Стейт-менеджеры}{Redux + RTK, Pinia, Vuex, Nanostores, Zustand}
+
+  \SkillGroup{Кроссплатформенные фреймворки}{Electron, Tauri, Ionic, Capacitor}
+
+  \SkillGroup{Тестирование}{Jest, Vitest, Playwright, Mocha, Chai, Supertest}
+
+  \SkillGroup{Мониторинг}{Sentry, Grafana}
+
+  \SkillGroup{Безопасность}{JWT, SSL/TLS}
+
+  \SkillGroup{UI Библиотеки и CSS-фреймворки}{Material UI, Chakra UI, shadcn/ui, PrimeVue, Tailwind, Bootstrap, Vuetify, Quasar}
+
+  \SkillGroup{Документация}{Swagger, Storybook, JSDoc, TypeDoc, Docz, VuePress, Docusaurus}
+
+  \SkillGroup{Линтеры/Форматтеры}{ESLint, Prettier, SonarQube, Stylelint}
+
+  \SkillGroup{Контейнеризация}{Docker, Docker Swarm, Kubernetes, OrbStack, Podman}
+
+  \SkillGroup{Метрики и аналитика}{Google Analytics, Yandex Metrica, Umami}
+\end{nohyphens}
+
+\end{document}
