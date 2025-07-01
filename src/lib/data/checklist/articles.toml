@@ -131,3 +131,21 @@ link = "https://habr.com/ru/articles/902084/"
 done = true
 rating = 7
 tags = ["network", "javascript", "webrtc"]
+
+[[data]]
+title = "Logging in Go: Choosing a System and Using it"
+link = "https://www.honeybadger.io/blog/golang-logging/"
+done = true
+tags = ["go"]
+
+[[data]]
+title = "Logging in Go with Slog: The Ultimate Guide"
+link = "https://betterstack.com/community/guides/logging/logging-in-go/"
+done = false
+tags = ["go"]
+
+[[data]]
+title = "Logging Best Practices: 12 Dos and Don'ts"
+link = "https://betterstack.com/community/guides/logging/logging-best-practices/"
+done = false
+tags = ["go"]
