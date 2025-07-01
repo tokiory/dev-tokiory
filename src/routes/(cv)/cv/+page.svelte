@@ -34,7 +34,7 @@
 		bind:this={headingRef}
 		class={['opacity-0 flex flex-col-reverse lg:flex-row gap-8', isWorking && 'mt-6']}
 	>
-		<DescriptionBlock />
+		<DescriptionBlock class="lg:mt-8" />
 		<PersonalBlock />
 	</div>
 

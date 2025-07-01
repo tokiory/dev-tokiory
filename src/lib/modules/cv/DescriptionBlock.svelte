@@ -1,9 +1,10 @@
 <script>
 	import ContentH1 from '@/lib/components/Content/ContentH1.svelte';
 	import ContentParagraph from '@/lib/components/Content/ContentParagraph.svelte';
+	const {class: className = ''} = $props()
 </script>
 
-<section>
+<section class={className}>
 	<ContentH1 custommark>О себе</ContentH1>
 	<ContentParagraph class="!mt-1"
 		>Фулл-стек разработчик с 5-ти летним опытом в разработке корпоративных решений.</ContentParagraph

@@ -12,6 +12,7 @@
 \usepackage{ragged2e}        % Выравнивание текста
 \usepackage{environ}         % Создание собственных окружений
 \usepackage{emoji}
+\usepackage{graphicx}
 
 % Языковые настройки
 \setmainlanguage{russian}
@@ -86,6 +87,9 @@
 \newcommand{\rc}[0]{
 \begin{minipage}[t]{0.33\textwidth}
   \begin{flushright}
+
+    \includegraphics[width=3.75cm]{avatar.jpeg} \\
+    \vspace*{1.75em}
     {\LARGE \textbf{Даниил Шило}}\\
     \vspace*{0.5em}
     \href{mailto:tokiory.work@gmail.com}{tokiory.work@gmail.com}\\
@@ -147,10 +151,8 @@
       \item Учавствовал в митах об архитектурных решениях,\\а также лобировал решения и практики;
       \item Переписывал большие легаси-модули, а также выполнял переход от Options API к Composition API;
       \item Разработал кастомный механизм фетчинга данных (мультиклиент) на основе ofetch;
-      \item Внедрял логирование ошибок с помощью Sentry в SSR-версию приложения, а также написал \\кастомные плагины для обработки ошибок в Nuxt и Nitro;
-      \item Мигрировал сторы с Vuex на Pinia;
-          \item Фиксил множество багов и занимался ревью команд фронтендеров;
-    \end{itemize}
+      \item Внедрял логирование ошибок с помощью Sentry в SSR-версию приложения;
+      \end{itemize}
   \end{ExperienceBlock}
 \end{minipage}
 \hfill
@@ -159,6 +161,8 @@
 
 \begin{minipage}[t]{1\textwidth}
     \begin{itemize}[leftmargin=*]
+    \item Мигрировал сторы с Vuex на Pinia;
+      \item Фиксил множество багов и занимался ревью команд фронтендеров;
       \item Реализовал документацию на базе Redocly для Swagger-файлов;
       \item Консультировал других разработчиков в вопросах относительно SSR, Nuxt и Typescript;
         \end{itemize}
