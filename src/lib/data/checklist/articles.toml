@@ -172,3 +172,10 @@ link = "https://medium.com/@matryer/writing-middleware-in-golang-and-how-go-make
 rating = 6
 tags = ["go"]
 done = true
+
+[[data]]
+title = 'Sharing Values with Go Handlers'
+link = "https://drstearns.github.io/tutorials/gohandlerctx/"
+rating = 9
+tags = ["go"]
+done = true
