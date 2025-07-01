@@ -155,3 +155,9 @@ title = "Introduction to Logfmt"
 link = "https://betterstack.com/community/guides/logging/logfmt/"
 done = true
 tags = ["go"]
+
+[[data]]
+title = "Middleware Patterns in Go"
+link = "https://drstearns.github.io/tutorials/gomiddleware/"
+done = true
+tags = ["go"]
