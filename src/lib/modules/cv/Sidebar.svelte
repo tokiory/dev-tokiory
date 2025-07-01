@@ -11,15 +11,6 @@
 
 <aside class="flex flex-col gap-8 shrink-0 lg:w-[320px]">
 	<section>
-		<ContentH2 custommark>Образование</ContentH2>
-		<ResumeGroupList gap="small">
-			{#each education as edu (edu.period)}
-				<EducationEntry education={edu} />
-			{/each}
-		</ResumeGroupList>
-	</section>
-
-	<section>
 		<ContentH2 custommark>Скиллы</ContentH2>
 		<ResumeGroupList gap="extrasmall">
 			{#each skills as skill (skill.category)}
@@ -45,6 +36,15 @@
 					>Свернуть расширеный список технологий</Button
 				>
 			{/if}
+		</ResumeGroupList>
+	</section>
+
+	<section>
+		<ContentH2 custommark>Образование</ContentH2>
+		<ResumeGroupList gap="small">
+			{#each education as edu (edu.period)}
+				<EducationEntry education={edu} />
+			{/each}
 		</ResumeGroupList>
 	</section>
 </aside>
