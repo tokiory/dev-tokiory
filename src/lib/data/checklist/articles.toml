@@ -135,18 +135,21 @@ tags = ["network", "javascript", "webrtc"]
 [[data]]
 title = "Logging in Go: Choosing a System and Using it"
 link = "https://www.honeybadger.io/blog/golang-logging/"
+rating = 8
 done = true
 tags = ["go"]
 
 [[data]]
 title = "Logging in Go with Slog: The Ultimate Guide"
 link = "https://betterstack.com/community/guides/logging/logging-in-go/"
+rating = 7
 done = true
 tags = ["go"]
 
 [[data]]
 title = "Logging Best Practices: 12 Dos and Don'ts"
 link = "https://betterstack.com/community/guides/logging/logging-best-practices/"
+rating = 7
 done = false
 tags = ["go"]
 
@@ -159,5 +162,13 @@ tags = ["go"]
 [[data]]
 title = "Middleware Patterns in Go"
 link = "https://drstearns.github.io/tutorials/gomiddleware/"
+rating = 8
 done = true
 tags = ["go"]
+
+[[data]]
+title = "Writing middleware in #golang and how Go makes it so much fun."
+link = "https://medium.com/@matryer/writing-middleware-in-golang-and-how-go-makes-it-so-much-fun-4375c1246e81"
+rating = 6
+tags = ["go"]
+done = true
