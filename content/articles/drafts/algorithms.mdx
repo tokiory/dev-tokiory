@@ -9,14 +9,23 @@ visualized: true
 ---
 
 <script>
-	import ArrayVisualizer from
-	'$mod/array-visualizer/components/ArrayVisualizer.svelte';
-	import {selectionSort} from '$mod/array-visualizer/data/sortings';
+	import ArrayVisualizer from '$mod/array-visualizer/components/ArrayVisualizer.svelte'; import
+	{selectionSort} from '$mod/array-visualizer/data/sortings'; import ContentExplanation from
+	'$components/Content/ContentExplanation.svelte';
 </script>
 
 Алгоритмы повсюду. Они буквально на каждом шагу, в каждом приложении и устройстве, которые мы используем каждый день.
 
-В этом посте мы рассмотрим популярные алгоритмы сортировки и их реализацию на Go, Javascript и Lua.
+В этом посте мы рассмотрим популярные алгоритмы сортировки и их реализацию на Lua.
+
+
+<ContentExplanation class="mt-4" title="Почему именно Lua?!">
+
+**Lua** — достаточно простой и легкий язык программирования, который используется в широком спектре приложений и систем.
+
+Вам не нужно знать Lua, для того чтобы понимать код, который на нём написан. Если же вы хотите узнать больше о языке, то можете глянуть [на мой туториал по Lua](/articles/lua-intro).
+
+</ContentExplanation>
 
 <ArrayVisualizer
 	autoplay
@@ -29,4 +38,5 @@ visualized: true
 На протяжении всей статьи каждый алгоритм будет сопровождаться подобными визуализациями.
 
 Вы можете контролировать прохождение алгоритма с помощью кнопок управления визуализатора, а также изменять массив, который сортируется.
+
 </ArrayVisualizer>

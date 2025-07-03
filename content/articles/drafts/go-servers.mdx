@@ -1,0 +1,95 @@
+---
+title: Разработка HTTP-сервера на Go
+description: В данной статье мы подробно рассмотрим на процесс создания структуры сервера с миддлвейрами, логерром и другими ништяками
+tags:
+  - go
+date: 2025-07-02
+---
+
+Когда я только начал писать на Go, у меня был бэкграунд написания серверов на Node.js, я писал на JS микросервисы, монолиты и всевозможные сервисы.
+
+В отличие от Go, на JS не принято писать API без использования сторонних библиотек: Express.js, Koa.js, Elysia.js и куча других библиотек и фреймворков прячут от разработчика всю неприятную и монотонную часть работы, однако, в Go стандартная библиотека `net/http` полностью невелирует потребность сторонних решений.
+
+# Базовая структура
+
+Для начала нам стоит начать с базовой структуры сервера. У любого сервера должен быть адрес, по которому мы сможем обратиться к нему, а также методы для запуска слушателя:
+
+```go
+package server
+
+import (
+	"net/http"
+)
+
+type Server struct {
+	Addr string
+}
+
+func NewServer(addr string) *Server {
+	return &Server {
+		Addr: addr,
+	}
+}
+
+func (s *Server) Start() error {
+	return http.ListenAndServe(s.Addr, nil)
+}
+```
+
+После создания данной структуры, мы уже можем запустить наш сервер, однако, пока что у него нет никаких обработчиков запросов. Для того чтобы научить сервер обрабатывать запросы, нам нужно добавить в структуру мультиплексор запросов:
+
+```go
+// [!code focus:5]
+type Server struct {
+	Addr string
+  // [!code ++]
+	mux *http.ServeMux
+}
+
+// [!code focus:7]
+func NewServer(address string) *Server {
+	return &Server{
+		Addr: address,
+	  // [!code ++]
+		mux: http.NewServeMux(),
+	}
+}
+
+func (s *Server) Start() error {
+	return http.ListenAndServe(s.Addr, s.mux)
+}
+
+// [!code focus:3] [!code ++:3]
+func (s *Server) Handle(pattern string, handler http.Handler) {
+	s.mux.Handle(pattern, handler)
+}
+```
+
+Теперь мы можем добавить базовый обработчик запроса по урлу `/v1/hello`:
+
+```go
+package main
+
+import (
+	"net/http"
+	"server_tutorial/server"
+)
+
+func main() {
+	serv := server.NewServer(":8080")
+
+	// [!code highlight:3]
+	serv.Handle("/v1/hello", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello, world!"))
+	}))
+
+	serv.Start()
+}
+```
+
+При запуске сервера мы можем обратиться к нему по адресу `http://localhost:8080/v1/hello` и увидеть ответ `Hello, world!`:
+
+```bash
+➜ curl localhost:8080/v1/hello
+"Hello, world!%"
+```

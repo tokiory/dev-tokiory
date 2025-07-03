@@ -48,9 +48,15 @@
 			const { value, done } = generator.next();
 
 			if (done) {
-				stop();
+				description = 'Готово!';
 
-				if (isRepeating) play();
+				if (isRepeating) {
+					setTimeout(() => {
+						stop();
+						play();
+					}, 2000);
+				}
+
 				return;
 			}
 
