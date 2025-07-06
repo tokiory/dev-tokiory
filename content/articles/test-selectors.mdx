@@ -1,0 +1,339 @@
+---
+title: Организация селекторов для тестирования
+description: В данной статье мы рассмотрим, как правильно организовать селекторы для тестирования веб-приложений.
+date: 2025-07-04
+tags:
+  - qa
+  - javascript
+  - typescript
+---
+
+<script>
+	import Information from '$components/Content/ContentInformation.svelte'; import CodeGallery from
+	'$mod/code-gallery/Gallery.svelte'; import CodeSlide from '$mod/code-gallery/Slide.svelte'; import
+	Heading3 from '$components/Content/ContentH3.svelte'; import Tabulator from
+	'$mod/tabulator/Tabulator.svelte'; import TabulatorTab from '$mod/tabulator/TabulatorTab.svelte';
+	import Excalidraw from '$components/Content/ContentExcalidraw.svelte';
+</script>
+
+Зачастую обычные веб-приложения не покрывают E2E тестами, однако, когда разговор заходит об административных панелях, формах биллинга и разнообразных конструкторах, то данная потребность быстро возникает. В этой статье мы рассмотрим, как правильно организовать селекторы для тестирования веб-приложений.
+
+<Information title="Фреймворк">
+
+В рамках данной статьи мы будем использовать фреймворк [Playwright](https://playwright.dev/).
+
+Вы можете использовать [Testcafe](https://testcafe.io/), [Puppeteer](https://pptr.dev/), [Cypress](https://www.cypress.io/), [WebdriverIO](https://webdriver.io/) или любую другую технологию, которая позволяет писать E2E-тесты.
+
+</Information>
+
+# Проблема нестабильных селекторов
+
+Одним из огромных минусов E2E-тестирования является скорость выполнения данных тестов.
+
+Даже если мы будем кэшировать и/или мокать запросы, то сам процесс запуска и тестирования в Headless-браузере может быть очень долгим.
+
+Если мы добавим к данной проблеме еще и нестабильные селекторы, то мы можем столкнуться с проблемой, когда тесты будут падать из-за изменений в интерфейсе, а весь прогон будет огромное количество времени.
+
+<CodeGallery class="mt-4" title="Примеры нестабильных селекторов">
+
+<CodeSlide title="Селектор с классом">
+
+Классовые селекторы являются самыми нестабильными.
+
+```ts
+await page.locator('.button-primary');
+```
+
+У данного типа селектора есть очевидные минусы:
+
+- Возможны коллизии элементов с одним и тем же классом;
+- Возможны изменения классов в зависимости от состояния программы;
+- Возможны изменения названий классов при рефакторинге кода;
+
+Более того, в интерфейсах где используются библиотеки, такие как Tailwind, классы не несут смысловой нагрузки и могут быть изменены без предупреждения.
+
+</CodeSlide>
+
+<CodeSlide title="Селектор с вложенной структурой">
+
+Селектор с вложенной структурой тоже не является сильно надежным.
+
+```ts
+await page.locator('div > div:nth-child(2) > span');
+```
+
+Обычно такие селекторы любит составлять Playwright при генерации тестов с помощью команды `npx playwright codegen`.
+Из очевидных минусов такого подхода может быть:
+
+- Сложность поддержки и обновления селекторов в случае изменения структуры страницы.
+- Нет гарантии уникальности селектора, что может привести к непредсказуемым результатам.
+- Сложность чтения и понимания селекторов, особенно в случае вложенных структур.
+
+</CodeSlide>
+
+<CodeSlide title="Ролевые селекторы">
+
+Ролевые селекторы позволяют искать элементы по их роли на странице, что делает их более стабильными и предсказуемыми, однако, этого все ещё недостаточно.
+
+```ts
+page.getByRole('heading', { name: 'Sign up' });
+```
+
+Одной из основных проблем с использованием ролевых селекторов является их ограниченность. Они не могут быть использованы для поиска элементов по их атрибутам или содержимому, что может привести к непредсказуемым результатам.
+
+Также, у них есть всё та же проблема, что и у классовых селекторов - мы можем наткнуться на коллизию элементов.
+
+</CodeSlide>
+
+</CodeGallery>
+
+# Атрибуты для тестирования
+
+Атрибут `data-testid` (или аналогичный, например, `data-test-id`, `data-test`) применяется для явной маркировки элементов, которые участвуют в автоматизированных тестах. Его назначение — обеспечить стабильную и независимую идентификацию элементов интерфейса в рамках тест-кейсов.
+
+Наименование атрибута может варьироваться в зависимости от выбранного фреймворка (Playwright, Testing Library, Cypress и др.) и внутренних соглашений команды.
+
+Если необходимо протестировать поле ввода электронной почты, элемент может быть размечен следующим образом:
+
+```html
+<input type="email" data-testid="email-input" />
+```
+
+Такой подход обладает рядом преимуществ:
+
+- **Независимость от DOM-структуры и CSS-классов** — изменения в стилях или верстке не влияют на тесты;
+- **Прозрачность и стабильность** — значения `data-testid` фиксированы и не изменяются в ходе разработки;
+- **Упрощённая поддержка** — разработчики и тестировщики получают однозначный способ обращения к элементам.
+
+Среди минусов такого подхода можно выделить самый очевидный – нам придется часто дергать команду разработки для добавления/изменения атрибутов, но это всяко лучше, чем иметь нестабильные селекторы.
+
+## Как использовать данные селекторы?
+
+Представим, что у нас есть `input`, о котором мы упомянули выше:
+
+```html
+<input type="email" data-testid="email-input" />
+```
+
+Для того чтобы получить элемент по данному селектору, мы можем использовать специальную функцию из Playwright:
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+const EMAIL_INPUT = 'email-input';
+
+test('should fill email input', async ({ page }) => {
+	await page.goto('http://localhost:3000');
+	const emailInput = page.getByTestId(EMAIL_INPUT);
+	await emailInput.fill('test@example.com');
+});
+```
+
+Если мы хотим использовать другое наименование для данного атрибута, то мы можем редактировать название данного атрибута в конфигурации Playwright:
+
+```ts filename="playwright.config.ts"
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+	use: {
+		testIdAttribute: 'data-custom-test-id'
+	}
+});
+```
+
+Если у вашего фреймворка нет поддержки нахождения элементов по атрибуту `data-testid` с помощью специального метода, то мы можем использовать синтаксис CSS для нахождения элементов по атрибуту `data-testid`:
+
+<Tabulator class="mt-4">
+
+<TabulatorTab title="Selenium">
+
+```ts
+const element = driver.findElement(By.cssSelector(`[data-testid='${TEST_SELECTOR}']`));
+```
+
+</TabulatorTab>
+
+<TabulatorTab title="TestCafe">
+
+```ts
+const element = Selector(`[data-testid='${TEST_SELECTOR}']`);
+```
+
+</TabulatorTab>
+
+</Tabulator>
+
+# Организация значений для селекторов
+
+В большинстве проектов хранение селекторов реализуется через файл `tests/constants/selectors.ts`, в котором описываются все используемые идентификаторы.
+
+Обычно для таких целей можно создать словарь с `testid`, который будет содержать все возможные `testid` приложения.
+Если вы используете Typescript, то можно использовать перечисления, для того чтобы случайно не продублировать значения `testid`:
+
+```typescript
+export enum TestIds {
+	SendButton = 'send-button',
+	CancelButton = 'cancel-button',
+	SubmitButton = 'submit-button'
+}
+```
+
+Такой подход позволяет нам убедиться в уникальности каждого из селекторов, однако, со временем данное перечисление может разрастись на тысячи и тысячи значений. Чтобы такого не случилось можно разделить словарь на части. Частями могут выступать:
+
+- Целые сервисы;
+- Страницы;
+- Тест-кейсы;
+
+Самым практичным способом деления словаря является деление на страницы:
+
+```ts
+export const loginPageSelectors = {
+	emailInput: 'login-email-input',
+	passwordInput: 'login-password-input',
+	loginButton: 'login-button'
+};
+
+export const registrationPageSelectors = {
+	emailInput: 'registration-email-input',
+	passwordInput: 'registration-password-input',
+	registrationButton: 'registration-button'
+};
+```
+
+<Information title="Коллизия значений">
+
+Обратите внимание, что при подходе с хэшмапами, вам придется самим следить за уникальностью значений.
+
+Можно использовать все те же перечисления, но для каждого раздела (в данном случае страницы), для того чтобы избежать коллизий значений внутри одного раздела:
+
+```ts
+export enum LoginSelectors {
+	EmailInput = 'login-email-input',
+	PasswordInput = 'login-password-input',
+	LoginButton = 'login-button'
+}
+
+export enum RegistrationSelectors {
+	EmailInput = 'registration-email-input',
+	PasswordInput = 'registration-password-input',
+	RegistrationButton = 'registration-button'
+}
+```
+
+</Information>
+
+## Рандомизация селекторов
+
+Когда нам нужно протестировать интерфейс, в котором есть данные в виде списка - было бы неплохо задать каждому элементу из списка уникальный селектор.
+
+Для того чтобы решить данную проблему можно использовать один из следующих подходов:
+
+1. Использование последовательно-инкрементирующегося числа;
+2. Связывание селектора с данными из списка (добавление какого-либо постфикса со значением поля элемента из списка);
+3. Использование случайно сгенерированного хэша;
+
+Предпочтительнее, конечно же, использовать третий вариант. Данный способ не использует инкрементирующееся число, которое в потенциале может дать нам коллизию, если в интерфейсе есть несколько списков одного и того же типа, а также избавляет нас от необходимости связывать селектор с данными из списка.
+
+Для того чтобы его реализовать, можно использовать встроенный объект `crypto`:
+
+```ts
+import { randomUUID } from 'crypto';
+
+export const randomizeSelector = (selector: string) => `${selector}:${randomUUID()}`;
+```
+
+```ts
+///// В файле с селекторами для формы регистрации: /////
+// Импортируем массив городов из файла cities.ts
+import { CITIES } from '@/data/cities';
+
+// Генерируем селекторы для каждого из городов
+export const cities = Array.from({ length: CITIES.length },
+  (_, i) => randomizeSelector('city')
+);
+```
+
+Очевидным минусом такого подхода является трудночитаемость селектора.
+
+## Сокрытие атрибутов
+
+Если мы активно начнем указывать `data-testid` по всему проекту, то мы вряд ли захотим чтобы кто-то кроме команды разработки и QA знал какие селекторы мы используем и как проводим тестирование.
+
+Для того чтобы скрыть атрибуты, мы можем немножко изменить процесс сборки:
+
+<Tabulator class="mt-4">
+
+<TabulatorTab title="Vue">
+
+Для [Vue](https://vuejs.org/) есть пакет [@castlenine/vite-remove-attribute](https://www.npmjs.com/package/@castlenine/vite-remove-attribute):
+
+```typescript filename="vite.config.ts"
+export default defineConfig({
+	plugins: [
+		// Плагин Vue должен быть расположен перед плагином удаления атрибутов
+		vue(),
+		process.env.NODE_ENV == 'production'
+			? removeAttribute({
+					extensions: ['vue'],
+					attributes: ['data-testid']
+				})
+			: null
+	]
+});
+```
+
+</TabulatorTab>
+
+<TabulatorTab title="Svelte">
+
+Для [Svelte](https://svelte.dev/) есть пакет [@castlenine/vite-remove-attribute](https://www.npmjs.com/package/@castlenine/vite-remove-attribute):
+
+```typescript filename="vite.config.ts"
+export default defineConfig({
+	plugins: [
+		process.env.NODE_ENV == 'production'
+			? removeAttribute({
+					extensions: ['svelte'],
+					attributes: ['data-testid']
+				})
+			: null,
+		// Плагин SvelteKit должен быть расположен после плагина удаления атрибутов
+		sveltekit()
+	]
+});
+```
+
+</TabulatorTab>
+
+<TabulatorTab title="React">
+
+Для [React](https://reactjs.org/) есть пакет [rollup-plugin-jsx-remove-attributes](https://www.npmjs.com/package/rollup-plugin-jsx-remove-attributes):
+
+```typescript filename="vite.config.ts"
+export default defineConfig({
+	build: { sourcemap: true },
+	plugins: [
+		react(),
+		removeTestIdAttribute({
+			usage: 'vite'
+		})
+	]
+});
+```
+
+</TabulatorTab>
+
+</Tabulator>
+
+## Делегирование создания селекторов
+
+В случае, когда в проекте нет ресурсов для создания `testid`-селекторов, имеет смысл делегировать создание селекторов команде QA.
+
+Обычно для такого подхода используется следующий флоу:
+
+<Excalidraw src="/articles/test-selectors/qa-dev-selectors.svg" />
+
+В случае, когда селекторы делегированы, имеет смысл указывать их в формате отличном от Javascript-объектов, для того чтобы можно
+было переиспользовать их в проектах, где для автотестов используется Python/Java.
+
+В таких случаях можно использовать формат JSON/YAML/TOML.

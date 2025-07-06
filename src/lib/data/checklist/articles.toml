@@ -115,7 +115,8 @@ tags = ["low-level", "c"]
 [[data]]
 title = "Optimize Your Struct with Alignment Trick"
 link = "https://blog.devtrovert.com/p/struct-optimization-a-small-change"
-done = false
+rating = 9
+done = true
 tags = ["low-level", "go"]
 
 [[data]]
@@ -179,3 +180,9 @@ link = "https://drstearns.github.io/tutorials/gohandlerctx/"
 rating = 9
 tags = ["go"]
 done = true
+
+[[data]]
+title = 'Гайд на полиморфизм. Что там под капотом?'
+link = 'https://habr.com/ru/articles/923178/'
+tags = ['low-level', 'java']
+done = false

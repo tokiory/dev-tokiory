@@ -92,7 +92,6 @@
 </div>
 
 <style>
-
 	.codeblock {
 		@apply max-w-full overflow-x-auto;
 		:global(pre) {
@@ -142,5 +141,4 @@
 			}
 		}
 	}
-
 </style>
