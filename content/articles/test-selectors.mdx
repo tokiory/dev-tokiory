@@ -13,10 +13,12 @@ tags:
 	'$mod/code-gallery/Gallery.svelte'; import CodeSlide from '$mod/code-gallery/Slide.svelte'; import
 	Heading3 from '$components/Content/ContentH3.svelte'; import Tabulator from
 	'$mod/tabulator/Tabulator.svelte'; import TabulatorTab from '$mod/tabulator/TabulatorTab.svelte';
-	import Excalidraw from '$components/Content/ContentExcalidraw.svelte';
+	import Excalidraw from '$components/Content/ContentExcalidraw.svelte'; import CurvyLine from
+	'$mod/animation-entity/CurvyLine.svelte'
 </script>
 
 Зачастую обычные веб-приложения не покрывают E2E тестами, однако, когда разговор заходит об административных панелях, формах биллинга и разнообразных конструкторах, то данная потребность быстро возникает. В этой статье мы рассмотрим, как правильно организовать селекторы для тестирования веб-приложений.
+
 
 <Information title="Фреймворк">
 
@@ -25,6 +27,8 @@ tags:
 Вы можете использовать [Testcafe](https://testcafe.io/), [Puppeteer](https://pptr.dev/), [Cypress](https://www.cypress.io/), [WebdriverIO](https://webdriver.io/) или любую другую технологию, которая позволяет писать E2E-тесты.
 
 </Information>
+
+<CurvyLine class="mt-8" />
 
 # Проблема нестабильных селекторов
 
@@ -248,9 +252,7 @@ export const randomizeSelector = (selector: string) => `${selector}:${randomUUID
 import { CITIES } from '@/data/cities';
 
 // Генерируем селекторы для каждого из городов
-export const cities = Array.from({ length: CITIES.length },
-  (_, i) => randomizeSelector('city')
-);
+export const cities = Array.from({ length: CITIES.length }, (_, i) => randomizeSelector('city'));
 ```
 
 Очевидным минусом такого подхода является трудночитаемость селектора.
