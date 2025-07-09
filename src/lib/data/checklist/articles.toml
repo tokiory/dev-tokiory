@@ -186,3 +186,17 @@ title = 'Гайд на полиморфизм. Что там под капото
 link = 'https://habr.com/ru/articles/923178/'
 tags = ['low-level', 'java']
 done = false
+
+[[data]]
+title = "Implementing Authentication and Authorization in Go"
+link = "https://reintech.io/blog/implementing-authentication-authorization-go"
+rating = 7
+tags = ['go']
+done = true
+
+[[data]]
+title = "The Ultimate Guide to Implementing Authentication in JavaScript Applications"
+link = "https://medium.com/@nile.bits/the-ultimate-guide-to-implementing-authentication-in-javascript-applications-bb4e13ef905d"
+rating = 8
+tags = ['javascript']
+done = true
