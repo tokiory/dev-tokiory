@@ -13,3 +13,11 @@ done = false
 tags = ["low-level", "zig"]
 link = "https://codeberg.org/ziglings/exercises/#ziglings"
 type = "repo"
+
+[[data]]
+title = "Let's Build a Regex Engine"
+link = "https://kean.blog/post/lets-build-regex"
+tags = ["low-level", "swift"]
+done = false
+description = "Туториал по созданию движка регулярных выражений"
+type = "walkthrough"
