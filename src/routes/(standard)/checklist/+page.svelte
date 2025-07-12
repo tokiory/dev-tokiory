@@ -12,11 +12,13 @@
 	import ARTICLES from '@/lib/data/checklist/articles.toml';
 	import VIDEOS from '@/lib/data/checklist/videos.toml';
 	import PROJECTS from '@/lib/data/checklist/projects.toml';
-  import RESOURCES from '@/lib/data/checklist/resources.toml'
+	import RESOURCES from '@/lib/data/checklist/resources.toml';
 	import { type ComponentProps } from 'svelte';
 	import ChecklistProgress from '@/lib/modules/checklist/ChecklistProgress.svelte';
+	import ChecklistSort from '@/lib/modules/checklist/ChecklistSort.svelte';
 	import ChecklistSearch from '@/lib/modules/checklist/ChecklistSearch.svelte';
 	import ChecklistResourceItem from '@/lib/modules/checklist/ChecklistResourceItem.svelte';
+	import type { ChecklistSort as ChecklistSortType } from '$mod/checklist/types/filter.types';
 
 	const CHECKLIST_TABS = [
 		{
@@ -74,9 +76,26 @@
 	});
 
 	let searchQuery = $state('');
+	let sort = $state<ChecklistSortType>('desc');
+
+	const handleSortChange = (value: ChecklistSortType) => {
+		sort = value;
+	};
 
 	const filteredList = $derived.by(() => {
-		const list = currentList.data;
+		let list;
+
+		switch (sort) {
+			case 'desc':
+				list = currentList.data.toReversed();
+				break;
+			case 'asc':
+				list = currentList.data;
+				break;
+			case 'done':
+				list = currentList.data.filter((item) => !item.done);
+		}
+
 		if (!searchQuery) return list;
 		return list.filter(
 			(item) =>
@@ -109,7 +128,10 @@
 			>
 		{/each}
 	</ChecklistHeader>
-	<ChecklistProgress class="mt-2" progress={currentListProgress} />
+	<div class="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-2">
+		<ChecklistProgress class="w-full" progress={currentListProgress} />
+		<ChecklistSort {sort} onupdate={handleSortChange} />
+	</div>
 	<ChecklistBrowser class="mt-3">
 		{#each filteredList as item (item.title)}
 			<CurrentItemComponent {...item}></CurrentItemComponent>
