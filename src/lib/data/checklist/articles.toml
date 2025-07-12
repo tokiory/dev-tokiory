@@ -15,7 +15,9 @@ tags = ["low-level", "c", "zig"]
 [[data]]
 title = "JavaScript. The Core."
 link = "http://dmitrysoshnikov.com/ecmascript/javascript-the-core/#execution-context-stack"
-done = false
+done = true
+rating = 10
+description = "Лучшее, что я читал из последних статей"
 tags = ["javascript"]
 
 [[data]]
