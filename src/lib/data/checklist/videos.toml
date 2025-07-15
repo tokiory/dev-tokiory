@@ -44,5 +44,6 @@ tags = ["low-level", "embedded"]
 title = "JavaScript Visualized - Execution Contexts"
 link = "https://www.youtube.com/watch?v=zdGfo6I1yrA"
 channel = "Lydia Hallie"
-done = false
+done = true
+description = "Крутое объяснение с красивой визуализацией"
 tags = ["javascript"]
