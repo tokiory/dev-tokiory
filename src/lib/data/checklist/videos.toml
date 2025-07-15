@@ -39,3 +39,10 @@ channel = "sphaerophoria"
 link = "https://www.youtube.com/watch?v=UbPqRhbMGpw"
 done = false
 tags = ["low-level", "embedded"]
+
+[[data]]
+title = "JavaScript Visualized - Execution Contexts"
+link = "https://www.youtube.com/watch?v=zdGfo6I1yrA"
+channel = "Lydia Hallie"
+done = false
+tags = ["javascript"]

@@ -202,3 +202,9 @@ link = "https://medium.com/@nile.bits/the-ultimate-guide-to-implementing-authent
 rating = 8
 tags = ['javascript']
 done = true
+
+[[data]]
+title = "Why I Won’t Use JSDOM"
+link = "https://www.epicweb.dev/why-i-won-t-use-jsdom"
+tags = ['javascript']
+done = false
