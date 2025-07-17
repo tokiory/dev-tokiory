@@ -35,6 +35,7 @@
         "@types/bun": "^1.2.10",
         "@types/node": "^22.14.1",
         "@types/throttle-debounce": "^5.0.2",
+        "@types/umami": "^2.10.0",
         "@unocss/extractor-svelte": "^66.1.0-beta.12",
         "@unocss/preset-icons": "^66.1.0-beta.12",
         "@unocss/reset": "^66.1.0-beta.12",
@@ -394,6 +395,8 @@
     "@types/node": ["@types/node@22.14.1", "", { "dependencies": { "undici-types": "~6.21.0" } }, "sha512-u0HuPQwe/dHrItgHHpmw3N2fYCR6x4ivMNbPHRkBVP4CvN+kiRrKHWk3i8tXiO/joPwXLMYvF9TTF0eqgHIuOw=="],
 
     "@types/throttle-debounce": ["@types/throttle-debounce@5.0.2", "", {}, "sha512-pDzSNulqooSKvSNcksnV72nk8p7gRqN8As71Sp28nov1IgmPKWbOEIwAWvBME5pPTtaXJAvG3O4oc76HlQ4kqQ=="],
+
+    "@types/umami": ["@types/umami@2.10.0", "", {}, "sha512-iWcs1KkcO3ooIi2rR9M5drmpQzlsT+sFiyWElIGmVwjdGlp+vQmy/VYIChYnF5ETqx7KrL80JfSkroS6dm37Hg=="],
 
     "@types/unist": ["@types/unist@2.0.11", "", {}, "sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA=="],
 

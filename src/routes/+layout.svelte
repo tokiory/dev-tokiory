@@ -25,6 +25,7 @@
 		telegramMiniAppStore.initializeMiniApp();
 
 		if (telegramMiniAppStore.isInitialized) {
+			umami.track('tma_initialized');
 			telegramMiniAppStore.refreshWindowTheme();
 			telegramMiniAppStore.refreshVerticalScroll();
 		}
