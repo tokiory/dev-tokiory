@@ -29,9 +29,15 @@
 				swipeBehavior.disableVertical();
 			}
 
-			if (backButton.mount.isAvailable() && window.location.pathname !== '/') {
+			if (backButton.mount.isAvailable()) {
 				backButton.mount();
-				backButton.show()
+
+				if (window.location.pathname === '/') {
+					backButton.show();
+				} else {
+					backButton.hide();
+				}
+
 				backButton.onClick(() => {
 					window.history.back();
 				});
