@@ -2,7 +2,7 @@
 	import '@unocss/reset/tailwind.css';
 	import 'virtual:uno.css';
 	import '@/styles/app.css';
-	import type { Snippet } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
 	import 'virtual:uno.css';
 	import '@fontsource-variable/manrope';
 	import '@fontsource-variable/martian-mono';
@@ -10,6 +10,7 @@
 	import '@unocss/reset/tailwind.css';
 	import TwitterMeta from '$mod/seo/TwitterMeta.svelte';
 	import OpengraphMeta from '$mod/seo/OpengraphMeta.svelte';
+	import { init as initTMA, swipeBehavior } from '@telegram-apps/sdk';
 
 	interface Props {
 		children: Snippet;
@@ -18,6 +19,14 @@
 	const { children }: Props = $props();
 
 	const isDevelopment = import.meta.env.MODE === 'development';
+
+	onMount(() => {
+		initTMA();
+		if (swipeBehavior.mount.isAvailable()) {
+			swipeBehavior.mount();
+			swipeBehavior.disableVertical();
+		}
+	});
 
 	const meta = {
 		title: '/dev/tokiory',
