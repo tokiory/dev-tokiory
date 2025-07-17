@@ -1,11 +1,10 @@
-import unoconfig from '$unoconfig';
 import { init as initTMA, miniApp, backButton, swipeBehavior } from '@telegram-apps/sdk';
 
 const changeInterfaceColors = () => {
 	if (miniApp.setHeaderColor.isAvailable())
-		miniApp.setHeaderColor(unoconfig.theme?.colors.frangipani['50'] || '#fff');
+		miniApp.setHeaderColor(unotheme?.colors.frangipani['50'] || '#fff');
 	if (miniApp.setBackgroundColor.isAvailable())
-		miniApp.setBackgroundColor(unoconfig.theme?.colors.frangipani['50'] || '#fff');
+		miniApp.setBackgroundColor(unotheme?.colors.frangipani['50'] || '#fff');
 };
 
 export const initializeMiniApplication = async () => {

@@ -2,9 +2,9 @@ import { sveltekit } from '@sveltejs/kit/vite';
 import extractorSvelte from '@unocss/extractor-svelte';
 import { fileURLToPath } from 'node:url';
 import unocss from 'unocss/vite';
+import unoConfig from './uno.config';
 import { defineConfig } from 'vite';
-import { ViteToml as toml } from 'vite-plugin-toml'
-
+import { ViteToml as toml } from 'vite-plugin-toml';
 
 const resolve = (path: string) => fileURLToPath(new URL(path, import.meta.url));
 
@@ -14,6 +14,9 @@ export default defineConfig({
 		fs: {
 			allow: [resolve('./content'), resolve('./uno.config.ts')]
 		}
+	},
+	define: {
+		unotheme: unoConfig.theme
 	},
 	resolve: {
 		alias: [
@@ -25,7 +28,6 @@ export default defineConfig({
 	},
 	plugins: [
 		unocss({
-			// mode: 'global',
 			extractors: [extractorSvelte()]
 		}),
 		toml(),
