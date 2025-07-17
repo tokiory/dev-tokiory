@@ -12,6 +12,7 @@
         "@iconify-json/simple-icons": "^1.2.37",
         "@iconify-json/tabler": "^1.2.17",
         "@iconify-json/vscode-icons": "^1.2.20",
+        "@telegram-apps/sdk": "^3.11.4",
         "animejs": "^4.0.1",
         "katex": "^0.16.22",
         "medium-zoom": "^1.1.0",
@@ -350,6 +351,20 @@
 
     "@sveltejs/vite-plugin-svelte-inspector": ["@sveltejs/vite-plugin-svelte-inspector@4.0.1", "", { "dependencies": { "debug": "^4.3.7" }, "peerDependencies": { "@sveltejs/vite-plugin-svelte": "^5.0.0", "svelte": "^5.0.0", "vite": "^6.0.0" } }, "sha512-J/Nmb2Q2y7mck2hyCX4ckVHcR5tu2J+MtBEQqpDrrgELZ2uvraQcK/ioCV61AqkdXFgriksOKIceDcQmqnGhVw=="],
 
+    "@telegram-apps/bridge": ["@telegram-apps/bridge@2.10.3", "", { "dependencies": { "@telegram-apps/signals": "^1.1.2", "@telegram-apps/toolkit": "^2.1.3", "@telegram-apps/transformers": "^2.2.6", "@telegram-apps/types": "^2.0.3", "better-promises": "^0.4.1", "error-kid": "^0.0.7", "mitt": "^3.0.1", "valibot": "1.0.0" } }, "sha512-mjbpxynr6g5EOQlpxuKQxDN+UTrtKLWBfJQs8BLQX0dkZVL+r7nQNAVzY2NtJHLUUCA+eUccq+yF7NkesnY46g=="],
+
+    "@telegram-apps/navigation": ["@telegram-apps/navigation@1.0.14", "", {}, "sha512-bqNgF/J8Po7ZtsELm3E1a6aPr7awwxO3sIqD8J6u12urOlGoW5+1KxKKbkPa58mgXuQdsltd8apI+OVy0IYiUA=="],
+
+    "@telegram-apps/sdk": ["@telegram-apps/sdk@3.11.4", "", { "dependencies": { "@telegram-apps/bridge": "^2.10.3", "@telegram-apps/navigation": "^1.0.14", "@telegram-apps/signals": "^1.1.2", "@telegram-apps/toolkit": "^2.1.3", "@telegram-apps/transformers": "^2.2.6", "@telegram-apps/types": "^2.0.3", "better-promises": "^0.4.1", "error-kid": "^0.0.7", "valibot": "1.0.0" } }, "sha512-en2yRVhKJwzKfT4TOAG8fwaZHAqB2CfMCE0AY7mx55+UKlPCDdRN2BVUOxdYabUoxglJUquCUpNWr4TXIeAfng=="],
+
+    "@telegram-apps/signals": ["@telegram-apps/signals@1.1.2", "", {}, "sha512-1P1kdCLX7MfETGPxH7f3UZKIsdE7Tz5S7QmN4Km1sbYQMakD5Bi1NecSMR7/wnHp50gWMI1JzENcMtCEmouhSg=="],
+
+    "@telegram-apps/toolkit": ["@telegram-apps/toolkit@2.1.3", "", {}, "sha512-LPUBL7hxQTOr+Dowyk9a1O82nQS4ja4+OYiYWtvqq5nNUHC6Gbbus0zGWCbFcj9CLnIzaeb5HWOg5iSnhoRcyg=="],
+
+    "@telegram-apps/transformers": ["@telegram-apps/transformers@2.2.6", "", { "dependencies": { "@telegram-apps/toolkit": "^2.1.3", "@telegram-apps/types": "^2.0.3", "valibot": "1.0.0-beta.14" } }, "sha512-MMBRs3demeBT9Cd614KKZmak7eEyNdEbfu99a0SwEEJe2oIODjJLrUxrhUcAOc5wvTRfrKka27VXVgruauLhdg=="],
+
+    "@telegram-apps/types": ["@telegram-apps/types@2.0.3", "", {}, "sha512-pXh9BdnLZF3e2BGc4WL+RTRMAUpqKpaSP3Rs8rB4WyRwIoRSGWFKE4gtT/9m42LGixB8YVwdo/pJ+9XO765XEA=="],
+
     "@tootallnate/once": ["@tootallnate/once@2.0.0", "", {}, "sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A=="],
 
     "@ts-morph/common": ["@ts-morph/common@0.11.1", "", { "dependencies": { "fast-glob": "^3.2.7", "minimatch": "^3.0.4", "mkdirp": "^1.0.4", "path-browserify": "^1.0.1" } }, "sha512-7hWZS0NRpEsNV8vWJzg7FEz6V8MaLNeJOmwmghqUXTpzk16V1LLZhdo+4QvE/+zv4cVci0OviuJFnqhEfoV3+g=="],
@@ -544,6 +559,8 @@
 
     "base64-js": ["base64-js@0.0.8", "", {}, "sha512-3XSA2cR/h/73EzlXXdU6YNycmYI7+kicTxks4eJg2g39biHR84slg2+des+p7iHYhbRg/udIS4TD53WabcOUkw=="],
 
+    "better-promises": ["better-promises@0.4.1", "", { "dependencies": { "error-kid": "^0.0.7" } }, "sha512-cDW7eMvhvCoWzSih5o/OxsAgTUfP05yGMq77xNZUTmcZoNU9vEeFZJ+yJJi4lnocvxFrVFKsG0Yxt7ZnuYJEig=="],
+
     "binary-extensions": ["binary-extensions@2.3.0", "", {}, "sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw=="],
 
     "bindings": ["bindings@1.5.0", "", { "dependencies": { "file-uri-to-path": "1.0.0" } }, "sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ=="],
@@ -677,6 +694,8 @@
     "end-of-stream": ["end-of-stream@1.1.0", "", { "dependencies": { "once": "~1.3.0" } }, "sha512-EoulkdKF/1xa92q25PbjuDcgJ9RDHYU2Rs3SCIvs2/dSQ3BpmxneNHmA/M7fe60M3PrV7nNGTTNbkK62l6vXiQ=="],
 
     "entities": ["entities@4.5.0", "", {}, "sha512-V0hjH4dGPh9Ao5p0MoRY6BVqtwCjhz6vI5LT8AJ55H+4g9/4vbHx1I54fS0XuclLhDHArPQCiMjDxjaL8fPxhw=="],
+
+    "error-kid": ["error-kid@0.0.7", "", {}, "sha512-8mFs7ZaDWlBFgjOy4lHLMCe2+KZfZXGx5GOgh2VQ/M1CCIvSWzbl2OMl+5fdZgrgoUfhTeF+NPhmqfEvUhN8yw=="],
 
     "es-module-lexer": ["es-module-lexer@1.4.1", "", {}, "sha512-cXLGjP0c4T3flZJKQSuziYoq7MlT+rnvfZjfp7h+I7K9BNX54kP9nyWvdbwjQ4u1iWbOL4u96fgeZLToQlZC7w=="],
 
@@ -951,6 +970,8 @@
     "minipass": ["minipass@7.1.2", "", {}, "sha512-qOOzS1cBTWYF4BH8fVePDBOO9iptMnGUEZwNc/cMWnTV2nVLZ7VoNWEPHkYczZA0pdoA7dl6e7FL659nX9S2aw=="],
 
     "minizlib": ["minizlib@2.1.2", "", { "dependencies": { "minipass": "^3.0.0", "yallist": "^4.0.0" } }, "sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg=="],
+
+    "mitt": ["mitt@3.0.1", "", {}, "sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw=="],
 
     "mkdirp": ["mkdirp@1.0.4", "", { "bin": { "mkdirp": "bin/cmd.js" } }, "sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw=="],
 
@@ -1256,6 +1277,8 @@
 
     "v8-compile-cache-lib": ["v8-compile-cache-lib@3.0.1", "", {}, "sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg=="],
 
+    "valibot": ["valibot@1.0.0", "", { "peerDependencies": { "typescript": ">=5" }, "optionalPeers": ["typescript"] }, "sha512-1Hc0ihzWxBar6NGeZv7fPLY0QuxFMyxwYR2sF1Blu7Wq7EnremwY2W02tit2ij2VJT8HcSkHAQqmFfl77f73Yw=="],
+
     "vercel": ["vercel@41.6.2", "", { "dependencies": { "@vercel/build-utils": "10.5.1", "@vercel/fun": "1.1.5", "@vercel/go": "3.2.1", "@vercel/hydrogen": "1.2.0", "@vercel/next": "4.7.8", "@vercel/node": "5.1.14", "@vercel/python": "4.7.2", "@vercel/redwood": "2.3.0", "@vercel/remix-builder": "5.4.3", "@vercel/ruby": "2.2.0", "@vercel/static-build": "2.7.6", "chokidar": "4.0.0", "jose": "5.9.6" }, "bin": { "vc": "dist/vc.js", "vercel": "dist/vc.js" } }, "sha512-NcC6+1HF/gc/uVpfRM4aFoOcyN/622pDdaXYSDvc5egavPXLoLzdFd3DUSDKAvy2jNcD1quStUKwmoU8xdKIcA=="],
 
     "vfile": ["vfile@6.0.3", "", { "dependencies": { "@types/unist": "^3.0.0", "vfile-message": "^4.0.0" } }, "sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q=="],
@@ -1327,6 +1350,8 @@
     "@mapbox/node-pre-gyp/node-fetch": ["node-fetch@2.6.9", "", { "dependencies": { "whatwg-url": "^5.0.0" }, "peerDependencies": { "encoding": "^0.1.0" }, "optionalPeers": ["encoding"] }, "sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg=="],
 
     "@mapbox/node-pre-gyp/tar": ["tar@7.4.3", "", { "dependencies": { "@isaacs/fs-minipass": "^4.0.0", "chownr": "^3.0.0", "minipass": "^7.1.2", "minizlib": "^3.0.1", "mkdirp": "^3.0.1", "yallist": "^5.0.0" } }, "sha512-5S7Va8hKfV7W5U6g3aYxXmlPoZVAwUMy9AOKyF2fVuZa2UD3qZjg578OrLRt8PcNN1PleVaL/5/yYATNL0ICUw=="],
+
+    "@telegram-apps/transformers/valibot": ["valibot@1.0.0-beta.14", "", { "peerDependencies": { "typescript": ">=5" }, "optionalPeers": ["typescript"] }, "sha512-tLyV2rE5QL6U29MFy3xt4AqMrn+/HErcp2ZThASnQvPMwfSozjV1uBGKIGiegtZIGjinJqn0SlBdannf18wENA=="],
 
     "@typescript-eslint/typescript-estree/minimatch": ["minimatch@9.0.5", "", { "dependencies": { "brace-expansion": "^2.0.1" } }, "sha512-G6T0ZX48xgozx7587koeX9Ys2NYy6Gmv//P89sEte9V9whIapMNF4idKxnW2QtCcLiTWlb/wfCabAtAFWhhBow=="],
 
