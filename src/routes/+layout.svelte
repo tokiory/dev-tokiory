@@ -27,6 +27,10 @@
 		}
 	};
 
+	$effect(() => {
+		handleHistoryChange(window.location.pathname);
+	});
+
 	onMount(() => {
 		telegramMiniAppStore.initializeMiniApp();
 
@@ -35,14 +39,6 @@
 			telegramMiniAppStore.refreshWindowTheme();
 			telegramMiniAppStore.refreshVerticalScroll();
 		}
-
-		const onPopState = () => handleHistoryChange(window.location.pathname);
-
-		addEventListener('popstate', onPopState);
-
-		return () => {
-			removeEventListener('popstate', onPopState);
-		};
 	});
 
 	afterNavigate((afterNav) => {

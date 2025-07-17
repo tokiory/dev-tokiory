@@ -42,7 +42,7 @@ export const telegramMiniAppStore = {
 				backButton.mount();
 
 				backButton.onClick(() => {
-					window.history.back();
+					history.back();
 				});
 			}
 
