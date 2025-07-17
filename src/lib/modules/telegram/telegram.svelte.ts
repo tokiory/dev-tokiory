@@ -43,7 +43,6 @@ export const telegramMiniAppStore = {
 
 				backButton.onClick(() => {
 					window.history.back();
-					this.refreshBackButton();
 				});
 			}
 
@@ -55,7 +54,6 @@ export const telegramMiniAppStore = {
 		} catch (error) {
 			isInitialized = false;
 			console.error('Error initializing mini application:', error);
-			throw error;
 		}
 	},
 	refreshConstraints: () => {
@@ -67,17 +65,12 @@ export const telegramMiniAppStore = {
 	},
 	refreshVerticalScroll: function () {
 		if (!this.mounts.swipeBehavior) return;
-
-		if (window.location.pathname === '/') {
-			swipeBehavior.disableVertical();
-		} else {
-			swipeBehavior.enableVertical();
-		}
+		swipeBehavior.disableVertical();
 	},
-	refreshBackButton: function () {
+	refreshBackButton: function (path: string) {
 		if (!this.mounts.backButton) return;
 
-		if (window.location.pathname === '/') {
+		if (path === '/') {
 			backButton.hide();
 		} else {
 			backButton.show();

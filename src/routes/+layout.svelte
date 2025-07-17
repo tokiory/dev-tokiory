@@ -31,9 +31,9 @@
 		}
 	});
 
-	afterNavigate(() => {
+	afterNavigate((afterNav) => {
 		if (telegramMiniAppStore.isInitialized) {
-			telegramMiniAppStore.refreshBackButton();
+			telegramMiniAppStore.refreshBackButton(afterNav.to?.url.pathname || '');
 		}
 	});
 
