@@ -11,7 +11,7 @@
 	import '@unocss/reset/tailwind.css';
 	import TwitterMeta from '$mod/seo/TwitterMeta.svelte';
 	import OpengraphMeta from '$mod/seo/OpengraphMeta.svelte';
-	import { initializeMiniApplication, handleBackButton } from '@/lib/modules/telegram';
+	import { telegramMiniAppStore } from '@/lib/modules/telegram';
 
 	interface Props {
 		children: Snippet;
@@ -21,17 +21,20 @@
 
 	const isDevelopment = import.meta.env.MODE === 'development';
 
-	onMount(async () => {
-		try {
-			await initializeMiniApplication();
-		} catch {
-			console.warn(
-				'Failed to initialize Telegram Mini Application, continuing without integrations'
-			);
+	onMount(() => {
+		telegramMiniAppStore.initializeMiniApp();
+
+		if (telegramMiniAppStore.isInitialized) {
+			telegramMiniAppStore.refreshWindowTheme();
+			telegramMiniAppStore.refreshVerticalScroll();
 		}
 	});
 
-	afterNavigate(handleBackButton);
+	afterNavigate(() => {
+		if (telegramMiniAppStore.isInitialized) {
+			telegramMiniAppStore.refreshBackButton();
+		}
+	});
 
 	const meta = {
 		title: '/dev/tokiory',
