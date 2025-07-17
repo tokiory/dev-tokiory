@@ -7,6 +7,16 @@ const changeInterfaceColors = () => {
 		miniApp.setBackgroundColor(unotheme?.colors.frangipani['50'] || '#fff');
 };
 
+export const handleBackButton = () => {
+	if (!backButton.isMounted()) return;
+
+	if (window.location.pathname === '/') {
+		backButton.hide();
+	} else {
+		backButton.show();
+	}
+};
+
 export const initializeMiniApplication = async () => {
 	initTMA();
 
@@ -23,11 +33,12 @@ export const initializeMiniApplication = async () => {
 	if (isBackButtonAvailable) {
 		backButton.mount();
 
-		if (window.location.pathname === '/') {
-			backButton.hide();
-		} else {
-			backButton.show();
-		}
+		backButton.onClick(() => {
+			window.history.back();
+      handleBackButton();
+		});
+
+		handleBackButton();
 	}
 
 	if (isSwipeAvailable) {

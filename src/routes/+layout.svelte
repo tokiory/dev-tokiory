@@ -6,11 +6,12 @@
 	import 'virtual:uno.css';
 	import '@fontsource-variable/manrope';
 	import '@fontsource-variable/martian-mono';
+	import { afterNavigate } from '$app/navigation';
 
 	import '@unocss/reset/tailwind.css';
 	import TwitterMeta from '$mod/seo/TwitterMeta.svelte';
 	import OpengraphMeta from '$mod/seo/OpengraphMeta.svelte';
-	import { initializeMiniApplication } from '@/lib/modules/telegram';
+	import { initializeMiniApplication, handleBackButton } from '@/lib/modules/telegram';
 
 	interface Props {
 		children: Snippet;
@@ -29,6 +30,8 @@
 			);
 		}
 	});
+
+	afterNavigate(handleBackButton);
 
 	const meta = {
 		title: '/dev/tokiory',
