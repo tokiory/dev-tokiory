@@ -10,7 +10,7 @@
 	import '@unocss/reset/tailwind.css';
 	import TwitterMeta from '$mod/seo/TwitterMeta.svelte';
 	import OpengraphMeta from '$mod/seo/OpengraphMeta.svelte';
-	import { init as initTMA, swipeBehavior } from '@telegram-apps/sdk';
+	import { init as initTMA, swipeBehavior, backButton } from '@telegram-apps/sdk';
 
 	interface Props {
 		children: Snippet;
@@ -20,12 +20,29 @@
 
 	const isDevelopment = import.meta.env.MODE === 'development';
 
-	onMount(() => {
-		initTMA();
-		if (swipeBehavior.mount.isAvailable()) {
-			swipeBehavior.mount();
-			swipeBehavior.disableVertical();
+	const initializeTelegramMiniApp = () => {
+		try {
+			initTMA();
+
+			if (swipeBehavior.mount.isAvailable()) {
+				swipeBehavior.mount();
+				swipeBehavior.disableVertical();
+			}
+
+			if (backButton.mount.isAvailable() && window.location.pathname !== '/') {
+				backButton.mount();
+				backButton.show()
+				backButton.onClick(() => {
+					window.history.back();
+				});
+			}
+		} catch {
+			console.warn('Telegram Mini App is not initialized, continuing without integration...');
 		}
+	};
+
+	onMount(() => {
+		initializeTelegramMiniApp();
 	});
 
 	const meta = {
