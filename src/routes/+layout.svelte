@@ -21,6 +21,12 @@
 
 	const isDevelopment = import.meta.env.MODE === 'development';
 
+	const handleHistoryChange = (url: string) => {
+		if (telegramMiniAppStore.isInitialized) {
+			telegramMiniAppStore.refreshBackButton(url);
+		}
+	};
+
 	onMount(() => {
 		telegramMiniAppStore.initializeMiniApp();
 
@@ -29,12 +35,18 @@
 			telegramMiniAppStore.refreshWindowTheme();
 			telegramMiniAppStore.refreshVerticalScroll();
 		}
+
+		const onPopState = () => handleHistoryChange(window.location.pathname);
+
+		addEventListener('popstate', onPopState);
+
+		return () => {
+			removeEventListener('popstate', onPopState);
+		};
 	});
 
 	afterNavigate((afterNav) => {
-		if (telegramMiniAppStore.isInitialized) {
-			telegramMiniAppStore.refreshBackButton(afterNav.to?.url.pathname || '');
-		}
+		handleHistoryChange(afterNav.to?.url.pathname || '');
 	});
 
 	const meta = {
