@@ -5,7 +5,7 @@
 }
 
 .main {
-  @apply px-3 pt-14 pb-8;
+  @apply px-3 pt-8 sm:pt-14 pb-8;
   max-width: 854px;
 }
 
