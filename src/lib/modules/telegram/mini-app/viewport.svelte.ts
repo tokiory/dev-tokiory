@@ -8,6 +8,9 @@ export const viewportStore = {
 	get isMounted() {
 		return viewport.isMounted();
 	},
+	get isReady() {
+		return this.isAvailable && this.isMounted;
+	},
 	async initialize() {
 		if (!this.isAvailable) {
 			warn("Swipe Behaviour isn't available");
