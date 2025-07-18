@@ -82,9 +82,9 @@
 			</ul>
 		</aside>
 	</div>
-	<div>
+	<div class="sm:hidden">
 		<TelegramFullscreenButton />
-		<button aria-label="Menu" onclick={onmenu} class="py-1 pl-3 sm:hidden text-xl cursor-pointer">
+		<button aria-label="Menu" onclick={onmenu} class="py-1 pl-3 text-xl cursor-pointer">
 			<div class="i-tabler-menu-2"></div>
 		</button>
 	</div>
