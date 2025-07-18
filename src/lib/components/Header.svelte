@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Link from '$components/Link.svelte';
 	import { GITHUB_LINK, HABR_LINK, TELEGRAM_LINK } from '$lib/data/links';
-	import { LinkEvent } from '@mod/umami';
+	import { UmamiLinkEvent } from '$mod/umami';
 	import TelegramFullscreenButton from './Header/TelegramFullscreenButton.svelte';
 	import Logo from './Logo.svelte';
 
@@ -19,7 +19,7 @@
 			<ul class="flex gap-5 justify-end items-center">
 				<li>
 					<Link
-						data-umami-event={LinkEvent.ArticleListing}
+						data-umami-event={UmamiLinkEvent.ArticleListing}
 						data-umami-event-place="header"
 						class="relative"
 						darker
@@ -33,7 +33,7 @@
 				</li>
 				<li>
 					<Link
-						data-umami-event={LinkEvent.ChecklistItem}
+						data-umami-event={UmamiLinkEvent.ChecklistItem}
 						data-umami-event-place="header"
 						class="relative"
 						darker
@@ -52,7 +52,7 @@
 			<ul class="flex text-sm gap-3 justify-end items-center">
 				<li>
 					<Link
-						data-umami-event={LinkEvent.Social}
+						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="header"
 						data-umami-event-type="telegram"
 						darker
@@ -62,7 +62,7 @@
 				</li>
 				<li>
 					<Link
-						data-umami-event={LinkEvent.Social}
+						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="header"
 						data-umami-event-type="github"
 						darker
@@ -72,7 +72,7 @@
 				</li>
 				<li>
 					<Link
-						data-umami-event={LinkEvent.Social}
+						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="header"
 						data-umami-event-type="habr"
 						darker

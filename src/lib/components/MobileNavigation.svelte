@@ -9,7 +9,7 @@
 	import ContentH3 from './Content/ContentH3.svelte';
 	import { telegramMiniApp } from '../modules/telegram/mini-app';
 	import type { MouseEventHandler } from 'svelte/elements';
-	import { LinkEvent } from '@mod/umami';
+	import { UmamiLinkEvent } from '$mod/umami';
 
 	const LINKS = [
 		{ href: '/', text: 'Главная' },
@@ -134,7 +134,7 @@
 			<ul class="flex gap-2 mt-4">
 				<li>
 					<Link
-						data-umami-event={LinkEvent.Social}
+						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="mobile-nav"
 						data-umami-event-type="telegram"
 						darker
@@ -145,7 +145,7 @@
 				</li>
 				<li>
 					<Link
-						data-umami-event={LinkEvent.Social}
+						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="mobile-nav"
 						data-umami-event-type="github"
 						darker
@@ -156,7 +156,7 @@
 				</li>
 				<li>
 					<Link
-						data-umami-event={LinkEvent.Social}
+						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="mobile-nav"
 						data-umami-event-type="habr"
 						darker

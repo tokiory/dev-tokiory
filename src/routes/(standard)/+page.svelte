@@ -7,7 +7,7 @@
 	import Greeting from '$components/Greeting.svelte';
 	import { animate } from 'animejs';
 	import { fadeUp } from '@/lib/animations/fadeUp';
-	import { LinkEvent } from '@mod/umami';
+	import { UmamiLinkEvent } from '$mod/umami';
 
 	let { data }: PageProps = $props();
 	const posts = $derived(data.articles);
@@ -38,7 +38,7 @@
 
 <div bind:this={articlesRef} class="flex opacity-0 flex-col gap-2 mt-12">
 	<ListingHeader
-		data-umami-event={LinkEvent.ArticleListing}
+		data-umami-event={UmamiLinkEvent.ArticleListing}
 		data-umami-event-place="main-page"
 		counter={amount}
 		href="/articles">Статьи</ListingHeader
