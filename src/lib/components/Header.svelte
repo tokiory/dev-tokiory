@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Link from '$components/Link.svelte';
 	import { GITHUB_LINK, HABR_LINK, TELEGRAM_LINK } from '$lib/data/links';
+	import TelegramFullscreenButton from './Header/TelegramFullscreenButton.svelte';
 	import Logo from './Logo.svelte';
 
 	interface Props {
@@ -81,7 +82,10 @@
 			</ul>
 		</aside>
 	</div>
-	<button aria-label="Menu" onclick={onmenu} class="py-1 pl-3 sm:hidden text-xl cursor-pointer">
-		<div class="i-tabler-menu-2"></div>
-	</button>
+	<div>
+		<TelegramFullscreenButton />
+		<button aria-label="Menu" onclick={onmenu} class="py-1 pl-3 sm:hidden text-xl cursor-pointer">
+			<div class="i-tabler-menu-2"></div>
+		</button>
+	</div>
 </header>

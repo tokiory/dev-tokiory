@@ -4,6 +4,7 @@ import { windowStore } from './window.svelte';
 import { historyStore } from './history.svelte';
 import { warn } from './logger';
 import { paramStore } from './param.svelte';
+import { viewportStore } from './viewport.svelte';
 
 let isInitialized = $state(false);
 
@@ -12,6 +13,7 @@ export const telegramMiniApp = {
 	swipeBehaviourStore,
 	historyStore,
 	paramStore,
+	viewportStore,
 	get isTelegramEnv() {
 		return isTMA();
 	},

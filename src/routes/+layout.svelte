@@ -46,6 +46,8 @@
 				headerColor: unotheme?.colors.frangipani['50'] || '#fff'
 			});
 
+			telegramMiniApp.viewportStore.initialize()
+
 			telegramMiniApp.swipeBehaviourStore.initialize();
 			telegramMiniApp.swipeBehaviourStore.toggleVerticalScroll();
 
