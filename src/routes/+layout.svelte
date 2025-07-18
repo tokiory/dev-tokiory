@@ -3,6 +3,7 @@
 	import 'virtual:uno.css';
 	import '@/styles/app.css';
 	import { onMount, type Snippet } from 'svelte';
+	import { goto } from '$app/navigation';
 	import 'virtual:uno.css';
 	import '@fontsource-variable/manrope';
 	import '@fontsource-variable/martian-mono';
@@ -33,12 +34,12 @@
 		handleHistoryChange(window.location.pathname);
 	});
 
-	onMount(() => {
+	onMount(async () => {
 		telegramMiniApp.initializeMiniApp();
 
-		if (telegramMiniApp.isTelegramEnv) {
-			console.log(1);
+		if (telegramMiniApp.isInitialized) {
 			umami.track('tma_initialized');
+
 			telegramMiniApp.windowStore.initialize();
 			telegramMiniApp.windowStore.setTheme({
 				backgroundColor: unotheme?.colors.frangipani['50'] || '#fff',
@@ -52,6 +53,10 @@
 			telegramMiniApp.historyStore.setBackButtonListener(() => {
 				history.back();
 			});
+
+			if (telegramMiniApp.paramStore.article) {
+				await goto('/article/' + telegramMiniApp.paramStore.article);
+			}
 		}
 	});
 
