@@ -8,13 +8,13 @@ export const viewportStore = {
 	get isMounted() {
 		return viewport.isMounted();
 	},
-	initialize() {
+	async initialize() {
 		if (!this.isAvailable) {
 			warn("Swipe Behaviour isn't available");
 			return;
 		}
 
-		viewport.mount();
+		await viewport.mount();
 	},
 	async maximize() {
 		if (!this.isMounted) {
