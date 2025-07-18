@@ -1,3 +1,4 @@
+import { sentrySvelteKit } from '@sentry/sveltekit';
 import { sveltekit } from '@sveltejs/kit/vite';
 import extractorSvelte from '@unocss/extractor-svelte';
 import { fileURLToPath } from 'node:url';
@@ -27,6 +28,12 @@ export default defineConfig({
 		]
 	},
 	plugins: [
+		sentrySvelteKit({
+			sourceMapsUploadOptions: {
+				org: 'devtokiory',
+				project: 'dev-tokiory'
+			}
+		}),
 		unocss({
 			extractors: [extractorSvelte()]
 		}),
