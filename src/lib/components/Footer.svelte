@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Link from '$components/Link.svelte';
 	import { telegramMiniApp } from '$mod/telegram/mini-app';
+	import { LinkEvent } from '@mod/umami';
 
 	interface Props {
 		class?: string;
@@ -33,7 +34,7 @@
 		<Link href="/setup">Сетап</Link>
 		<span class="md:block hidden"> • </span>
 		<Link
-			data-umami-event="source-code-click"
+			data-umami-event={LinkEvent.SourceCode}
 			target="_blank"
 			href="https://github.com/tokiory/dev-tokiory">Исходный код</Link
 		>
