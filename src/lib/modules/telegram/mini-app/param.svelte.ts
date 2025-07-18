@@ -1,5 +1,5 @@
 const enum TelegramParam {
-	StartParam = 'tgWebAppStartParam'
+	StartParam = 'start_param'
 }
 
 export const paramStore = {
