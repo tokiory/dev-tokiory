@@ -7,14 +7,28 @@
 	import { animate, createSpring, JSAnimation } from 'animejs';
 	import { onMount } from 'svelte';
 	import ContentH3 from './Content/ContentH3.svelte';
+	import { telegramMiniApp } from '../modules/telegram/mini-app';
+	import type { PointerEventHandler } from 'svelte/elements';
 
 	const LINKS = [
 		{ href: '/', text: 'Главная' },
-		{ href: '/articles', text: 'Статьи', event: 'articles-link-click', 'event-place': 'mobile-nav' },
-		{ href: '/checklist', text: 'Чеклисты', event: 'checklist-link-click', 'event-place': 'mobile-nav' }
+		{
+			href: '/articles',
+			text: 'Статьи',
+			event: 'articles-link-click',
+			'event-place': 'mobile-nav'
+		},
+		{
+			href: '/checklist',
+			text: 'Чеклисты',
+			event: 'checklist-link-click',
+			'event-place': 'mobile-nav'
+		}
 	];
 	const CLOSE_DY = 300;
 	const MENU_SPRING = createSpring({ damping: 14 });
+
+	const isTelegram = telegramMiniApp.isTelegramEnv;
 
 	interface Props {
 		onclose: () => void;
@@ -36,6 +50,20 @@
 
 	const handlePointerDown = (event: PointerEvent) => {
 		startPointerY = event.y;
+	};
+
+	const handleBackdropClick: PointerEventHandler<HTMLDivElement> = (event) => {
+		const isBackdropClick = event.target === event.currentTarget;
+		if (!(isTelegram && mobileNavRef && isBackdropClick)) return;
+
+		animate(mobileNavRef, {
+			duration: 300,
+			ease: MENU_SPRING,
+			translateY: [`${-window.innerHeight}px`],
+			onComplete: () => {
+				onclose();
+			}
+		});
 	};
 
 	const handlePointerUp = async () => {
@@ -77,7 +105,10 @@
 </script>
 
 <div bind:this={mobileNavRef} class="mobile-nav fixed flex flex-col z-24 inset-0">
-	<Backdrop class="px-3 w-full grow-1 pt-14 pb-4 flex flex-col justify-between">
+	<Backdrop
+		onpointerdown={handleBackdropClick}
+		class="px-3 w-full grow-1 pt-14 pb-4 flex flex-col justify-between"
+	>
 		<div class="flex flex-col gap-4">
 			<ContentH1 custommark nospy>Навигация</ContentH1>
 			<ul class="flex flex-col gap-2">
