@@ -35,3 +35,8 @@ export const telegramMiniApp = {
 		}
 	}
 };
+
+if (!import.meta.env.SSR && import.meta.env['VITE_IS_TMA_MOCK'] === '1') {
+	console.log('Running in TMA mock mode');
+	await import('./mock');
+}
