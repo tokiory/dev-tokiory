@@ -2,10 +2,10 @@
 	import { telegramMiniApp } from '@/lib/modules/telegram/mini-app';
 
 	let isMaximized = $state(false);
-	let isTMAInitialize = telegramMiniApp.isInitialized;
+	let isTMAInitialized = $derived(telegramMiniApp.isInitialized);
 
 	const toggleFullscreen = async () => {
-		if (!isTMAInitialize) return;
+		if (!isTMAInitialized) return;
 
 		if (!telegramMiniApp.viewportStore.isFullscreen) {
 			await telegramMiniApp.viewportStore.maximize();
@@ -17,7 +17,7 @@
 	};
 </script>
 
-{#if isTMAInitialize}
+{#if isTMAInitialized}
 	<button
 		onclick={toggleFullscreen}
 		aria-label="Fullscreen"
