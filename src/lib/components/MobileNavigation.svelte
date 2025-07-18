@@ -28,7 +28,7 @@
 	const CLOSE_DY = 300;
 	const MENU_SPRING = createSpring({ damping: 14 });
 
-	const isTelegram = telegramMiniApp.isTelegramEnv;
+	const isTelegram = $derived(telegramMiniApp.isInitialized);
 
 	interface Props {
 		onclose: () => void;
