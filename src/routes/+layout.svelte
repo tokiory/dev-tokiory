@@ -13,6 +13,7 @@
 	import TwitterMeta from '$mod/seo/TwitterMeta.svelte';
 	import OpengraphMeta from '$mod/seo/OpengraphMeta.svelte';
 	import { telegramMiniApp } from '@/lib/modules/telegram/mini-app';
+	import { trackEvent, UmamiMiniAppEvent } from '$mod/umami';
 
 	interface Props {
 		children: Snippet;
@@ -38,9 +39,10 @@
 		telegramMiniApp.initializeMiniApp();
 
 		if (telegramMiniApp.isTelegramEnv) {
-			umami.track('tma_initialized');
+			trackEvent(UmamiMiniAppEvent.Initialized);
 
 			if (telegramMiniApp.paramStore.article) {
+				trackEvent(UmamiMiniAppEvent.ArticleOpen);
 				await goto('/articles/' + telegramMiniApp.paramStore.article);
 			}
 
@@ -59,7 +61,6 @@
 			telegramMiniApp.historyStore.setBackButtonListener(() => {
 				history.back();
 			});
-
 		}
 	});
 
