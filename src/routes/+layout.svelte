@@ -11,7 +11,7 @@
 	import '@unocss/reset/tailwind.css';
 	import TwitterMeta from '$mod/seo/TwitterMeta.svelte';
 	import OpengraphMeta from '$mod/seo/OpengraphMeta.svelte';
-	import { telegramMiniAppStore } from '@/lib/modules/telegram';
+	import { telegramMiniApp } from '@/lib/modules/telegram/mini-app';
 
 	interface Props {
 		children: Snippet;
@@ -21,9 +21,11 @@
 
 	const isDevelopment = import.meta.env.MODE === 'development';
 
-	const handleHistoryChange = (url: string) => {
-		if (telegramMiniAppStore.isInitialized) {
-			telegramMiniAppStore.refreshBackButton(url);
+	const handleHistoryChange = (path: string) => {
+		if (path === '/') {
+			telegramMiniApp.historyStore.hideBackButton();
+		} else {
+			telegramMiniApp.historyStore.showBackButton();
 		}
 	};
 
@@ -32,12 +34,24 @@
 	});
 
 	onMount(() => {
-		telegramMiniAppStore.initializeMiniApp();
+		telegramMiniApp.initializeMiniApp();
 
-		if (telegramMiniAppStore.isInitialized) {
+		if (telegramMiniApp.isTelegramEnv) {
+			console.log(1);
 			umami.track('tma_initialized');
-			telegramMiniAppStore.refreshWindowTheme();
-			telegramMiniAppStore.refreshVerticalScroll();
+			telegramMiniApp.windowStore.initialize();
+			telegramMiniApp.windowStore.setTheme({
+				backgroundColor: unotheme?.colors.frangipani['50'] || '#fff',
+				headerColor: unotheme?.colors.frangipani['50'] || '#fff'
+			});
+
+			telegramMiniApp.swipeBehaviourStore.initialize();
+			telegramMiniApp.swipeBehaviourStore.toggleVerticalScroll();
+
+			telegramMiniApp.historyStore.initialize();
+			telegramMiniApp.historyStore.setBackButtonListener(() => {
+				history.back();
+			});
 		}
 	});
 
