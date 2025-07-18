@@ -8,7 +8,7 @@
 	import { onMount } from 'svelte';
 	import ContentH3 from './Content/ContentH3.svelte';
 	import { telegramMiniApp } from '../modules/telegram/mini-app';
-	import type { PointerEventHandler } from 'svelte/elements';
+	import type { MouseEventHandler } from 'svelte/elements';
 
 	const LINKS = [
 		{ href: '/', text: 'Главная' },
@@ -52,7 +52,7 @@
 		startPointerY = event.y;
 	};
 
-	const handleBackdropClick: PointerEventHandler<HTMLDivElement> = (event) => {
+	const handleBackdropClick: MouseEventHandler<HTMLDivElement> = (event) => {
 		const isBackdropClick = event.target === event.currentTarget;
 		if (!(isTelegram && mobileNavRef && isBackdropClick)) return;
 
@@ -106,7 +106,7 @@
 
 <div bind:this={mobileNavRef} class="mobile-nav fixed flex flex-col z-24 inset-0">
 	<Backdrop
-		onpointerdown={handleBackdropClick}
+		onclick={handleBackdropClick}
 		class="px-3 w-full grow-1 pt-14 pb-4 flex flex-col justify-between"
 	>
 		<div class="flex flex-col gap-4">
