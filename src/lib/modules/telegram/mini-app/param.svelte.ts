@@ -1,15 +1,22 @@
 const enum TelegramParam {
-	StartParam = 'tgWebAppStartParam'
+	Data = 'tgWebAppData',
+	Start = 'tgWebAppStartParam'
 }
+
+const getHashParam = (urlHash: string, param: TelegramParam) => {
+	return new URLSearchParams(decodeURI(urlHash)).get(param) || '';
+};
+
+const getDataParams = (dataParam: string) => {
+	return new URLSearchParams(dataParam);
+};
 
 export const paramStore = {
 	get article(): string | null {
-		const params = new URLSearchParams(window.location.hash.slice(1));
-		const startParam = params.get(TelegramParam.StartParam) || '';
-		const articleId = startParam.match(/article_([a-zA-Z-]+)/)?.[1];
+		const dataParam = getHashParam(window.location.hash.slice(1), TelegramParam.Data);
+		const articleId = getDataParams(dataParam).get('start_param')?.match(/article_([a-zA-Z-]+)/)?.[1];
 
 		if (articleId) {
-			umami.track('tma_article', { articleId });
 			return articleId;
 		}
 

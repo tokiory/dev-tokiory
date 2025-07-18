@@ -37,8 +37,12 @@
 	onMount(async () => {
 		telegramMiniApp.initializeMiniApp();
 
-		if (telegramMiniApp.isInitialized) {
+		if (telegramMiniApp.isTelegramEnv) {
 			umami.track('tma_initialized');
+
+			if (telegramMiniApp.paramStore.article) {
+				await goto('/articles/' + telegramMiniApp.paramStore.article);
+			}
 
 			telegramMiniApp.windowStore.initialize();
 			telegramMiniApp.windowStore.setTheme({
@@ -46,7 +50,7 @@
 				headerColor: unotheme?.colors.frangipani['50'] || '#fff'
 			});
 
-			await telegramMiniApp.viewportStore.initialize()
+			await telegramMiniApp.viewportStore.initialize();
 
 			telegramMiniApp.swipeBehaviourStore.initialize();
 			telegramMiniApp.swipeBehaviourStore.toggleVerticalScroll();
@@ -56,9 +60,6 @@
 				history.back();
 			});
 
-			if (telegramMiniApp.paramStore.article) {
-				await goto('/article/' + telegramMiniApp.paramStore.article);
-			}
 		}
 	});
 
