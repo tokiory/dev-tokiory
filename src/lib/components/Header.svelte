@@ -6,7 +6,7 @@
 	import Logo from './Logo.svelte';
 
 	interface Props {
-		class?: string;
+		class?: string | string[];
 		onmenu: () => void;
 	}
 	const { class: className = '', onmenu }: Props = $props();
