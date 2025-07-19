@@ -105,7 +105,7 @@
 	});
 </script>
 
-<div bind:this={mobileNavRef} class="mobile-nav fixed flex flex-col z-24 inset-0">
+<div bind:this={mobileNavRef} class="mobile-nav fixed flex flex-col z-25 inset-0">
 	<Backdrop
 		onclick={handleBackdropClick}
 		class="px-3 w-full grow-1 pt-14 pb-4 flex flex-col justify-between"
