@@ -23,7 +23,7 @@
 	};
 
 	const isTelegramInitialized = $derived(telegramMiniApp.isInitialized);
-	const isArticlePage = /articles\/(.+)/.test(page.url.pathname);
+	const isArticlePage = $derived(/articles\/(.+)/.test(page.url.pathname));
 </script>
 
 <div class="main mx-auto flex flex-col min-h-screen">
