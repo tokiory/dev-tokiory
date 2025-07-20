@@ -230,3 +230,17 @@ link = "https://simpleone.ru/blog/4-agile-metrics-for-the-development-team"
 tags = ["leadership"]
 rating = 5
 done = true
+
+[[data]]
+title = "Bitcoin: A Peer-to-Peer Electronic Cash System"
+link = "https://bitcoin.org/bitcoin.pdf"
+tags = ["web3"]
+rating = 8
+done = false
+
+[[data]]
+title = "Блокчейн изнутри"
+link = "https://vas3k.blog/blog/blockchain/"
+tags = ["web3"]
+rating = 8
+done = false
