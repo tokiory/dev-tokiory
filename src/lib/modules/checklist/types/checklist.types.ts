@@ -6,6 +6,7 @@ interface GeneralChecklistItem {
 
 export interface ChecklistBook extends GeneralChecklistItem {
 	description?: string;
+	publisher?: string;
 	author: string;
 }
 
