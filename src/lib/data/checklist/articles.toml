@@ -214,3 +214,15 @@ title = "Какие навыки помогут стать хорошим тим
 link = "https://habr.com/ru/companies/beeline_cloud/articles/792570/"
 tags = ["leadership"]
 done = false
+
+[[data]]
+title = "10 правил, которые выполняют успешные тимлиды"
+link = "https://habr.com/ru/companies/otus/articles/753354/"
+tags = ["leadership"]
+done = false
+
+[[data]]
+title = "4 Agile метрики для команды разработки"
+link = "https://simpleone.ru/blog/4-agile-metrics-for-the-development-team"
+tags = ["leadership"]
+done = false
