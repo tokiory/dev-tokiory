@@ -213,16 +213,20 @@ done = false
 title = "Какие навыки помогут стать хорошим тимлидом"
 link = "https://habr.com/ru/companies/beeline_cloud/articles/792570/"
 tags = ["leadership"]
-done = false
+description = "Годная статья, которая раскрывает не самые очевидные моменты в работе тимлида, а также подчеркивает какими софт-скиллами нужно обладать, чтобы не выгореть в первое время"
+done = true
+rating = 7
 
 [[data]]
 title = "10 правил, которые выполняют успешные тимлиды"
 link = "https://habr.com/ru/companies/otus/articles/753354/"
+rating = 6
 tags = ["leadership"]
-done = false
+done = true
 
 [[data]]
 title = "4 Agile метрики для команды разработки"
 link = "https://simpleone.ru/blog/4-agile-metrics-for-the-development-team"
 tags = ["leadership"]
-done = false
+rating = 5
+done = true
