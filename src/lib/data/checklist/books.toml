@@ -66,7 +66,11 @@ description = """
 tags = ["go", "low-level"]
 
 [[data]]
-author = "[O'Reilly] Melanie Swan"
+author = "Melanie Swan"
+description = """
+Я в целом не особо люблю все темы, которые так или иначе связаны с криптовалютой из-за их "серости", однако, эту книгу я решил прочитать просто потому что мне стало интересно как фиатные деньги превращаются в цифровой актив.
+"""
+publisher = "O'Reilly"
 title = "Blockchain: Blueprint for a New Economy"
 done = false
 tags = ["blockchain", "cryptocurrency"]
