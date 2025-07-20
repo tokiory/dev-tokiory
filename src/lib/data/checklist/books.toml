@@ -64,3 +64,9 @@ description = """
 она все равно считается одной из лучших книг по Go.
 """
 tags = ["go", "low-level"]
+
+[[data]]
+author = "[O'Reilly] Melanie Swan"
+title = "Blockchain: Blueprint for a New Economy"
+done = false
+tags = ["blockchain", "cryptocurrency"]
