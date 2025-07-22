@@ -29,8 +29,8 @@
 				{
 					icon: 'i-tabler-note',
 					label: 'Заметки',
-					value: 'Bear',
-					link: 'https://bear.app/'
+					value: 'Obsidian',
+					link: 'https://obsidian.md/'
 				},
 				{
 					icon: 'i-tabler-list-numbers',
