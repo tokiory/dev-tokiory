@@ -8,26 +8,34 @@
 	}
 	const { children, meta = '', language }: Props = $props();
 
-	const metaFields = $derived(
-		decodeURI(meta)
-			?.match(/\w+=([\w\d.]+|".+"|'.+')/g)
-			?.reduce(
-				(s, i) => {
-					let [key, value] = i.split('=');
+	const parseMetaFields = (metaString: string): Record<string, string> => {
+		const decodedMeta = decodeURI(metaString);
+		const matches = decodedMeta.match(/\w+=([\w\d.]+|".+"|'.+')/g);
 
-					if (value) {
-						value = value.replace(/(^["'])|(["']$)/g, '');
-					}
+		if (!matches) return {};
 
-					s[key] = value;
-					return s;
-				},
-				{} as Record<string, string>
-			) || {}
-	);
+		return matches.reduce(
+			(acc, curr) => {
+				const [key, value] = curr.split('=');
+				const cleanedValue = value?.replace(/(^["'])|(["']$)/g, '');
+				acc[key] = cleanedValue || '';
+				return acc;
+			},
+			{} as Record<string, string>
+		);
+	};
+
+	const parseFlags = (metaString: string): string[] => {
+		const decodedMeta = decodeURI(metaString);
+		const matches = decodedMeta.match(/(?<![=])\s?\w+\s?/g);
+		return matches?.map((match) => match.trim()) || [];
+	};
+
+	const metaFields = $derived.by(() => parseMetaFields(meta));
+	const flags = $derived.by(() => parseFlags(meta));
 
 	let codeRef = $state<Element>();
-	let lastCopiedTimerId = $state<NodeJS.Timer | null>(null);
+	let lastCopiedTimerId = $state<number | null>(null);
 
 	const copy = async () => {
 		try {
@@ -46,7 +54,24 @@
 	};
 </script>
 
-<div class="codesnippet w-full mt-4 mb-6">
+{#snippet errorBanner(position: 'top' | 'bottom')}
+	<div
+		class={[
+			'w-full flex justify-center items-center gap-2 overflow-hidden',
+			position === 'top' && 'mb-2',
+			position === 'bottom' && 'mt-2'
+		]}
+	>
+		{#each new Array(15) as _, i (i)}
+			<div class="text-xs text-rose-900">Ошибка</div>
+		{/each}
+	</div>
+{/snippet}
+
+<div class={['codesnippet w-full mt-4 mb-6', flags.includes('error') && 'bg-rose-100 py-2 px-4']}>
+	{#if flags.includes('error')}
+		{@render errorBanner('top')}
+	{/if}
 	{#if metaFields['filename']}
 		<div
 			class="border-b pb-1 flex justify-between text-xs font-semibold border-dashed w-full mb-2 border-frangipani-800/80"
@@ -67,7 +92,12 @@
 			<button
 				onclick={copy}
 				aria-label="copy"
-				class="absolute z-10 cursor-pointer bg-frangipani-50 hover:bg-driftwood-200/30 transition-colors top-0 right-0 p-2 rounded-md"
+				class={[
+					'absolute z-10 cursor-pointer  transition-colors top-0 right-0 p-2 rounded-md',
+					flags.includes('error')
+						? 'bg-rose-100 hover:bg-rose-200'
+						: 'bg-frangipani-50 hover:bg-driftwood-200/30'
+				]}
 			>
 				{#if lastCopiedTimerId}
 					<div class="i-tabler-check"></div>
@@ -89,6 +119,9 @@
 			{/if}
 		</div>
 	</div>
+	{#if flags.includes('error')}
+		{@render errorBanner('bottom')}
+	{/if}
 </div>
 
 <style>

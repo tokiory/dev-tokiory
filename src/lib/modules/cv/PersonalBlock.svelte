@@ -20,7 +20,7 @@
 			icon: 'i-tabler-brand-telegram'
 		},
 		{
-			link: '/cv.pdf',
+			link: '/cv/cv.pdf',
 			title: 'Скачать резюме',
 			icon: 'i-tabler-download'
 		}

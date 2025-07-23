@@ -314,6 +314,7 @@ export const AppWrapper: FC<PropsWithChildren> = ({ children }) => {
 </Information>
 
 ## Подмена окружения
+
 Для того чтобы мы разрабатывали мини-приложение с комфортом, `@telegram-apps/sdk-react` предоставляет
 функцию `mockTelegramEnv`, которая добавляет в окружение браузера фейковые реализации Mini Apps API.
 
@@ -321,62 +322,65 @@ export const AppWrapper: FC<PropsWithChildren> = ({ children }) => {
 import { mockTelegramEnv, emitEvent } from '@telegram-apps/sdk-react';
 
 const noInsets = {
-  left: 0,
-  top: 0,
-  bottom: 0,
-  right: 0,
+	left: 0,
+	top: 0,
+	bottom: 0,
+	right: 0
 } as const;
 const themeParams = {
-  accent_text_color: '#6ab2f2',
-  bg_color: '#17212b',
-  button_color: '#5288c1',
-  button_text_color: '#ffffff',
-  destructive_text_color: '#ec3942',
-  header_bg_color: '#17212b',
-  hint_color: '#708499',
-  link_color: '#6ab3f3',
-  secondary_bg_color: '#232e3c',
-  section_bg_color: '#17212b',
-  section_header_text_color: '#6ab3f3',
-  subtitle_text_color: '#708499',
-  text_color: '#f5f5f5',
+	accent_text_color: '#6ab2f2',
+	bg_color: '#17212b',
+	button_color: '#5288c1',
+	button_text_color: '#ffffff',
+	destructive_text_color: '#ec3942',
+	header_bg_color: '#17212b',
+	hint_color: '#708499',
+	link_color: '#6ab3f3',
+	secondary_bg_color: '#232e3c',
+	section_bg_color: '#17212b',
+	section_header_text_color: '#6ab3f3',
+	subtitle_text_color: '#708499',
+	text_color: '#f5f5f5'
 } as const;
 
 mockTelegramEnv({
-  launchParams: {
-    tgWebAppThemeParams: themeParams,
-    tgWebAppData: new URLSearchParams([
-      ['user', JSON.stringify({
-        id: 1,
-        first_name: 'Pavel',
-      })],
-      ['hash', ''],
-      ['signature', ''],
-      ['auth_date', Date.now().toString()],
-    ]),
-    tgWebAppStartParam: 'debug',
-    tgWebAppVersion: '8',
-    tgWebAppPlatform: 'tdesktop',
-  },
-  onEvent(e) {
-    if (e[0] === 'web_app_request_theme') {
-      return emitEvent('theme_changed', { theme_params: themeParams });
-    }
-    if (e[0] === 'web_app_request_viewport') {
-      return emitEvent('viewport_changed', {
-        height: window.innerHeight,
-        width: window.innerWidth,
-        is_expanded: true,
-        is_state_stable: true,
-      });
-    }
-    if (e[0] === 'web_app_request_content_safe_area') {
-      return emitEvent('content_safe_area_changed', noInsets);
-    }
-    if (e[0] === 'web_app_request_safe_area') {
-      return emitEvent('safe_area_changed', noInsets);
-    }
-  },
+	launchParams: {
+		tgWebAppThemeParams: themeParams,
+		tgWebAppData: new URLSearchParams([
+			[
+				'user',
+				JSON.stringify({
+					id: 1,
+					first_name: 'Pavel'
+				})
+			],
+			['hash', ''],
+			['signature', ''],
+			['auth_date', Date.now().toString()]
+		]),
+		tgWebAppStartParam: 'debug',
+		tgWebAppVersion: '8',
+		tgWebAppPlatform: 'tdesktop'
+	},
+	onEvent(e) {
+		if (e[0] === 'web_app_request_theme') {
+			return emitEvent('theme_changed', { theme_params: themeParams });
+		}
+		if (e[0] === 'web_app_request_viewport') {
+			return emitEvent('viewport_changed', {
+				height: window.innerHeight,
+				width: window.innerWidth,
+				is_expanded: true,
+				is_state_stable: true
+			});
+		}
+		if (e[0] === 'web_app_request_content_safe_area') {
+			return emitEvent('content_safe_area_changed', noInsets);
+		}
+		if (e[0] === 'web_app_request_safe_area') {
+			return emitEvent('safe_area_changed', noInsets);
+		}
+	}
 });
 ```
 
@@ -384,20 +388,20 @@ mockTelegramEnv({
 
 ```ts filename=main.tsx
 if (import.meta.env.DEV) {
-  import('./mock.ts')
+	import('./mock.ts');
 }
 ```
 
 После данного импорта функция `useLaunchParams` отдаст нам тестовые данные:
 
 ```tsx filename=App.tsx
-import { useLaunchParams } from "@telegram-apps/sdk-react";
+import { useLaunchParams } from '@telegram-apps/sdk-react';
 
 export default function App() {
-  const launchParams = useLaunchParams();
-  const nickname = launchParams.tgWebAppData?.user?.username || "<empty>";
+	const launchParams = useLaunchParams();
+	const nickname = launchParams.tgWebAppData?.user?.username || '<empty>';
 
-  return <div>Hello, telegram user with a nickname {nickname}</div>;
+	return <div>Hello, telegram user with a nickname {nickname}</div>;
 }
 ```
 
@@ -406,38 +410,38 @@ export default function App() {
 У любого модуля из Mini Apps API есть несколько состояний:
 
 - `isSupported` - Поддерживается ли API в текущем контексте
-- `isAvailable` - Доступно ли API в текущем контексте
+- `isAvailable` - Доступна ли функция из модуля в текущем контексте
 - `isMounted` - Загружен ли модуль
 
-Мы можем использовать один из двух первых вариантов для проверки можно ли использовать API, но второй метод более предпочтителен, так как он не просто проверяет есть ли функция для вызова определенного API, но и проверяет что клиент поддерживает данное API официально.
+Мы можем использовать один из двух первых вариантов для проверки можно ли использовать API, но второй метод более предпочтителен, так как он не просто проверяет поддерживается ли определенный модуль, но и проверяет что у клиента есть функция, которая нам нужна.
 
 Для примера мы возьмем одно из самых частоиспользуемых API - `backButton`. Этот модуль позволяет отображать кнопку "Назад" в верхней части экрана приложения.
 
 Перед тем как начать использовать модуль - нужно его монтировать, для этого у `backButton` (да и почти у каждого модуля) есть метод `mount`, однако сам метод есть не во всех клиентах. Для того чтобы проверить есть ли в клиенте данный метод, мы можем использовать подметод `isSupported` или `isAvailable`:
 
 ```tsx filename=main.tsx
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
-import { init, backButton } from "@telegram-apps/sdk-react";
-import App from "./App.tsx";
-import { AppWrapper } from "./components/AppWrapper.tsx";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { init, backButton } from '@telegram-apps/sdk-react';
+import App from './App.tsx';
+import { AppWrapper } from './components/AppWrapper.tsx';
 try {
-  init();
+	init();
 
-  // [!code ++:3]
-  if (backButton.mount.isAvailable()) {
-    backButton.mount();
-  }
+	// [!code ++:3]
+	if (backButton.mount.isAvailable()) {
+		backButton.mount();
+	}
 } catch {
-  console.warn("Can't initialize tma, skipping...");
+	console.warn("Can't initialize tma, skipping...");
 }
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <AppWrapper>
-      <App />
-    </AppWrapper>
-  </StrictMode>,
+createRoot(document.getElementById('root')!).render(
+	<StrictMode>
+		<AppWrapper>
+			<App />
+		</AppWrapper>
+	</StrictMode>
 );
 ```
 
@@ -460,3 +464,54 @@ export default function App() {
 ```
 
 Все остальные модули используются точно так же.
+
+# Обработка пользовательских событий
+
+Мини-приложения могут подписываться на события, поступающие от клиента Telegram. Это необходимо для корректного реагирования на изменение темы, размера окна, состояния клавиатуры и т.д.
+
+Для подписки на события используется метод `onEvent`, который предоставляется SDK:
+
+```tsx
+import { onEvent } from '@telegram-apps/sdk-react';
+
+onEvent('theme_changed', (event) => {
+	console.log('Новая тема:', event.theme_params);
+});
+
+onEvent('viewport_changed', (event) => {
+	console.log('Изменён вьюпорт:', event);
+});
+```
+
+<Information title="Удаление слушателей">
+
+Метод onEvent возвращает функцию `unsubscribe`, которую необходимо вызвать при размонтировании компонента, если подписка была установлена внутри React-компонента.
+
+</Information>
+
+Если же мы будем рассматривать обработку событий в компоненте, то она может выглядеть следующим образом:
+
+```tsx
+import { useEffect } from 'react';
+import { onEvent } from '@telegram-apps/sdk-react';
+
+export const ViewportLogger = () => {
+	useEffect(() => {
+		const unsub = onEvent('viewport_changed', (event) => {
+			console.log('Размер экрана изменился:', event);
+		});
+
+		return unsub;
+	}, []);
+
+	return null;
+};
+```
+
+Сами ивенты, как уже было сказано до этого, [есть в официальной документации Telegram Mini Apps SDK](https://docs.telegram-mini-apps.com/platform/events#available-events).
+
+# Заключение
+
+Мини-приложения Telegram это мощный инструмент для создания интерактивных веб-приложений.
+
+Они позволяют использовать нативные функции устройства, а также плотно интегрироваться с Telegram. Настройка бота, работа с API и тестирование требуют внимания к деталям, но результат оправдывает усилия: вы получаете доступ к огромной аудитории Telegram с минимальными затратами на инфраструктуру.
