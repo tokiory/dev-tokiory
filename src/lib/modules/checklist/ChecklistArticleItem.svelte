@@ -17,9 +17,9 @@
 
 		switch (true) {
 			case rating <= 2:
-				return '!text-rose-800 opacity-50';
+				return '!text-stone-700 opacity-50';
 			case rating >= 8:
-				return '!text-amber-800';
+				return '!text-stone-800';
 			default:
 				return '';
 		}

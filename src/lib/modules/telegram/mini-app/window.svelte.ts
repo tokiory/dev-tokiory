@@ -17,8 +17,8 @@ export const windowStore = {
 		miniApp.mountSync();
 	},
 	setTheme({
-		headerColor = '#fff',
-		backgroundColor = '#fff'
+		headerColor = '#ffffff',
+		backgroundColor = '#ffffff'
 	}: {
 		headerColor: string;
 		backgroundColor: string;
@@ -28,7 +28,13 @@ export const windowStore = {
 			return;
 		}
 
-		if (miniApp.setHeaderColor.isAvailable()) miniApp.setHeaderColor(headerColor);
+		if (miniApp.setHeaderColor.isAvailable()) {
+			if (miniApp.setHeaderColor.supports.rgb()) {
+				miniApp.setHeaderColor(headerColor);
+			} else {
+				miniApp.setHeaderColor('bg_color');
+			}
+		}
 		if (miniApp.setBackgroundColor.isAvailable()) miniApp.setBackgroundColor(backgroundColor);
 	}
 };

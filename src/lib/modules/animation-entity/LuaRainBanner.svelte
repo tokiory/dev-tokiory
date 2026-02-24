@@ -47,7 +47,7 @@
 			ctx.rotate(d.angle);
 			ctx.font = `${d.weight} ${d.size}px "Manrope Variable", Arial, sans-serif`;
 			ctx.fontKerning = 'auto';
-			ctx.fillStyle = `rgba(51, 27, 21, ${d.opacity})`;
+			ctx.fillStyle = `rgba(41, 37, 36, ${d.opacity})`;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
 			ctx.fillText(luaText, 0, 0);

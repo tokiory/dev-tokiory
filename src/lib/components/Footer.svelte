@@ -16,7 +16,7 @@
 
 <footer class={['flex pt-4 flex-col items-center', className]}>
 	<div class="flex justify-center items-center">
-		Сделано с&nbsp;<span class="h-4 i-tabler-heart-filled text-red-500"></span>&nbsp;и&nbsp;
+		Сделано с&nbsp;<span class="h-4 i-tabler-heart-filled text-rose-400"></span>&nbsp;и&nbsp;
 		<a href="https://svelte.dev" target="_blank">
 			<img
 				class="h-4"

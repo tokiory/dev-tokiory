@@ -2,12 +2,8 @@
 	const { class: className = '' } = $props();
 </script>
 
-<svg
-	class={['w-full', className]}
-	viewBox="0 0 400 20"
-	xmlns="http://www.w3.org/2000/svg"
->
-	<path fill="none" stroke="#7b4a2d" stroke-width="1">
+<svg class={['w-full', className]} viewBox="0 0 400 20" xmlns="http://www.w3.org/2000/svg">
+	<path fill="none" stroke="#44403c" stroke-width="1">
 		<animate
 			attributeName="d"
 			dur="4s"

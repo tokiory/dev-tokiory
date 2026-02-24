@@ -8,19 +8,19 @@ const noInsets = {
 } as const;
 
 const themeParams = {
-	accent_text_color: '#6ab2f2',
-	bg_color: '#17212b',
-	button_color: '#5288c1',
+	accent_text_color: '#44403c',
+	bg_color: '#ffffff',
+	button_color: '#78716c',
 	button_text_color: '#ffffff',
-	destructive_text_color: '#ec3942',
-	header_bg_color: '#17212b',
-	hint_color: '#708499',
-	link_color: '#6ab3f3',
-	secondary_bg_color: '#232e3c',
-	section_bg_color: '#17212b',
-	section_header_text_color: '#6ab3f3',
-	subtitle_text_color: '#708499',
-	text_color: '#f5f5f5'
+	destructive_text_color: '#44403c',
+	header_bg_color: '#ffffff',
+	hint_color: '#78716c',
+	link_color: '#57534e',
+	secondary_bg_color: '#f5f5f4',
+	section_bg_color: '#ffffff',
+	section_header_text_color: '#57534e',
+	subtitle_text_color: '#78716c',
+	text_color: '#1c1917'
 } as const;
 
 mockTelegramEnv({

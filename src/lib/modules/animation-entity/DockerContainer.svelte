@@ -6,10 +6,7 @@
 	style="--initial-y:{`${Math.floor(Math.random() * 180)}deg`}"
 	class={['container-wrapper mr-6', className]}
 >
-	<div
-		style={`animation-duration: ${20 + Math.random() * 10}s`}
-		class="container"
-	>
+	<div style={`animation-duration: ${20 + Math.random() * 10}s`} class="container">
 		<div class="face front">
 			<div class="divider"></div>
 			<div class="divider"></div>
@@ -60,8 +57,8 @@
 
 	.face {
 		position: absolute;
-		background: #0db7ed;
-		border: 1px solid #0a6c8c;
+		background: #78716c;
+		border: 1px solid #44403c;
 		opacity: 0.95;
 	}
 

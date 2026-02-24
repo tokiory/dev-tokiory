@@ -110,11 +110,11 @@
 
 	.control_left::after {
 		left: 100%;
-		background: linear-gradient(to right, theme('colors.stone.50'), transparent);
+		background: linear-gradient(to right, rgb(255 255 255 / 92%), transparent);
 	}
 
 	.control_right::before {
 		right: 100%;
-		background: linear-gradient(to left, theme('colors.stone.50'), transparent);
+		background: linear-gradient(to left, rgb(255 255 255 / 92%), transparent);
 	}
 </style>

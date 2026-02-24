@@ -63,12 +63,12 @@
 		]}
 	>
 		{#each new Array(15) as _, i (i)}
-			<div class="text-xs text-rose-900">Ошибка</div>
+			<div class="text-xs text-stone-900">Ошибка</div>
 		{/each}
 	</div>
 {/snippet}
 
-<div class={['codesnippet w-full mt-4 mb-6', flags.includes('error') && 'bg-rose-100 py-2 px-4']}>
+<div class={['codesnippet w-full mt-4 mb-6', flags.includes('error') && 'bg-stone-100 py-2 px-4']}>
 	{#if flags.includes('error')}
 		{@render errorBanner('top')}
 	{/if}
@@ -95,7 +95,7 @@
 				class={[
 					'absolute z-10 cursor-pointer  transition-colors top-0 right-0 p-2 rounded-md',
 					flags.includes('error')
-						? 'bg-rose-100 hover:bg-rose-200'
+						? 'bg-stone-100 hover:bg-stone-200'
 						: 'bg-stone-50 hover:bg-stone-200/30'
 				]}
 			>
@@ -158,7 +158,7 @@
 			}
 
 			& .diff.remove {
-				@apply opacity-60 bg-rose-100;
+				@apply opacity-60 bg-stone-100;
 			}
 
 			& .diff.remove::after {
@@ -166,7 +166,7 @@
 			}
 
 			& .diff.add {
-				@apply bg-sky-100;
+				@apply bg-stone-100;
 			}
 
 			& .diff.add::after {

@@ -40,7 +40,7 @@
 
 <div class={['flex gap-2', className]}>
 	<Input value={input} oninput={handleInput} placeholder="12, 27, 348, ..." />
-	<Button class={repeating ? '!bg-lime-800 hover:!bg-lime-900' : ''} title="Повторить" onclick={() => onrepeatchange(!repeating)}
+	<Button class={repeating ? '!bg-stone-700 hover:!bg-stone-800' : ''} title="Повторить" onclick={() => onrepeatchange(!repeating)}
 		><div aria-label="Repeat" class="i-tabler-repeat"></div></Button
 	>
 	<Button title="Рандомизировать" onclick={onrandomize}

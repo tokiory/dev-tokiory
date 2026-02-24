@@ -5,10 +5,10 @@
 
 	switch (variant) {
 		case 'correct':
-			additionalClass = 'bg-lime-800/30';
+			additionalClass = 'bg-stone-800/30';
 			break;
 		case 'incorrect':
-			additionalClass = 'bg-rose-800/30';
+			additionalClass = 'bg-stone-800/30';
 			break;
 		case 'selected':
 			additionalClass = 'border-stone-800/70';
