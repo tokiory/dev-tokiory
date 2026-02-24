@@ -7,7 +7,7 @@
 	const { name, technologies, description, links = [] } = project;
 </script>
 
-<div class="border-y-2 border-driftwood-800/70 py-1.5 border-dashed">
+<div class="border-y-2 border-stone-800/70 py-1.5 border-dashed">
 	<div class="mb-1">
 		<ContentH3 custommark>
 			{name}

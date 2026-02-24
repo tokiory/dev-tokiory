@@ -107,8 +107,8 @@
 		background-position-x: center;
 		background-position-y: -10px;
 		background-image:
-			linear-gradient(theme('colors.driftwood.800 / 20%') 1px, transparent 1px),
-			linear-gradient(to right, theme('colors.driftwood.800 / 20%') 1px, transparent 1px);
+			linear-gradient(theme('colors.stone.800 / 20%') 1px, transparent 1px),
+			linear-gradient(to right, theme('colors.stone.800 / 20%') 1px, transparent 1px);
 		background-size: 20px 20px;
 	}
 </style>

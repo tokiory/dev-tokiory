@@ -27,7 +27,7 @@
 	</div>
 	<div class="text-sm mt-1">© Даниил Шило, 2025</div>
 	<div
-		class="flex flex-col border-t border-driftwood-800/20 justify-center w-full border-dashed md:border-0 pt-2 md:pt-0 md:flex-row items-center gap-1 mt-3 md:gap-2 md:mt-2"
+		class="flex flex-col border-t border-stone-800/20 justify-center w-full border-dashed md:border-0 pt-2 md:pt-0 md:flex-row items-center gap-1 mt-3 md:gap-2 md:mt-2"
 	>
 		<Link href={writeMeLink}>Написать мне</Link>
 		<span class="md:block hidden"> • </span>

@@ -20,7 +20,7 @@
 	:global {
 		.medium-zoom-overlay {
 			z-index: 1000;
-			background: theme('colors.frangipani.50') !important;
+			background: theme('colors.stone.50') !important;
 		}
 
 		.medium-zoom-image {

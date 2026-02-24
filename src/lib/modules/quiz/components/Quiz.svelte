@@ -44,7 +44,7 @@
 	};
 </script>
 
-<div class={['flex flex-col border rounded-md border-frangipani-800/30 gap-2 p-2', className]}>
+<div class={['flex flex-col border rounded-md border-stone-800/30 gap-2 p-2', className]}>
 	<div class="flex flex-col">
 		<div class="text-lg">{title}</div>
 		{@render children?.()}

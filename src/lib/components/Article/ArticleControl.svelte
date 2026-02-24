@@ -81,7 +81,7 @@
 	</div>
 	<div>
 		<button
-			class="flex items-center gap-2 text-sm text-driftwood-900/40 hover:text-driftwood-900/80 active:text-driftwood-900"
+			class="flex items-center gap-2 text-sm text-stone-900/40 hover:text-stone-900/80 active:text-stone-900"
 			onclick={handleShare}
 			aria-label="Поделиться данной страницей"
 		>

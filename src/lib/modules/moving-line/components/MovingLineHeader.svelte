@@ -11,7 +11,7 @@
 <style>
 	.title {
 		@apply font-extrabold text-transparent inline-block text-5xl;
-		-webkit-text-stroke: 2px theme('colors.driftwood.800');
+		-webkit-text-stroke: 2px theme('colors.stone.800');
 		font-family:
 			Podkova Variable,
 			sans-serif;

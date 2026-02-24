@@ -169,7 +169,7 @@
 		</div>
 		{#if isTelegram}
 			<div
-				class="w-full select-none mx-auto pt-24 text-center text-driftwood-900/80 flex flex-col gap-1 items-center"
+				class="w-full select-none mx-auto pt-24 text-center text-stone-900/80 flex flex-col gap-1 items-center"
 			>
 			<div class="text-sm">Кликните на пустое пространство, чтобы закрыть шторку</div>
 			</div>
@@ -178,12 +178,12 @@
 				onpointerdown={handlePointerDown}
 				onpointermove={handlePointerMove}
 				onpointerup={handlePointerUp}
-				class="group w-full select-none mx-auto pt-24 text-center text-driftwood-900/80 flex flex-col gap-1 items-center"
+				class="group w-full select-none mx-auto pt-24 text-center text-stone-900/80 flex flex-col gap-1 items-center"
 			>
 				<div class="i-tabler-arrow-up"></div>
 				<div class="text-sm">Свайпните вверх, чтобы закрыть</div>
 				<div
-					class="bg-driftwood-700/30 group-active:bg-driftwood-700/70 h-1.5 rounded-full mt-2 w-32"
+					class="bg-stone-700/30 group-active:bg-stone-700/70 h-1.5 rounded-full mt-2 w-32"
 				></div>
 			</div>
 		{/if}

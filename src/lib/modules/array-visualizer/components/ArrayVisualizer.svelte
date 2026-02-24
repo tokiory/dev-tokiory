@@ -129,7 +129,7 @@
 	if (autoplay) play();
 </script>
 
-<div class={['flex border p-2 flex-col border-driftwood-700/70 rounded-md', className]}>
+<div class={['flex border p-2 flex-col border-stone-700/70 rounded-md', className]}>
 	{#if title}
 		<ContentH2 class="!mt-0 !mb-0">{title}</ContentH2>
 	{/if}

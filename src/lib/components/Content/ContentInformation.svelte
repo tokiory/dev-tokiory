@@ -2,9 +2,9 @@
 	const { title = '', class: className = 'mt-4 mb-4', children } = $props();
 </script>
 
-<div class={['information', 'border border-2 p-2 border-frangipani-800/70 rounded-md', className]}>
+<div class={['information', 'border border-2 p-2 border-stone-800/70 rounded-md', className]}>
 	<div
-		class="flex items-center border-b-2 border-dashed text-driftwood-800 border-frangipani-800/30 pb-1 gap-1.5"
+		class="flex items-center border-b-2 border-dashed text-stone-800 border-stone-800/30 pb-1 gap-1.5"
 	>
 		<div class="i-tabler-info-circle text-xl"></div>
 		<div class="font-semibold">{title}</div>

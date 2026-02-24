@@ -57,7 +57,7 @@ message OurMessage {
 
 <div
 	class={[
-		'flex border-2 border-dashed border-frangipani-800/30 rounded-md p-3 flex-col gap-4',
+		'flex border-2 border-dashed border-stone-800/30 rounded-md p-3 flex-col gap-4',
 		className
 	]}
 >
@@ -70,7 +70,7 @@ message OurMessage {
 			серилизация множества структур заняла бы намного больше места.
 		</div>
 	</div>
-	<div class="border-b-2 border-dashed border-frangipani-800/30"></div>
+	<div class="border-b-2 border-dashed border-stone-800/30"></div>
 	<div class="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-center">
 		<div class="h-full sm:w-1/2 flex flex-col grow">
 			<div class="mb-0.25">
@@ -86,7 +86,7 @@ message OurMessage {
 			<Textarea autoresize readonly value={jsOutput || compilationError} />
 		</div>
 	</div>
-	<div class="w-full sm:hidden border-b opacity-50 border-dashed border-frangipani-800"></div>
+	<div class="w-full sm:hidden border-b opacity-50 border-dashed border-stone-800"></div>
 	<div class="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-center">
 		<div class="h-fit sm:w-1/2 grow">
 			<div class="mb-0.25">

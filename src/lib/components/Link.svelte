@@ -21,8 +21,8 @@
 	class={[
 		'cursor-pointer transition-colors',
 		darker
-			? 'text-driftwood-800 hover:text-driftwood-900'
-			: 'text-driftwood-600 hover:text-driftwood-700 active:text-driftwood-800',
+			? 'text-stone-800 hover:text-stone-900'
+			: 'text-stone-600 hover:text-stone-700 active:text-stone-800',
 		className
 	]}
 	{href}

@@ -44,7 +44,7 @@
 					<a
 						href={link.uri}
 						onclick={onclose}
-						class="border-b-2 hover:border-driftwood-800/50 active:border-driftwood-800/70 border-dashed border-driftwood-800/30 flex gap-1 items-center"
+						class="border-b-2 hover:border-stone-800/50 active:border-stone-800/70 border-dashed border-stone-800/30 flex gap-1 items-center"
 					>
 						<div class={link.icon}></div>
 						{link.title}
@@ -78,7 +78,7 @@
 	.menu {
 		backdrop-filter: blur(16px);
 		-webkit-backdrop-filter: blur(16px);
-		background-color: theme('colors.frangipani.50 / 55%');
+		background-color: theme('colors.stone.50 / 55%');
 	}
 
 	.navigation {
@@ -90,7 +90,7 @@
 		&::-webkit-scrollbar-thumb {
 			background-color: black;
 			border-radius: 2px;
-			background: theme('colors.driftwood.800');
+			background: theme('colors.stone.800');
 			border: 0;
 		}
 

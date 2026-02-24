@@ -90,12 +90,12 @@
 
 		&::before {
 			top: 0;
-			background: linear-gradient(to top, rgba(0, 0, 0, 0), theme('colors.frangipani.50'));
+			background: linear-gradient(to top, rgba(0, 0, 0, 0), theme('colors.stone.50'));
 		}
 
 		&::after {
 			bottom: 0;
-			background: linear-gradient(to bottom, rgba(0, 0, 0, 0), theme('colors.frangipani.50'));
+			background: linear-gradient(to bottom, rgba(0, 0, 0, 0), theme('colors.stone.50'));
 		}
 	}
 </style>

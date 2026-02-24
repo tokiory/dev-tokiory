@@ -50,7 +50,7 @@
 				class={['control control_left hidden md:flex']}
 			>
 				<div class="control__content group flex flex-col justify-center items-center gap-2">
-					<div class="i-tabler-arrow-left text-driftwood-600"></div>
+					<div class="i-tabler-arrow-left text-stone-600"></div>
 					{#if withKeys}
 						<Keyboard>h</Keyboard>
 						<Keyboard>←</Keyboard>
@@ -66,7 +66,7 @@
 				class={['control control_right hidden md:flex']}
 			>
 				<div class="control__content flex flex-col justify-center items-center gap-2">
-					<div class="i-tabler-arrow-right text-driftwood-600"></div>
+					<div class="i-tabler-arrow-right text-stone-600"></div>
 					{#if withKeys}
 						<Keyboard>l</Keyboard>
 						<Keyboard>→</Keyboard>
@@ -77,11 +77,11 @@
 	</div>
 	{#if !expanded}
 		<div class="mx-auto mt-2 flex flex-col items-center">
-			<div class="text-sm text-driftwood-600/80">
+			<div class="text-sm text-stone-600/80">
 				{slideIdx + 1} / {slidesAmount}
 			</div>
 			{#if !hasChanged}
-				<div class="text-[10px] text-driftwood-600/40">Свайпайте для просмотра слайдов</div>
+				<div class="text-[10px] text-stone-600/40">Свайпайте для просмотра слайдов</div>
 			{/if}
 		</div>
 		<Button outlined onclick={onexpand} class="w-full mt-2">Развернуть вертикально</Button>
@@ -110,11 +110,11 @@
 
 	.control_left::after {
 		left: 100%;
-		background: linear-gradient(to right, theme('colors.frangipani.50'), transparent);
+		background: linear-gradient(to right, theme('colors.stone.50'), transparent);
 	}
 
 	.control_right::before {
 		right: 100%;
-		background: linear-gradient(to left, theme('colors.frangipani.50'), transparent);
+		background: linear-gradient(to left, theme('colors.stone.50'), transparent);
 	}
 </style>

@@ -13,7 +13,7 @@
 			{/if}
 		</h1>
 		<a href="/" class="mt-8 block">
-			<button class="py-1.5 p-1 border-2 border-dashed rounded-md border-driftwood-800/30 hover:border-driftwood-800/50 transition-colors px-6">На главную</button>
+			<button class="py-1.5 p-1 border-2 border-dashed rounded-md border-stone-800/30 hover:border-stone-800/50 transition-colors px-6">На главную</button>
 		</a>
 	</div>
 </div>

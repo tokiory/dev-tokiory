@@ -54,5 +54,5 @@
 			<div bind:this={logoLetters[index]}>{char}</div>
 		{/each}
 	</div>
-	<div class="text-driftwood-700 text-xs">Блог &lt;tokiory&gt;</div>
+	<div class="text-stone-700 text-xs">Блог &lt;tokiory&gt;</div>
 </a>

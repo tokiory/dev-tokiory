@@ -22,14 +22,14 @@
 
 <Link class="w-full block" darker {href}>
 	<div class="font-bold">{@render children()}</div>
-	<div class="text-driftwood-900">
+	<div class="text-stone-900">
 		{description}
 	</div>
 	<div class="flex mt-1 text-sm justify-between">
-		<div class="font-medium flex gap-1 items-center text-driftwood-900">
+		<div class="font-medium flex gap-1 items-center text-stone-900">
 			Читаемс <div class="i-tabler-arrow-right"></div>
 		</div>
-		<div class="text-driftwood-800/40">
+		<div class="text-stone-800/40">
 			{formattedDate}
 		</div>
 	</div>

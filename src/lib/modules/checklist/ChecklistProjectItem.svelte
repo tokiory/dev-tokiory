@@ -21,7 +21,7 @@
 				<span>—</span>
 				<a
 					target="_blank"
-					class="max-w-xl text-driftwood-900/70 whitespace-nowrap text-ellipsis overflow-hidden hover:text-driftwood-900/90"
+					class="max-w-xl text-stone-900/70 whitespace-nowrap text-ellipsis overflow-hidden hover:text-stone-900/90"
 					href={link}>{link}</a
 				>
 			</li>

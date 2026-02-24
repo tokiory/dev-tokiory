@@ -8,7 +8,7 @@
   :global(ul.list .list-item) {
     @apply relative;
     &::before {
-      @apply content-[""] absolute h-1.5 w-1.5 top-[1ch] -left-4 bg-driftwood-800 rounded-full;
+      @apply content-[""] absolute h-1.5 w-1.5 top-[1ch] -left-4 bg-stone-800 rounded-full;
     }
   }
 

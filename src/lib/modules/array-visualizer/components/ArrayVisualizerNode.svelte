@@ -9,7 +9,7 @@
 	<div
 		class={[
 			'h-2 w-12 rounded-md ',
-			active ? 'bg-lime-600' : cursor ? 'bg-driftwood-500' : 'bg-driftwood-700'
+			active ? 'bg-lime-600' : cursor ? 'bg-stone-500' : 'bg-stone-700'
 		]}
 	></div>
 </div>

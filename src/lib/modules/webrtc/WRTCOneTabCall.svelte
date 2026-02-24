@@ -104,7 +104,7 @@
 
 <div
 	class={[
-		'relative flex flex-col gap-2 border rounded-md overflow-hidden border-driftwood-700/40 justify-center items-center w-full h-[200px] lg:h-[400px]',
+		'relative flex flex-col gap-2 border rounded-md overflow-hidden border-stone-700/40 justify-center items-center w-full h-[200px] lg:h-[400px]',
 		isDisclaimerVisible && 'p-4',
 		className
 	]}

@@ -39,10 +39,10 @@
 </script>
 
 <main class="mt-10">
-	<div class="text-xs text-driftwood-900/50">Поиск</div>
+	<div class="text-xs text-stone-900/50">Поиск</div>
 	<Input bind:value={query} class="w-full" placeholder="Введите что-то..." />
 	{#if filteredPosts != null && filteredPosts.length === 0}
-		<div bind:this={notFoundRef} class="text-center text-driftwood-900/70 mt-8">Ничего не найдено</div>
+		<div bind:this={notFoundRef} class="text-center text-stone-900/70 mt-8">Ничего не найдено</div>
 	{:else}
 		<div class="flex items-center gap-8 flex-wrap mt-4">
 			{#each posts as post, index (post.slug + index)}

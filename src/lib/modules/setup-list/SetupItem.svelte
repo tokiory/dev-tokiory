@@ -19,7 +19,7 @@
 		<a
 			href={link}
 			target="_blank"
-			class="cursor-pointer w-fit line-height-[1.3] border-b-1.5 hover:text-driftwood-700 border-dashed border-driftwood-800/40 hover:border-driftwood-800/60"
+			class="cursor-pointer w-fit line-height-[1.3] border-b-1.5 hover:text-stone-700 border-dashed border-stone-800/40 hover:border-stone-800/60"
 		>
 			{value}
 		</a>

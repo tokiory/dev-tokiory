@@ -3,11 +3,11 @@ const {class: className = ''} = $props()
 </script>
 
 <div class={["flex flex-col gap-2", className]}>
-  <div class="code-ghost w-full max-w-80 h-4 rounded-md bg-driftwood-700" />
-  <div class="code-ghost max-w-120 h-4 rounded-md bg-driftwood-700" />
-  <div class="code-ghost w-full max-w-40 h-4 rounded-md bg-driftwood-700" />
-  <div class="code-ghost w-full max-w-90 h-4 rounded-md bg-driftwood-700" />
-  <div class="code-ghost w-full h-4 rounded-md bg-driftwood-700" />
+  <div class="code-ghost w-full max-w-80 h-4 rounded-md bg-stone-700" />
+  <div class="code-ghost max-w-120 h-4 rounded-md bg-stone-700" />
+  <div class="code-ghost w-full max-w-40 h-4 rounded-md bg-stone-700" />
+  <div class="code-ghost w-full max-w-90 h-4 rounded-md bg-stone-700" />
+  <div class="code-ghost w-full h-4 rounded-md bg-stone-700" />
 </div>
 
 <style>

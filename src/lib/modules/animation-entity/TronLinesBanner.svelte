@@ -70,12 +70,12 @@
 
 		&::before {
 			left: 0;
-			background: linear-gradient(to left, rgba(0, 0, 0, 0), theme('colors.frangipani.50'));
+			background: linear-gradient(to left, rgba(0, 0, 0, 0), theme('colors.stone.50'));
 		}
 
 		&::after {
 			right: 0;
-			background: linear-gradient(to right, rgba(0, 0, 0, 0), theme('colors.frangipani.50'));
+			background: linear-gradient(to right, rgba(0, 0, 0, 0), theme('colors.stone.50'));
 		}
 	}
 
@@ -89,7 +89,7 @@
   .moving-line {
     fill: none;
 		stroke-width: 2;
-		stroke: theme('colors.driftwood.800');
+		stroke: theme('colors.stone.800');
 		stroke-linecap: round;
 	}
 

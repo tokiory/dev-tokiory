@@ -30,7 +30,7 @@
 	<ChecklistGenericItem {title} {done} favorite={Boolean(rating && rating >= 8)} {tags}>
 		<div class={['flex gap-1 items-center mt-.25']}>
 			<div
-				class="max-w-xl text-xs whitespace-nowrap text-ellipsis overflow-hidden border-b border-driftwood-700/40 inline-block"
+				class="max-w-xl text-xs whitespace-nowrap text-ellipsis overflow-hidden border-b border-stone-700/40 inline-block"
 			>
 				{link}
 			</div>
@@ -38,7 +38,7 @@
 		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<div class="text-sm mt-1">{@html description}</div>
 		{#if done && rating}
-			<div class="flex mt-1 text-xs gap-1 items-center text-driftwood-700/60">
+			<div class="flex mt-1 text-xs gap-1 items-center text-stone-700/60">
 				<div class="i-tabler-star"></div>
 				<div>
 					{rating} / 10

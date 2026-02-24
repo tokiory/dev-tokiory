@@ -16,7 +16,7 @@
 <ChecklistGenericItem {title} {done} {tags}>
 	<div class="font-medium text-xs">
 		{#if publisher}
-			<span class="text-driftwood-900/70">{publisher}</span>
+			<span class="text-stone-900/70">{publisher}</span>
 			<span> • </span>
 		{/if}
 

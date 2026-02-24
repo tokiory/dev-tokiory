@@ -36,7 +36,7 @@
 
 <div
 	class={[
-		'relative flex flex-col gap-2 border rounded-md overflow-hidden border-driftwood-700/40 justify-center items-center w-full h-[200px] lg:h-[400px]',
+		'relative flex flex-col gap-2 border rounded-md overflow-hidden border-stone-700/40 justify-center items-center w-full h-[200px] lg:h-[400px]',
 		isDisclamerVisible && 'p-4',
 		className
 	]}
@@ -49,7 +49,7 @@
 		<ContentParagraph custommark class="text-sm text-center">
 			Данные не будут сохраняться и/или передаваться по сети Интернет.
 		</ContentParagraph>
-		<ContentParagraph custommark class="text-sm text-center text-driftwood-900/70">
+		<ContentParagraph custommark class="text-sm text-center text-stone-900/70">
 			По возможности, выберите любую вкладку, кроме текущей, чтобы избежать эффекта "портала".
 		</ContentParagraph>
 		<Button class="text-sm mt-4" onclick={startTranslation}>Запустить</Button>

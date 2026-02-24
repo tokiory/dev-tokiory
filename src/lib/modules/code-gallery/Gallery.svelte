@@ -77,7 +77,7 @@
 	});
 </script>
 
-<div class={['border-driftwood-800/80 rounded-md overflow-hidden border border-dashed', className]}>
+<div class={['border-stone-800/80 rounded-md overflow-hidden border border-dashed', className]}>
 	<Control
 	  {withKeys}
 		{slidesAmount}

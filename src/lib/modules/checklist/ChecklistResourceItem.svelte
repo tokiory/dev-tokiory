@@ -7,7 +7,7 @@
 
 <a target="_blank" href={link}>
 	<ChecklistGenericItem {title} {done} {tags}>
-      <div class="flex gap-1 text-xs text-driftwood-900/70 items-center">
+      <div class="flex gap-1 text-xs text-stone-900/70 items-center">
       {#if type === 'walkthrough'}
         <div class="i-tabler-arrow-big-up-line-filled" />
         <span>Проходимый ресурс</span>
@@ -24,7 +24,7 @@
 
 		<div class={['flex gap-1 items-center mt-.25']}>
 			<div
-				class="max-w-xl text-xs whitespace-nowrap text-ellipsis overflow-hidden border-b border-driftwood-700/40 inline-block"
+				class="max-w-xl text-xs whitespace-nowrap text-ellipsis overflow-hidden border-b border-stone-700/40 inline-block"
 			>
 				{link}
 			</div>

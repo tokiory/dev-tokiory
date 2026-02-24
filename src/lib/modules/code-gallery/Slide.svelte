@@ -24,7 +24,7 @@
 	]}
 >
 	{#if title}
-		<Heading class="my-2 pb-2 border-b border-dashed border-driftwood-800/50" custommark nospy>{title}</Heading>
+		<Heading class="my-2 pb-2 border-b border-dashed border-stone-800/50" custommark nospy>{title}</Heading>
 	{/if}
 	<div class="slide-content flex-col flex gap-4">
 	{@render children?.()}
@@ -37,7 +37,7 @@
 	}
 
 	.slide_expanded:not(:first-child) {
-		@apply border-t border-dashed py-4 border-driftwood-800/80;
+		@apply border-t border-dashed py-4 border-stone-800/80;
 	}
 
 	:global(.slide-content > *) {

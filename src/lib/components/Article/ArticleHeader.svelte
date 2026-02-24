@@ -22,10 +22,10 @@
 	});
 </script>
 
-<hgroup class="pb-6 border-b border-b-dashed border-driftwood-300">
+<hgroup class="pb-6 border-b border-b-dashed border-stone-300">
 	<ArticleTitle {title} />
 	<div bind:this={descriptionRef} class="opacity-0">
-		<div class="whitespace-pre-line text-driftwood-700">{description}</div>
+		<div class="whitespace-pre-line text-stone-700">{description}</div>
 	</div>
 	<ArticleControl class="mt-2" meta={meta} />
 </hgroup>

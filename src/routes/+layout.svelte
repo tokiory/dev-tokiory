@@ -48,8 +48,8 @@
 
 			telegramMiniApp.windowStore.initialize();
 			telegramMiniApp.windowStore.setTheme({
-				backgroundColor: unotheme?.colors.frangipani['50'] || '#fff',
-				headerColor: unotheme?.colors.frangipani['50'] || '#fff'
+				backgroundColor: '#fff',
+				headerColor: '#fff'
 			});
 
 			await telegramMiniApp.viewportStore.initialize();

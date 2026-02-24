@@ -36,7 +36,7 @@
 		{#each tabs as { title, idx } (idx)}
 			<button
 				class={[
-					'border p-2 text-sm border-driftwood-800 rounded-md',
+					'border p-2 text-sm border-stone-800 rounded-md',
 					activeTab !== idx && 'opacity-50'
 				]}
 				onclick={() => {

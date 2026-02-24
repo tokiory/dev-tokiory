@@ -46,6 +46,6 @@
 
 <style>
 	.ghost-letter {
-		-webkit-text-stroke: 2px theme('colors.driftwood.800');
+		-webkit-text-stroke: 2px theme('colors.stone.800');
 	}
 </style>

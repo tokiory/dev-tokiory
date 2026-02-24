@@ -1,63 +1,60 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .main {
-  @apply px-3 pt-8 sm:pt-14 pb-8;
-  max-width: 854px;
+	@apply px-3 pt-8 sm:pt-14 pb-8;
+	max-width: 854px;
 }
 
-h1, h2, h3 {
-  scroll-margin-top: 4rem;
+h1,
+h2,
+h3 {
+	scroll-margin-top: 4rem;
 }
 
 pre {
-  background: transparent;
+	background: transparent;
 }
 
 code {
-  font-family: 'Martian Mono Variable', monospace;
-  @apply text-[13px];
+	font-family: 'Martian Mono Variable', monospace;
+	@apply text-[13px];
 }
 
-:not(pre)>code {
-  @apply px-1 py-[2px] rounded-[4px] border bg-brand-surface-accent text-brand-foreground-accent;
-  border-color: #37394a;
-}
-
-:not(pre)>code {
-  @apply inline-block bg-driftwood-100 text-driftwood-900 border-0;
+:not(pre) > code {
+	@apply inline-block bg-stone-100 text-stone-900 border-0;
 }
 
 body {
-  @apply bg-brand-surface text-brand-foreground;
-  margin: 0;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-smooth: always;
-  font-family:
-    "Manrope Variable",
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
-    font-weight: 500;
+	@apply bg-white text-stone-900;
+	margin: 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smooth: always;
+	font-family:
+		'Manrope Variable',
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		'Open Sans',
+		'Helvetica Neue',
+		sans-serif;
+	font-weight: 500;
 }
 
 @font-face {
-  font-family: 'Virgil';
-  src: url('/fonts/Virgil.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+	font-family: 'Virgil';
+	src: url('/fonts/Virgil.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
 }

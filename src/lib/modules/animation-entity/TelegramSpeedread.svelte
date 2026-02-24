@@ -42,6 +42,6 @@
 	const word = $derived(words[currentWordIdx]);
 </script>
 
-<code class={['text-xl block shadow-sm shadow-driftwood-800/10 text-center leading-loose', className]}>
+<code class={['text-xl block shadow-sm shadow-stone-800/10 text-center leading-loose', className]}>
     {word}
 </code>

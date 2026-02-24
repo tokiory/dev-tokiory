@@ -10,7 +10,7 @@
    }
 
 	.output {
-		@apply mb-6 p-2 border-2 rounded-md border-dashed text-[13px] border-frangipani-800/30;
+		@apply mb-6 p-2 border-2 rounded-md border-dashed text-[13px] border-stone-800/30;
 		font-family: 'Martian Mono Variable', monospace;
 
 		:global(& *) {

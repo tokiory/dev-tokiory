@@ -74,7 +74,7 @@
 	{/if}
 	{#if metaFields['filename']}
 		<div
-			class="border-b pb-1 flex justify-between text-xs font-semibold border-dashed w-full mb-2 border-frangipani-800/80"
+			class="border-b pb-1 flex justify-between text-xs font-semibold border-dashed w-full mb-2 border-stone-800/80"
 		>
 			<div>
 				{metaFields['filename']}
@@ -96,7 +96,7 @@
 					'absolute z-10 cursor-pointer  transition-colors top-0 right-0 p-2 rounded-md',
 					flags.includes('error')
 						? 'bg-rose-100 hover:bg-rose-200'
-						: 'bg-frangipani-50 hover:bg-driftwood-200/30'
+						: 'bg-stone-50 hover:bg-stone-200/30'
 				]}
 			>
 				{#if lastCopiedTimerId}
@@ -111,7 +111,7 @@
 				<a aria-label="Run code in REPL" href={metaFields['play']} target="_blank" rel="noopener">
 					<button
 						aria-label="Run code in REPL"
-						class="absolute z-10 cursor-pointer bg-frangipani-50 hover:bg-driftwood-200/30 transition-colors top-0 right-10 p-2 rounded-md"
+						class="absolute z-10 cursor-pointer bg-stone-50 hover:bg-stone-200/30 transition-colors top-0 right-10 p-2 rounded-md"
 					>
 						<div class="i-tabler-play"></div>
 					</button>
@@ -144,7 +144,7 @@
 		:global(pre.has-highlighted) {
 			& .line.highlighted {
 				@apply relative inline-block w-full transition-colors;
-				@apply bg-frangipani-100/80;
+				@apply bg-stone-100/80;
 			}
 		}
 

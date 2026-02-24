@@ -13,7 +13,7 @@
 <button
 	class={[
 		'py-1 px-4 border-b transition-colors',
-		active ? 'border-driftwood-700' : 'border-driftwood-700/40'
+		active ? 'border-stone-700' : 'border-stone-700/40'
 	]}
 	{onclick}
 >

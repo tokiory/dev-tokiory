@@ -12,7 +12,7 @@
 
 <a
 	class={[
-		'w-full sm:w-fit border rounded-md transition-colors border-driftwood-700/40 hover:border-driftwood-700/80 block p-2',
+		'w-full sm:w-fit border rounded-md transition-colors border-stone-700/40 hover:border-stone-700/80 block p-2',
 		className
 	]}
 	href={url}

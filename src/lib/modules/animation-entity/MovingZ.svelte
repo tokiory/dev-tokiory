@@ -21,7 +21,7 @@
 	.glass {
 		position: absolute;
 		inset: 0;
-		background: radial-gradient(circle, transparent, theme('colors.frangipani.50 / 85%'));
+		background: radial-gradient(circle, transparent, theme('colors.stone.50 / 85%'));
 		mask-image: radial-gradient(circle at center, transparent, black 90%);
 		backdrop-filter: blur(5px);
 	}

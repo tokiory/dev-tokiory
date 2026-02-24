@@ -73,7 +73,7 @@
 
 <style>
 	.scroller {
-		background-image: linear-gradient(to bottom, theme('colors.frangipani.50 / 95%'), transparent);
+		background-image: linear-gradient(to bottom, theme('colors.stone.50 / 95%'), transparent);
 		backdrop-filter: blur(16px);
 		-webkit-backdrop-filter: blur(16px);
 		mask-image: linear-gradient(to bottom, black 70%, transparent);

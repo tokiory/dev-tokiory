@@ -80,7 +80,7 @@ export const GET: RequestHandler = async ({ url }) => {
 									style: {
 										fontSize: `${IMAGE_SIZE[type].upscale * 18}px`,
 										fontWeight: 600,
-										color: unoConfig.theme.colors.driftwood['800']
+										color: unoConfig.theme.colors.stone['800']
 									}
 								}
 							})),
@@ -114,7 +114,7 @@ export const GET: RequestHandler = async ({ url }) => {
 							style: {
 								fontSize: `${IMAGE_SIZE[type].upscale * 24}px`,
 								borderRadius: '8px',
-								backgroundColor: unoConfig.theme.colors.frangipani['100'],
+								backgroundColor: unoConfig.theme.colors.stone['100'],
 								padding: '4px 32px',
 								marginTop: 'auto',
 								fontWeight: 600
@@ -134,8 +134,8 @@ export const GET: RequestHandler = async ({ url }) => {
 					right: 0,
 					top: 0,
 					bottom: 0,
-					color: unoConfig.theme.colors.driftwood['800'],
-					backgroundColor: unoConfig.theme.colors.frangipani['50']
+					color: unoConfig.theme.colors.stone['800'],
+					backgroundColor: unoConfig.theme.colors.stone['50']
 				}
 			}
 		},

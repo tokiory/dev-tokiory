@@ -34,7 +34,7 @@
 	bind:value
 	{...attrs}
 	class={[
-		'px-2 py-1 w-full bg-inherit border border-driftwood-600 rounded-md placeholder:text-driftwood-800/50',
+		'px-2 py-1 w-full bg-inherit border border-stone-600 rounded-md placeholder:text-stone-800/50',
 		autoresize && 'resize-none',
 		className
 	]}

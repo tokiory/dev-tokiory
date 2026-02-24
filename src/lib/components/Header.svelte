@@ -47,7 +47,7 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="border-b-1 border-dashed border-driftwood-800/70"></div>
+		<div class="border-b-1 border-dashed border-stone-800/70"></div>
 		<aside>
 			<ul class="flex text-sm gap-3 justify-end items-center">
 				<li>

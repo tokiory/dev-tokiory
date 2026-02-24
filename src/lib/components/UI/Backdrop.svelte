@@ -12,7 +12,7 @@
 	});
 </script>
 
-<div {...props} class={['backdrop bg-frangipani-50/70', className]}>
+<div {...props} class={['backdrop bg-stone-50/70', className]}>
 	{@render children?.()}
 </div>
 

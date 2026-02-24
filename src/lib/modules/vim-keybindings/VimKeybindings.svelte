@@ -40,7 +40,7 @@
 
 <div
 	class={[
-		'grid lg:grid-cols-2 gap-8 py-4 px-3 bg-inherit border-2 w-full border-dashed border-driftwood-700/40 rounded-md',
+		'grid lg:grid-cols-2 gap-8 py-4 px-3 bg-inherit border-2 w-full border-dashed border-stone-700/40 rounded-md',
 		className
 	]}
 >
@@ -51,8 +51,8 @@
 				class={[
 					'w-full text-left flex flex-col gap-1 p-2 rounded-md border transition-all',
 					selectedCommand === idx
-						? 'border-driftwood-600'
-						: 'border-driftwood-700/30 hover:border-driftwood-500'
+						? 'border-stone-600'
+						: 'border-stone-700/30 hover:border-stone-500'
 				]}
 				onclick={() => selectCommand(idx)}
 			>
@@ -68,7 +68,7 @@
 				{#each currentCommand.keys as key, index (currentCommand.title + '-key-' + index)}
 					<div
 						bind:this={keyElements[index]}
-						class="px-3 py-1 rounded-md font-mono text-sm border border-driftwood-700 border-dotted transition-all"
+						class="px-3 py-1 rounded-md font-mono text-sm border border-stone-700 border-dotted transition-all"
 					>
 						{key}
 					</div>
@@ -76,7 +76,7 @@
 			</div>
 		</div>
 
-		<div class="flex border border-driftwood-700 rounded-md p-2 flex-col gap-.5">
+		<div class="flex border border-stone-700 rounded-md p-2 flex-col gap-.5">
 			{#each information as info (info.title)}
 				<div class="text-sm"><span class="font-semibold">{info.title}</span>: {info.value}</div>
 			{/each}
