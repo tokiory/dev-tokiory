@@ -48,7 +48,10 @@
 	};
 </script>
 
-<Button onclick={handleSortChange} class="flex items-center justify-center w-full sm:w-[190px] text-sm gap-1.5">
+<Button
+	onclick={handleSortChange}
+	class="flex items-center justify-center w-full sm:w-[190px] text-sm gap-1.5 !bg-white !text-black !border-white/70 hover:!bg-neutral-100 active:!bg-neutral-200"
+>
 	<div class={icon}></div>
 	<div class="text-nowrap">{text}</div>
 </Button>

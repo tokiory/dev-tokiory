@@ -7,6 +7,13 @@ import {
 } from 'unocss';
 
 export default defineConfig({
+	theme: {
+		colors: {
+			primary: 'var(--theme-text)',
+			secondary: 'var(--theme-text-soft)',
+			'border-strong': 'var(--theme-border-strong)'
+		}
+	},
 	presets: [
 		presetMini(),
 		presetIcons({

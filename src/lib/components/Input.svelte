@@ -12,7 +12,7 @@
 	{...attrs}
 	bind:value
 	class={[
-		'px-2 py-1 bg-inherit border border-stone-600 rounded-md placeholder:text-stone-800/50',
+		'px-2 py-1 bg-inherit rounded-md border border-border-strong text-primary placeholder:text-secondary',
 		className
 	]}
 />

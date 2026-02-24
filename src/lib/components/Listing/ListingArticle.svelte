@@ -21,8 +21,8 @@
 </script>
 
 <Link class="w-full block" darker {href}>
-	<div class="font-bold">{@render children()}</div>
-	<div class="text-stone-900">
+	<div class="font-bold text-primary">{@render children()}</div>
+	<div class="text-primary">
 		{description}
 	</div>
 	<div class="flex mt-1 text-sm justify-between">

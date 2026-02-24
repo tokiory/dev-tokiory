@@ -1,6 +1,31 @@
 .content {
-  ol + p,
-  ul + p {
-    @apply mt-4;
-  }
+	--content-diagram-filter: none;
+	--content-diagram-opacity: 1;
+	--content-inline-diagram-filter: none;
+
+	ol + p,
+	ul + p {
+		@apply mt-4;
+	}
+
+	img.content-img--diagram,
+	img[data-diagram='true'] {
+		filter: var(--content-diagram-filter);
+		opacity: var(--content-diagram-opacity);
+		transition:
+			filter 180ms ease,
+			opacity 180ms ease;
+	}
+
+	.diagram svg {
+		filter: var(--content-inline-diagram-filter);
+		transition: filter 180ms ease;
+	}
+}
+
+.theme-dark .content,
+.theme-gruvvy .content {
+	--content-diagram-filter: invert(1) hue-rotate(180deg) contrast(0.95) brightness(1.08);
+	--content-diagram-opacity: 0.94;
+	--content-inline-diagram-filter: invert(1) hue-rotate(180deg) contrast(0.95) brightness(1.08);
 }

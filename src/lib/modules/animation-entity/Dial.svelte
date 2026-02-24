@@ -1,68 +1,151 @@
-<svg class="w-full bg-inherit" viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
-	<style>
-		.node {
-			r: 6;
-		}
-		.ping {
-			animation: ping 2s infinite;
-		}
-		.dot {
-			r: 4;
-			animation: travel 2s infinite;
-		}
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 600 200"
+	class="dial"
+	style="background-color: transparent; font-family: monospace;"
+>
+	<!-- Grid Background (Adjusted for light visibility) -->
+	<defs>
+		<pattern id="dot-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+			<circle cx="1" cy="1" r="1" fill="var(--dial-grid)" />
+		</pattern>
+	</defs>
+	<rect width="100%" height="100%" fill="url(#dot-grid)" />
 
-		@keyframes ping {
-			0% {
-				r: 10;
-				opacity: 0.8;
-			}
-			100% {
-				r: 100;
-				opacity: 0;
-			}
-		}
+	<!-- Central Signaling Hub -->
+	<g transform="translate(300, 50)">
+		<rect
+			x="-15"
+			y="-15"
+			width="30"
+			height="30"
+			fill="none"
+			stroke="var(--dial-primary)"
+			stroke-width="1.5"
+		/>
+		<circle r="4" fill="var(--dial-primary)">
+			<animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite" />
+		</circle>
+		<text y="-25" fill="var(--dial-primary)" font-size="8" text-anchor="middle" letter-spacing="2"
+			>SIGNALING</text
+		>
+	</g>
 
-		@keyframes travel {
-			0% {
-				transform: translate(0, 0);
-				opacity: 1;
-			}
-			100% {
-				transform: translate(var(--tx), var(--ty));
-				opacity: 0;
-			}
-		}
-	</style>
+	<!-- Connection Paths -->
+	<!-- Signaling Curves -->
+	<path
+		d="M 100,80 C 100,40 200,50 280,50"
+		fill="none"
+		stroke="var(--dial-secondary)"
+		stroke-width="1"
+		stroke-dasharray="4 4"
+	/>
+	<path
+		d="M 320,50 C 400,50 500,40 500,80"
+		fill="none"
+		stroke="var(--dial-secondary)"
+		stroke-width="1"
+		stroke-dasharray="4 4"
+	/>
 
-	<rect class="fill-stone-50" width="800" height="200" />
+	<!-- P2P Direct Line -->
+	<line
+		x1="120"
+		y1="130"
+		x2="480"
+		y2="130"
+		stroke="var(--dial-primary)"
+		stroke-width="1"
+		stroke-dasharray="10 10"
+	>
+		<animate
+			attributeName="stroke-dashoffset"
+			from="20"
+			to="0"
+			dur="1s"
+			calcMode="linear"
+			repeatCount="indefinite"
+		/>
+	</line>
 
-	<!-- Central node -->
-	<circle class="fill-stone-700" cx="400" cy="100" r="8" />
+	<!-- Animated Signaling Particles -->
+	<circle r="2" fill="var(--dial-primary)">
+		<animateMotion dur="2s" repeatCount="indefinite" path="M 100,80 C 100,40 200,50 280,50" />
+	</circle>
+	<circle r="2" fill="var(--dial-primary)">
+		<animateMotion
+			dur="2s"
+			begin="1s"
+			repeatCount="indefinite"
+			path="M 500,80 C 500,40 400,50 320,50"
+		/>
+	</circle>
 
-	<!-- Ping pulse -->
-	<circle class="stroke-2 stroke-stone-700 opacity-0 fill-none ping" cx="400" cy="100" />
+	<!-- P2P Data Particles -->
+	<rect width="4" height="4" fill="var(--dial-primary)">
+		<animateMotion dur="1.5s" repeatCount="indefinite" path="M 120,130 L 480,130" />
+	</rect>
+	<rect width="4" height="4" fill="var(--dial-primary)">
+		<animateMotion dur="1.5s" begin="0.75s" repeatCount="indefinite" path="M 480,130 L 120,130" />
+	</rect>
 
-	<!-- Lines to nodes -->
-	<line class="stroke-stone-700 stroke-2" x1="400" y1="100" x2="200" y2="50" />
-	<line class="stroke-stone-700 stroke-2" x1="400" y1="100" x2="600" y2="50" />
-	<line class="stroke-stone-700 stroke-2" x1="400" y1="100" x2="200" y2="150" />
-	<line class="stroke-stone-700 stroke-2" x1="400" y1="100" x2="600" y2="150" />
-	<line class="stroke-stone-700 stroke-2" x1="400" y1="100" x2="100" y2="100" />
-	<line class="stroke-stone-700 stroke-2" x1="400" y1="100" x2="700" y2="100" />
+	<!-- Left Peer (Caller) -->
+	<g transform="translate(100, 130)">
+		<circle r="30" fill="none" stroke="var(--dial-primary)" stroke-width="1" opacity="0.2">
+			<animate attributeName="r" values="30;50" dur="2s" repeatCount="indefinite" />
+			<animate attributeName="opacity" values="0.2;0" dur="2s" repeatCount="indefinite" />
+		</circle>
+		<rect
+			x="-20"
+			y="-30"
+			width="40"
+			height="60"
+			fill="none"
+			stroke="var(--dial-primary)"
+			stroke-width="2"
+		/>
+	</g>
 
-	<!-- Nodes -->
-	<circle class="fill-stone-700 node" cx="200" cy="50" />
-	<circle class="fill-stone-700 node" cx="600" cy="50" />
-	<circle class="fill-stone-700 node" cx="200" cy="150" />
-	<circle class="fill-stone-700 node" cx="600" cy="150" />
-	<circle class="fill-stone-700 node" cx="100" cy="100" />
-	<circle class="fill-stone-700 node" cx="700" cy="100" />
-
-	<!-- Data dots -->
-	<circle class="fill-stone-700 dot" cx="400" cy="100" style="--tx:-200px; --ty:-50px; animation-delay: 0s;" />
-	<circle class="fill-stone-700 dot" cx="400" cy="100" style="--tx:200px; --ty:-50px; animation-delay: 0.3s;" />
-	<circle class="fill-stone-700 dot" cx="400" cy="100" style="--tx:-200px; --ty:50px; animation-delay: 0.6s;" />
-	<circle class="fill-stone-700 dot" cx="400" cy="100" style="--tx:200px; --ty:50px; animation-delay: 0.9s;" />
-	<circle class="fill-stone-700 dot" cx="400" cy="100" style="--tx:-300px; --ty:0px; animation-delay: 1.2s;" />
-	<circle class="fill-stone-700 dot" cx="400" cy="100" style="--tx:300px; --ty:0px; animation-delay: 1.5s;" />
+	<!-- Right Peer (Receiver) -->
+	<g transform="translate(500, 130)">
+		<circle r="30" fill="none" stroke="var(--dial-primary)" stroke-width="1" opacity="0.2">
+			<animate attributeName="r" values="30;50" dur="2s" begin="1s" repeatCount="indefinite" />
+			<animate
+				attributeName="opacity"
+				values="0.2;0"
+				dur="2s"
+				begin="1s"
+				repeatCount="indefinite"
+			/>
+		</circle>
+		<rect
+			x="-20"
+			y="-30"
+			width="40"
+			height="60"
+			fill="none"
+			stroke="var(--dial-primary)"
+			stroke-width="2"
+		/>
+	</g>
 </svg>
+
+<style>
+	.dial {
+		--dial-primary: #111111;
+		--dial-secondary: #a8a29e;
+		--dial-grid: #e7e5e4;
+	}
+
+	:global(.theme-dark) .dial {
+		--dial-primary: #f5f5f5;
+		--dial-secondary: #737373;
+		--dial-grid: #262626;
+	}
+
+	:global(.theme-gruvvy) .dial {
+		--dial-primary: #ebdbb2;
+		--dial-secondary: #928374;
+		--dial-grid: #504945;
+	}
+</style>

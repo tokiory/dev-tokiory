@@ -4,6 +4,7 @@
 	import { UmamiLinkEvent } from '$mod/umami';
 	import TelegramFullscreenButton from './Header/TelegramFullscreenButton.svelte';
 	import Logo from './Logo.svelte';
+	import ThemeSelector from './ThemeSelector.svelte';
 
 	interface Props {
 		class?: string | string[];
@@ -14,14 +15,14 @@
 
 <header class={['pr-2 xl:pr-0 flex items-center justify-between', className]}>
 	<Logo />
-	<div class="hidden sm:flex flex-col gap-1">
-		<nav>
-			<ul class="flex gap-5 justify-end items-center">
+	<div class="hidden sm:flex flex-col gap-2 items-end">
+		<nav class="flex items-center justify-end gap-8">
+			<ul class="flex gap-5 items-center">
 				<li>
 					<Link
 						data-umami-event={UmamiLinkEvent.ArticleListing}
 						data-umami-event-place="header"
-						class="relative"
+						class="relative !text-primary hover:!text-primary"
 						darker
 						href="/articles"
 					>
@@ -35,7 +36,7 @@
 					<Link
 						data-umami-event={UmamiLinkEvent.ChecklistItem}
 						data-umami-event-place="header"
-						class="relative"
+						class="relative !text-primary hover:!text-primary"
 						darker
 						href="/checklist"
 					>
@@ -46,8 +47,8 @@
 					</Link>
 				</li>
 			</ul>
+			<ThemeSelector />
 		</nav>
-		<div class="border-b-1 border-dashed border-stone-800/70"></div>
 		<aside>
 			<ul class="flex text-sm gap-3 justify-end items-center">
 				<li>
@@ -55,6 +56,7 @@
 						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="header"
 						data-umami-event-type="telegram"
+						class="!text-primary hover:!text-primary"
 						darker
 						target="_blank"
 						href={TELEGRAM_LINK}>Телеграм</Link
@@ -65,6 +67,7 @@
 						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="header"
 						data-umami-event-type="github"
+						class="!text-primary hover:!text-primary"
 						darker
 						target="_blank"
 						href={GITHUB_LINK}>Гитхаб</Link
@@ -75,6 +78,7 @@
 						data-umami-event={UmamiLinkEvent.Social}
 						data-umami-event-place="header"
 						data-umami-event-type="habr"
+						class="!text-primary hover:!text-primary"
 						darker
 						target="_blank"
 						href={HABR_LINK}>Хабр</Link

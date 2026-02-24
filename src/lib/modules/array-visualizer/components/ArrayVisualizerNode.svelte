@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Node } from './types';
+	import type { Node } from '../types/node';
 
 	const { value, active, cursor }: Node = $props();
 </script>
@@ -8,8 +8,12 @@
 	<div>{value}</div>
 	<div
 		class={[
-			'h-2 w-12 rounded-md ',
-			active ? 'bg-stone-700' : cursor ? 'bg-stone-500' : 'bg-stone-700'
+			'h-2 w-12 rounded-md',
+			active
+				? 'bg-[var(--theme-av-node-active)]'
+				: cursor
+					? 'bg-[var(--theme-av-node-cursor)]'
+					: 'bg-[var(--theme-av-node-base)]'
 		]}
 	></div>
 </div>

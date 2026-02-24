@@ -35,7 +35,7 @@
 	const flags = $derived.by(() => parseFlags(meta));
 
 	let codeRef = $state<Element>();
-	let lastCopiedTimerId = $state<number | null>(null);
+	let lastCopiedTimerId = $state<ReturnType<typeof setTimeout> | null>(null);
 
 	const copy = async () => {
 		try {
@@ -144,7 +144,7 @@
 		:global(pre.has-highlighted) {
 			& .line.highlighted {
 				@apply relative inline-block w-full transition-colors;
-				@apply bg-stone-100/80;
+				background-color: var(--theme-code-highlight-bg) !important;
 			}
 		}
 
@@ -158,7 +158,8 @@
 			}
 
 			& .diff.remove {
-				@apply opacity-60 bg-stone-100;
+				@apply opacity-60;
+				background-color: var(--theme-code-diff-remove-bg) !important;
 			}
 
 			& .diff.remove::after {
@@ -166,7 +167,7 @@
 			}
 
 			& .diff.add {
-				@apply bg-stone-100;
+				background-color: var(--theme-code-diff-add-bg) !important;
 			}
 
 			& .diff.add::after {

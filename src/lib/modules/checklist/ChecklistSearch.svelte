@@ -3,12 +3,12 @@
 </script>
 
 <div class={className}>
-	<div class="text-xs text-stone-900/50">Поиск</div>
+	<div class="text-xs text-secondary">Поиск</div>
 	<input
 		class={[
-			'px-2 py-1 mt-0.5 rounded-md border border-stone-700 text-sm bg-transparent placeholder:text-stone-700 w-full'
+			'px-2 py-1 mt-1.5 rounded-md border border-border-strong text-sm text-primary bg-transparent placeholder:text-secondary w-full'
 		]}
-		bind:value={value}
+		bind:value
 		type="text"
 		placeholder="Напишите что-то..."
 	/>

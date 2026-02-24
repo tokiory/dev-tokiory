@@ -66,7 +66,7 @@
 						{heading.text}
 					</button>
 					{#if idx === currentHeadingId}
-					<div class="i-tabler-arrow-left"></div>
+						<div class="i-tabler-arrow-left"></div>
 					{/if}
 				</li>
 			{/each}
@@ -78,7 +78,7 @@
 	.menu {
 		backdrop-filter: blur(16px);
 		-webkit-backdrop-filter: blur(16px);
-		background-color: theme('colors.stone.50 / 55%');
+		background-color: var(--theme-overlay-menu);
 	}
 
 	.navigation {

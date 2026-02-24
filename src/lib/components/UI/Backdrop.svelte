@@ -12,12 +12,13 @@
 	});
 </script>
 
-<div {...props} class={['backdrop bg-stone-50/70', className]}>
+<div {...props} class={['backdrop', className]}>
 	{@render children?.()}
 </div>
 
 <style>
 	.backdrop {
+		background-color: var(--theme-overlay-backdrop);
 		backdrop-filter: blur(8px);
 	}
 </style>

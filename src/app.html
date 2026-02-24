@@ -12,6 +12,28 @@
 			crossorigin="anonymous"
 		/>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script>
+			(() => {
+				const storageKey = 'tokiory-theme';
+				const themes = ['light', 'dark', 'gruvvy'];
+				const root = document.documentElement;
+
+				let nextTheme = 'light';
+
+				try {
+					const savedTheme = window.localStorage.getItem(storageKey);
+					if (savedTheme && themes.includes(savedTheme)) {
+						nextTheme = savedTheme;
+					}
+				} catch {
+					nextTheme = 'light';
+				}
+
+				root.classList.remove('theme-light', 'theme-dark', 'theme-gruvvy');
+				root.classList.add(`theme-${nextTheme}`);
+				root.style.colorScheme = nextTheme === 'light' ? 'light' : 'dark';
+			})();
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

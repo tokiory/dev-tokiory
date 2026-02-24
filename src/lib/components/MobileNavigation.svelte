@@ -10,6 +10,7 @@
 	import { telegramMiniApp } from '../modules/telegram/mini-app';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { UmamiLinkEvent } from '$mod/umami';
+	import ThemeSelector from './ThemeSelector.svelte';
 
 	const LINKS = [
 		{ href: '/', text: 'Главная' },
@@ -112,6 +113,7 @@
 	>
 		<div class="flex flex-col gap-4">
 			<ContentH1 custommark nospy>Навигация</ContentH1>
+			<ThemeSelector class="mobile-theme-selector" />
 			<ul class="flex flex-col gap-2">
 				{#each LINKS as link (link.href)}
 					<li>
@@ -171,7 +173,7 @@
 			<div
 				class="w-full select-none mx-auto pt-24 text-center text-stone-900/80 flex flex-col gap-1 items-center"
 			>
-			<div class="text-sm">Кликните на пустое пространство, чтобы закрыть шторку</div>
+				<div class="text-sm">Кликните на пустое пространство, чтобы закрыть шторку</div>
 			</div>
 		{:else}
 			<div
@@ -193,5 +195,9 @@
 <style>
 	.mobile-nav {
 		touch-action: none;
+	}
+
+	:global(.mobile-theme-selector) {
+		width: fit-content;
 	}
 </style>
