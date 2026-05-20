@@ -20,7 +20,7 @@
 
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import zoom from 'medium-zoom';
+	import ContentZoomViewer from './ContentZoomViewer.svelte';
 
 	interface Props {
 		code?: string;
@@ -32,12 +32,13 @@
 	let diagramImageSrc = $state('');
 	let renderError = $state('');
 	let imageRef = $state<HTMLImageElement>();
+	let isZoomOpen = $state(false);
 
 	const toSvgDataUrl = (svg: string) => `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
 
 	const handleClick = () => {
 		if (!imageRef) return;
-		zoom(imageRef);
+		isZoomOpen = true;
 	};
 
 	$effect(() => {
@@ -96,6 +97,12 @@
 				alt="Mermaid diagram"
 			/>
 		</button>
+		<ContentZoomViewer
+			src={diagramImageSrc}
+			alt="Mermaid diagram"
+			open={isZoomOpen}
+			onClose={() => (isZoomOpen = false)}
+		/>
 	{/if}
 </div>
 
@@ -115,20 +122,5 @@
 
 	.diagram-image {
 		@apply w-full h-auto block;
-	}
-
-	:global {
-		.medium-zoom-overlay {
-			z-index: 1000;
-			background: theme('colors.stone.50') !important;
-		}
-
-		.medium-zoom-image {
-			z-index: 1001;
-		}
-
-		.medium-zoom-image--opened[data-mermaid-zoom='true'] {
-			scale: 1.5;
-		}
 	}
 </style>

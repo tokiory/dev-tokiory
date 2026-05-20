@@ -1,5 +1,5 @@
 <script>
-	import zoom from 'medium-zoom';
+	import ContentZoomViewer from './ContentZoomViewer.svelte';
 
 	const DIAGRAM_HINT_RE =
 		/(diagram|scheme|schema|flow|pipeline|sequence|chart|graph|erd|uml|mermaid|architecture|topology|state|tree|mindmap|wireframe|map|steps?)/i;
@@ -28,15 +28,14 @@
 		hasExplicitDiagramHint || hasDiagramHint || (isSvgImage && !hasLogoHint)
 	);
 
-	let imageRef = $state();
+	let isZoomOpen = $state(false);
 
 	const handleClick = () => {
-		zoom(imageRef);
+		isZoomOpen = true;
 	};
 </script>
 
 <img
-	bind:this={imageRef}
 	onclick={handleClick}
 	class={[
 		'w-full block rounded-md mt-4 mb-6 content-img',
@@ -50,15 +49,4 @@
 	{...restProps}
 />
 
-<style>
-	:global {
-		.medium-zoom-overlay {
-			z-index: 1000;
-			background: theme('colors.stone.50') !important;
-		}
-
-		.medium-zoom-image {
-			z-index: 1001;
-		}
-	}
-</style>
+<ContentZoomViewer src={src ?? ''} {alt} open={isZoomOpen} onClose={() => (isZoomOpen = false)} />
