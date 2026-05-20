@@ -15,7 +15,7 @@
 
 		const iconPartWidth = containerWidth / icons.length;
 
-		const offsetX = (index * iconPartWidth)
+		const offsetX = index * iconPartWidth;
 		const zoneX = iconPartWidth - (2 * icon.offsetWidth);
 		const randomX = Math.floor(offsetX + icon.offsetWidth + Math.random() * zoneX),
 			randomY = Math.floor(Math.random() * containerHeight);
@@ -101,14 +101,28 @@
 
 <style>
 	.desk {
+		--desk-bg: transparent;
+		--desk-grid-color: theme('colors.stone.800 / 20%');
+
 		position: relative;
 		height: 300px;
 		width: 100%;
+		background-color: var(--desk-bg);
 		background-position-x: center;
 		background-position-y: -10px;
 		background-image:
-			linear-gradient(theme('colors.stone.800 / 20%') 1px, transparent 1px),
-			linear-gradient(to right, theme('colors.stone.800 / 20%') 1px, transparent 1px);
+			linear-gradient(var(--desk-grid-color) 1px, transparent 1px),
+			linear-gradient(to right, var(--desk-grid-color) 1px, transparent 1px);
 		background-size: 20px 20px;
+	}
+
+	:global(.theme-dark) .desk {
+		--desk-bg: rgb(255 255 255 / 2.5%);
+		--desk-grid-color: rgb(255 255 255 / 9%);
+	}
+
+	:global(.theme-gruvvy) .desk {
+		--desk-bg: rgb(235 219 178 / 3%);
+		--desk-grid-color: rgb(235 219 178 / 10%);
 	}
 </style>

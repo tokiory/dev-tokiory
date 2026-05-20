@@ -35,7 +35,11 @@ const config = {
 					const html = escapeSvelte(
 						highlighter.codeToHtml(code, {
 							lang,
-							theme: 'vitesse-light',
+							themes: {
+								light: 'vitesse-light',
+								dark: 'vitesse-dark'
+							},
+							defaultColor: false,
 							transformers: [
 								transformerNotationFocus(),
 								transformerNotationDiff(),

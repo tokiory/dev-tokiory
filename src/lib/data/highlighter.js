@@ -1,6 +1,6 @@
 import { createHighlighter } from 'shiki';
 
-const THEME = 'vitesse-light';
+const THEMES = ['vitesse-light', 'vitesse-dark'];
 const SUPPORTED_LANGS = [
 	'vue',
 	'elisp',
@@ -22,7 +22,7 @@ const SUPPORTED_LANGS = [
 ];
 
 const highlighter = await createHighlighter({
-	themes: [THEME],
+	themes: THEMES,
 	langs: SUPPORTED_LANGS
 });
 

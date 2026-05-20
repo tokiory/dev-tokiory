@@ -129,10 +129,18 @@
 		@apply max-w-full overflow-x-auto;
 		:global(pre) {
 			background: transparent !important;
+			color: var(--shiki-light);
 
 			& .line {
 				line-height: 1.9;
 			}
+		}
+
+		:global(pre span) {
+			color: var(--shiki-light);
+			font-style: var(--shiki-light-font-style);
+			font-weight: var(--shiki-light-font-weight);
+			text-decoration: var(--shiki-light-text-decoration);
 		}
 
 		:global(pre.has-focused) {
@@ -174,5 +182,18 @@
 				@apply content-['+'];
 			}
 		}
+	}
+
+	:global(.theme-dark) .codeblock :global(pre),
+	:global(.theme-gruvvy) .codeblock :global(pre) {
+		color: var(--shiki-dark);
+	}
+
+	:global(.theme-dark) .codeblock :global(pre span),
+	:global(.theme-gruvvy) .codeblock :global(pre span) {
+		color: var(--shiki-dark);
+		font-style: var(--shiki-dark-font-style);
+		font-weight: var(--shiki-dark-font-weight);
+		text-decoration: var(--shiki-dark-text-decoration);
 	}
 </style>
