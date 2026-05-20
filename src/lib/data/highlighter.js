@@ -10,7 +10,7 @@ const SUPPORTED_LANGS = [
 	'dockerfile',
 	'go',
 	'json',
-  'lua',
+	'lua',
 	'jsonc',
 	'tsx',
 	'jsx',
@@ -18,11 +18,12 @@ const SUPPORTED_LANGS = [
 	'html',
 	'zig',
 	'protobuf',
+	'markdown'
 ];
 
 const highlighter = await createHighlighter({
 	themes: [THEME],
-	langs: SUPPORTED_LANGS,
+	langs: SUPPORTED_LANGS
 });
 
 export { highlighter };

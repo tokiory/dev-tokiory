@@ -58,6 +58,7 @@
     "animejs": "^4.0.1",
     "katex": "^0.16.22",
     "medium-zoom": "^1.1.0",
+    "mermaid": "^11.12.3",
     "protobufjs": "^7.5.0",
     "satori": "^0.12.2",
     "sharp": "^0.34.1",

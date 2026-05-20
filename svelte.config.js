@@ -28,6 +28,10 @@ const config = {
 			extensions: ['.mdx'],
 			highlight: {
 				highlighter: async (code, lang, meta) => {
+					if (lang === 'mermaid') {
+						return `<Components.mermaid code={${JSON.stringify(code)}} />`;
+					}
+
 					const html = escapeSvelte(
 						highlighter.codeToHtml(code, {
 							lang,

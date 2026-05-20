@@ -6,4 +6,4 @@
 	let target = $derived(href.startsWith('http') ? '_blank' : '_self');
 </script>
 
-<Link {target} {href}>{@render children?.()}</Link>
+<Link underline {target} {href}>{@render children?.()}</Link>

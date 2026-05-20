@@ -10,6 +10,9 @@
 	export { default as li } from './ContentLi.svelte';
 	export { default as img } from './ContentImg.svelte';
 	export { default as blockquote } from './ContentBlockquote.svelte';
+	export { default as mermaid } from './ContentMermaid.svelte';
+	export { default as twitter } from './ContentTwitterEmbed.svelte';
+	export { default as tweetgallery } from './ContentTweetGallery.svelte';
 	export { default as tr } from '$components/Content/ContentTableRow.svelte';
 	export { default as td } from '$components/Content/ContentTableCell.svelte';
 	export { default as th } from '$components/Content/ContentTableHeading.svelte';
