@@ -1,6 +1,6 @@
 import { type RequestHandler } from '@sveltejs/kit';
 import satori, { type Font } from 'satori';
-import unoConfig from '$unoconfig';
+import { theme as unoTheme } from '@unocss/preset-mini';
 import manropeRegular from '@/fonts/manrope/Manrope-Regular.ttf';
 import manropeMedium from '@/fonts/manrope/Manrope-Medium.ttf';
 import manropeSemibold from '@/fonts/manrope/Manrope-SemiBold.ttf';
@@ -80,7 +80,7 @@ export const GET: RequestHandler = async ({ url }) => {
 									style: {
 										fontSize: `${IMAGE_SIZE[type].upscale * 18}px`,
 										fontWeight: 600,
-										color: unoConfig.theme.colors.stone['800']
+										color: unoTheme.colors!.stone['800']
 									}
 								}
 							})),
@@ -114,7 +114,7 @@ export const GET: RequestHandler = async ({ url }) => {
 							style: {
 								fontSize: `${IMAGE_SIZE[type].upscale * 24}px`,
 								borderRadius: '8px',
-								backgroundColor: unoConfig.theme.colors.stone['100'],
+								backgroundColor: unoTheme.colors!.stone['100'],
 								padding: '4px 32px',
 								marginTop: 'auto',
 								fontWeight: 600
@@ -134,8 +134,8 @@ export const GET: RequestHandler = async ({ url }) => {
 					right: 0,
 					top: 0,
 					bottom: 0,
-					color: unoConfig.theme.colors.stone['800'],
-					backgroundColor: unoConfig.theme.colors.stone['50']
+					color: unoTheme.colors!.stone['800'],
+					backgroundColor: unoTheme.colors!.stone['50']
 				}
 			}
 		},

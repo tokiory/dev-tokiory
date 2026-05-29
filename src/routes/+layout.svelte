@@ -11,6 +11,7 @@
 	import { afterNavigate } from '$app/navigation';
 
 	import '@unocss/reset/tailwind.css';
+	import { page } from '$app/state';
 	import TwitterMeta from '$mod/seo/TwitterMeta.svelte';
 	import OpengraphMeta from '$mod/seo/OpengraphMeta.svelte';
 	import { telegramMiniApp } from '@/lib/modules/telegram/mini-app';
@@ -102,24 +103,26 @@
 		handleHistoryChange(afterNav.to?.url.pathname || '');
 	});
 
-	const meta = {
+	const meta = $derived({
 		title: '/dev/tokiory',
 		keywords:
 			'blog, блог, tokiory, dev, разработка, tech, технологии, программирование, programming, it',
 		description:
 			'/dev/tokiory — место где обсуждаются технологии, обмениваются знаниями и просто смотрят на всякие интересности',
 		image: {
-			opengraph: '/api/ogimg/?type=opengraph&title=/dev/tokiory',
-			twitter: '/api/ogimg/?type=twitter&title=/dev/tokiory'
+			opengraph: `${page.url.origin}/api/ogimg/?type=opengraph&title=/dev/tokiory`,
+			twitter: `${page.url.origin}/api/ogimg/?type=twitter&title=/dev/tokiory`
 		}
-	};
+	});
 </script>
 
 <svelte:head>
 	<title>Блог {meta.title}</title>
 	<meta name="keywords" content={meta.keywords} />
-	<OpengraphMeta {...meta} image={meta.image.opengraph} />
-	<TwitterMeta {...meta} image={meta.image.twitter} />
+	{#if !page.data?.meta}
+		<OpengraphMeta {...meta} image={meta.image.opengraph} />
+		<TwitterMeta {...meta} image={meta.image.twitter} />
+	{/if}
 	{#if !isDevelopment}
 		<script
 			defer
