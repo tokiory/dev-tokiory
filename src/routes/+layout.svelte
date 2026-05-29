@@ -16,6 +16,10 @@
 	import { telegramMiniApp } from '@/lib/modules/telegram/mini-app';
 	import { trackEvent, UmamiMiniAppEvent } from '$mod/umami';
 	import { initializeTheme, theme, type Theme } from '$mod/theme';
+	import '@fontsource-variable/podkova';
+	import '@/styles/latex-mode.css';
+	import '@/styles/dyslexia-mode.css';
+	import { initializeSettings } from '$mod/settings';
 
 	interface Props {
 		children: Snippet;
@@ -41,6 +45,7 @@
 
 	if (browser) {
 		initializeTheme();
+		initializeSettings();
 	}
 
 	const handleHistoryChange = (path: string) => {

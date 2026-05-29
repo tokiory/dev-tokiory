@@ -5,6 +5,7 @@
 	import TelegramFullscreenButton from './Header/TelegramFullscreenButton.svelte';
 	import Logo from './Logo.svelte';
 	import ThemeSelector from './ThemeSelector.svelte';
+	import SettingsButton from './SettingsButton.svelte';
 
 	interface Props {
 		class?: string | string[];
@@ -47,7 +48,10 @@
 					</Link>
 				</li>
 			</ul>
-			<ThemeSelector />
+			<div class="flex items-center gap-2">
+				<ThemeSelector />
+				<SettingsButton />
+			</div>
 		</nav>
 		<aside>
 			<ul class="flex text-sm gap-3 justify-end items-center">

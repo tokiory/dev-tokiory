@@ -11,6 +11,7 @@
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { UmamiLinkEvent } from '$mod/umami';
 	import ThemeSelector from './ThemeSelector.svelte';
+	import SettingsButton from './SettingsButton.svelte';
 
 	const LINKS = [
 		{ href: '/', text: 'Главная' },
@@ -113,7 +114,10 @@
 	>
 		<div class="flex flex-col gap-4">
 			<ContentH1 custommark nospy>Навигация</ContentH1>
-			<ThemeSelector class="mobile-theme-selector" />
+			<div class="flex items-center gap-2">
+				<ThemeSelector class="mobile-theme-selector" />
+				<SettingsButton />
+			</div>
 			<ul class="flex flex-col gap-2">
 				{#each LINKS as link (link.href)}
 					<li>

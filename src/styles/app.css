@@ -210,3 +210,11 @@ body {
 	font-style: normal;
 	font-display: swap;
 }
+
+.latex-mode body {
+	font-family: "Libertinus", 'Times New Roman', Times, serif;
+}
+
+.dyslexia-mode body {
+	font-family: "OpenDyslexic", 'Times New Roman', Times, serif;
+}
